@@ -7,6 +7,15 @@ import { createPageUrl } from "@/utils";
 export default function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-teal-900 text-white">
+      {/* Logo at top */}
+      <div className="relative pt-6 pb-4 px-6 max-w-6xl mx-auto">
+        <img 
+          src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/696f51421917c989be527824/3a5e8e058_IMG_8862.png" 
+          alt="GetCoveredFL - Powered by HealthLink" 
+          className="h-10 md:h-12 w-auto brightness-0 invert"
+        />
+      </div>
+      
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-teal-600/20 rounded-full blur-3xl" />
@@ -14,7 +23,7 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-white/5 to-transparent rounded-full" />
       </div>
       
-      <div className="relative max-w-6xl mx-auto px-6 py-20 md:py-32">
+      <div className="relative max-w-6xl mx-auto px-6 pb-20 md:pb-32 pt-8 md:pt-16">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20">
             <Shield className="w-4 h-4 text-emerald-400" />

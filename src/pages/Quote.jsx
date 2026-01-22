@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { base44 } from '@/api/base44Client';
-import { Shield, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
+import { useNavigate } from 'react-router-dom';
 
+import Header from '@/components/shared/Header';
 import ProgressBar from '@/components/quote/ProgressBar';
 import StepZipCode from '@/components/quote/StepZipCode';
 import StepHousehold from '@/components/quote/StepHousehold';
@@ -149,27 +148,7 @@ export default function Quote() {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pb-20 md:pb-0">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-              <Shield className="w-7 h-7 text-teal-600" />
-              <span className="text-lg font-bold text-gray-900">GetCoveredFL</span>
-            </Link>
-            
-            {currentStep <= TOTAL_STEPS && (
-              <Link 
-                to={createPageUrl("Home")} 
-                className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">Back to Home</span>
-              </Link>
-            )}
-          </div>
-        </div>
-      </header>
+      <Header showBackButton={currentStep <= TOTAL_STEPS} />
       
       {/* Progress Bar */}
       {currentStep <= TOTAL_STEPS && (

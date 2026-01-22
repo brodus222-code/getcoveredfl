@@ -1,9 +1,10 @@
 import React from 'react';
-import { CheckCircle2, Phone, Shield, FileCheck, Users, ClipboardCheck, HeartHandshake, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Phone, FileCheck, Users, ClipboardCheck, HeartHandshake, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Button } from '@/components/ui/button';
+import Header from '@/components/shared/Header';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
 
@@ -38,15 +39,7 @@ const qualifications = [
 export default function ThankYou() {
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-            <Shield className="w-7 h-7 text-teal-600" />
-            <span className="text-lg font-bold text-gray-900">GetCoveredFL</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
       
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900 text-white py-16 md:py-24">
