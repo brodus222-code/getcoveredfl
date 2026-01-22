@@ -1,14 +1,17 @@
 import React from 'react';
-import { Phone, Shield } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-400 py-12">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-8 border-b border-gray-800">
-          <div className="flex items-center gap-2">
-            <Shield className="w-8 h-8 text-teal-500" />
-            <span className="text-xl font-bold text-white">GetCoveredFL</span>
+          <div>
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/696f51421917c989be527824/3a5e8e058_IMG_8862.png" 
+              alt="GetCoveredFL - Powered by HealthLink" 
+              className="h-10 w-auto brightness-0 invert"
+            />
           </div>
           
           <a 
