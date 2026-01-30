@@ -43,13 +43,13 @@ export default function HeroSection() {
             </Link>
             
             <a 
-              href="tel:+18005551234" 
+              href="tel:+18555925924" 
               className="flex items-center justify-center gap-2 text-white/90 hover:text-white font-medium transition-colors group"
             >
               <div className="p-2 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors">
                 <Phone className="w-5 h-5" />
               </div>
-              <span>Or Call Now: (800) 555-1234</span>
+              <span>Or Call Now: (855) 592-5924</span>
             </a>
           </div>
           

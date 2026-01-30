@@ -87,8 +87,8 @@ export default function ThankYou() {
             <Phone className="w-6 h-6 text-emerald-400" />
             <div className="text-left">
               <p className="text-sm text-teal-200">Need help immediately?</p>
-              <a href="tel:+18005551234" className="text-xl font-bold hover:text-emerald-300 transition-colors">
-                Call Now: (800) 555-1234
+              <a href="tel:+18555925924" className="text-xl font-bold hover:text-emerald-300 transition-colors">
+                Call Now: (855) 592-5924
               </a>
             </div>
           </motion.div>

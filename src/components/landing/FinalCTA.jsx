@@ -44,11 +44,11 @@ export default function FinalCTA() {
           </Link>
           
           <a 
-            href="tel:+18005551234" 
+            href="tel:+18555925924" 
             className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all duration-300"
           >
             <Phone className="w-5 h-5" />
-            <span>Or Call Now: (800) 555-1234</span>
+            <span>Or Call Now: (855) 592-5924</span>
           </a>
         </div>
       </div>

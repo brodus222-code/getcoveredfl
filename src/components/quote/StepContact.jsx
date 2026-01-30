@@ -140,11 +140,11 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
       
       <div className="text-center mb-6">
         <a 
-          href="tel:+18005551234" 
+          href="tel:+18555925924" 
           className="inline-flex items-center gap-2 text-teal-600 font-medium hover:text-teal-700 transition-colors"
         >
           <Phone className="w-4 h-4" />
-          Or Call Now: (800) 555-1234
+          Or Call Now: (855) 592-5924
         </a>
       </div>
       
