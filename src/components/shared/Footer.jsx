@@ -12,11 +12,11 @@ export default function Footer() {
           </div>
           
           <a 
-            href="tel:+18005551234" 
+            href="tel:+18555925924" 
             className="flex items-center gap-2 text-white hover:text-teal-400 transition-colors"
           >
             <Phone className="w-5 h-5" />
-            <span className="font-medium">(800) 555-1234</span>
+            <span className="font-medium">(855) 592-5924</span>
           </a>
         </div>
         
