@@ -32,11 +32,11 @@ export default function StepConfirmation({ data }) {
       <div className="bg-teal-50 rounded-2xl p-6 mb-8">
         <p className="text-sm font-medium text-teal-800 mb-3">Want help right now?</p>
         <a 
-          href="tel:+18005551234" 
+          href="tel:+18555925924" 
           className="inline-flex items-center gap-2 text-teal-600 font-semibold text-lg hover:text-teal-700 transition-colors"
         >
           <Phone className="w-5 h-5" />
-          Call Now: (800) 555-1234
+          Call Now: (855) 592-5924
         </a>
       </div>
       
