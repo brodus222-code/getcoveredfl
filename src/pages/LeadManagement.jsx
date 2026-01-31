@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 import moment from 'moment';
 
 export default function LeadManagement() {
@@ -16,6 +17,10 @@ export default function LeadManagement() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedLead, setSelectedLead] = useState(null);
   const [notes, setNotes] = useState('');
+  const [inviteDialogOpen, setInviteDialogOpen] = useState(false);
+  const [inviteEmail, setInviteEmail] = useState('');
+  const [inviteRole, setInviteRole] = useState('user');
+  const [isInviting, setIsInviting] = useState(false);
   const queryClient = useQueryClient();
 
   // Check if user is admin
@@ -82,6 +87,27 @@ export default function LeadManagement() {
     }
   };
 
+  const handleInviteAgent = async () => {
+    if (!inviteEmail || !inviteEmail.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    setIsInviting(true);
+    try {
+      await base44.users.inviteUser(inviteEmail, inviteRole);
+      alert(`Invitation sent to ${inviteEmail}`);
+      setInviteDialogOpen(false);
+      setInviteEmail('');
+      setInviteRole('user');
+      queryClient.invalidateQueries({ queryKey: ['agents'] });
+    } catch (error) {
+      alert(`Failed to send invitation: ${error.message}`);
+    } finally {
+      setIsInviting(false);
+    }
+  };
+
   const filteredLeads = statusFilter === 'all' 
     ? leads 
     : leads.filter(lead => lead.status === statusFilter);
@@ -131,6 +157,52 @@ export default function LeadManagement() {
               <Badge variant="outline" className="text-teal-600">
                 {filteredLeads.length} {filteredLeads.length === 1 ? 'Lead' : 'Leads'}
               </Badge>
+              <Dialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <UserPlus className="w-4 h-4 mr-2" />
+                    Invite Agent
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Invite Agent</DialogTitle>
+                    <DialogDescription>
+                      Send an invitation to add a new agent to your team
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div>
+                      <Label>Email Address</Label>
+                      <Input
+                        type="email"
+                        placeholder="agent@example.com"
+                        value={inviteEmail}
+                        onChange={(e) => setInviteEmail(e.target.value)}
+                      />
+                    </div>
+                    <div>
+                      <Label>Role</Label>
+                      <Select value={inviteRole} onValueChange={setInviteRole}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="user">Agent (User)</SelectItem>
+                          <SelectItem value="admin">Admin</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <Button 
+                      onClick={handleInviteAgent} 
+                      disabled={isInviting}
+                      className="w-full"
+                    >
+                      {isInviting ? 'Sending...' : 'Send Invitation'}
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
