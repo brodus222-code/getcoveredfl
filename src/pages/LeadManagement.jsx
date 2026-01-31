@@ -23,11 +23,18 @@ export default function LeadManagement() {
     const checkAuth = async () => {
       try {
         const currentUser = await base44.auth.me();
+        console.log('=== DEBUG: User Authentication ===');
+        console.log('User Email:', currentUser?.email);
+        console.log('User Role:', currentUser?.role);
+        console.log('Is Admin?:', currentUser?.role === 'admin');
+        console.log('================================');
         if (currentUser?.role !== 'admin') {
+          console.log('REDIRECTING: User is not an admin');
           window.location.href = '/';
         }
         setUser(currentUser);
       } catch (error) {
+        console.log('ERROR in checkAuth:', error);
         window.location.href = '/';
       }
     };
