@@ -18,8 +18,11 @@ export default function Home() {
     const checkAdmin = async () => {
       try {
         const user = await base44.auth.me();
+        console.log('Home page - User:', user);
+        console.log('Home page - Is Admin?:', user?.role === 'admin');
         setIsAdmin(user?.role === 'admin');
       } catch (error) {
+        console.log('Home page - Auth error:', error);
         setIsAdmin(false);
       }
     };
