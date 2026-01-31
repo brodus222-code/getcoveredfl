@@ -41,11 +41,13 @@ export default function Home() {
             {isAdmin && (
               <Link 
                 to={createPageUrl('LeadManagement')}
-                className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors backdrop-blur-sm"
+                className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors backdrop-blur-sm border border-white/30"
+                style={{ display: 'block' }}
               >
                 Lead Management
               </Link>
             )}
+            {console.log('Rendering link?', isAdmin)}
           </div>
         </div>
       </header>
