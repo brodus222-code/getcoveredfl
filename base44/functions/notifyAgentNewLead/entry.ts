@@ -5,12 +5,6 @@ Deno.serve(async (req) => {
     const base44 = createClientFromRequest(req);
     const { event, data } = await req.json();
 
-    // Only notify if lead is assigned to an agent
-    if (!data.assigned_agent_email) {
-      return Response.json({ success: true, message: 'No agent assigned' });
-    }
-
-    const agentEmail = data.assigned_agent_email;
     const leadName = data.full_name;
     const leadPhone = data.phone;
     const leadEmail = data.email;
@@ -27,32 +21,59 @@ Deno.serve(async (req) => {
       most_affordable: 'Most Affordable'
     };
 
-    const emailBody = `
-      <h2>New Lead Assigned to You</h2>
-      <p>A new lead has been assigned to you in GetCoveredFL.</p>
-      
-      <h3>Lead Details:</h3>
-      <ul>
-        <li><strong>Name:</strong> ${leadName}</li>
-        <li><strong>Phone:</strong> ${leadPhone}</li>
-        <li><strong>Email:</strong> ${leadEmail}</li>
-        <li><strong>ZIP Code:</strong> ${zipCode}</li>
-        <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
-        <li><strong>Status:</strong> ${status}</li>
-      </ul>
-      
-      <p>Please log into the GetCoveredFL admin dashboard to view full details and follow up with this lead.</p>
-    `;
+    const notifications = [];
 
-    await base44.asServiceRole.integrations.Core.SendEmail({
-      to: agentEmail,
-      subject: `New Lead Assigned: ${leadName}`,
-      body: emailBody
-    });
+    // On new lead creation, always notify john@
+    if (event.type === 'create') {
+      const emailBody = `
+        <h2>New Lead Submitted</h2>
+        <p>A new lead just came in through GetCoveredFL.</p>
+        <ul>
+          <li><strong>Name:</strong> ${leadName}</li>
+          <li><strong>Phone:</strong> ${leadPhone}</li>
+          <li><strong>Email:</strong> ${leadEmail}</li>
+          <li><strong>ZIP Code:</strong> ${zipCode}</li>
+          <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
+        </ul>
+      `;
+      notifications.push(
+        base44.asServiceRole.integrations.Core.SendEmail({
+          to: 'john@healthlinkagency.com',
+          subject: `New Lead: ${leadName}`,
+          body: emailBody
+        })
+      );
+    }
+
+    // If assigned to an agent, notify them too
+    if (data.assigned_agent_email) {
+      const agentEmailBody = `
+        <h2>New Lead Assigned to You</h2>
+        <p>A lead has been assigned to you in GetCoveredFL.</p>
+        <ul>
+          <li><strong>Name:</strong> ${leadName}</li>
+          <li><strong>Phone:</strong> ${leadPhone}</li>
+          <li><strong>Email:</strong> ${leadEmail}</li>
+          <li><strong>ZIP Code:</strong> ${zipCode}</li>
+          <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
+          <li><strong>Status:</strong> ${status}</li>
+        </ul>
+        <p>Please log into the GetCoveredFL admin dashboard to view full details.</p>
+      `;
+      notifications.push(
+        base44.asServiceRole.integrations.Core.SendEmail({
+          to: data.assigned_agent_email,
+          subject: `New Lead Assigned: ${leadName}`,
+          body: agentEmailBody
+        })
+      );
+    }
+
+    await Promise.all(notifications);
 
     return Response.json({ 
       success: true, 
-      message: `Notification sent to ${agentEmail}` 
+      message: `Notifications sent` 
     });
   } catch (error) {
     return Response.json({ 
