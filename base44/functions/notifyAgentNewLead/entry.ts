@@ -1,13 +1,18 @@
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+
 Deno.serve(async (req) => {
   const body = await req.json();
 
-  const name = body.data?.full_name || 'Unknown';
-  const phone = body.data?.phone || 'N/A';
-  const email = body.data?.email || 'N/A';
-  const zip = body.data?.zip_code || 'N/A';
-  const coverage = (body.data?.coverage_type || 'N/A').replace(/_/g, ' ');
-  const income = body.data?.estimated_income ? `$${body.data.estimated_income.toLocaleString()}` : 'N/A';
-  const household = body.data?.household_size || 'N/A';
+  // Support both direct call (data at root) and entity automation (data nested)
+  const lead = body.data || body;
+
+  const name = lead.full_name || 'Unknown';
+  const phone = lead.phone || 'N/A';
+  const email = lead.email || 'N/A';
+  const zip = lead.zip_code || 'N/A';
+  const coverage = (lead.coverage_type || 'N/A').replace(/_/g, ' ');
+  const income = lead.estimated_income ? `$${Number(lead.estimated_income).toLocaleString()}` : 'N/A';
+  const household = lead.household_size || 'N/A';
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
