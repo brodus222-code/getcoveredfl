@@ -1,30 +1,8 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
 
-const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-
-async function sendEmail({ to, subject, html }) {
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${RESEND_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from: "GetCoveredFL <onboarding@resend.dev>",
-      to,
-      subject,
-      html
-    })
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Resend error: ${err}`);
-  }
-  return res.json();
-}
-
 Deno.serve(async (req) => {
   try {
+    const base44 = createClientFromRequest(req);
     const { event, data } = await req.json();
 
     const leadName = data.full_name;
@@ -47,10 +25,10 @@ Deno.serve(async (req) => {
 
     if (event.type === 'create') {
       notifications.push(
-        sendEmail({
-          to: 'john@healthlinkagency.com',
+        base44.asServiceRole.integrations.Core.SendEmail({
+          to: 'brodus222@gmail.com',
           subject: `New Lead: ${leadName}`,
-          html: `
+          body: `
             <h2>New Lead Submitted</h2>
             <p>A new lead just came in through GetCoveredFL.</p>
             <ul>
@@ -67,10 +45,10 @@ Deno.serve(async (req) => {
 
     if (data.assigned_agent_email) {
       notifications.push(
-        sendEmail({
+        base44.asServiceRole.integrations.Core.SendEmail({
           to: data.assigned_agent_email,
           subject: `New Lead Assigned: ${leadName}`,
-          html: `
+          body: `
             <h2>New Lead Assigned to You</h2>
             <p>A lead has been assigned to you in GetCoveredFL.</p>
             <ul>
