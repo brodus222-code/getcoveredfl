@@ -5,7 +5,9 @@ Deno.serve(async (req) => {
   const phone = body.data?.phone || 'N/A';
   const email = body.data?.email || 'N/A';
   const zip = body.data?.zip_code || 'N/A';
-  const coverage = body.data?.coverage_type || 'N/A';
+  const coverage = (body.data?.coverage_type || 'N/A').replace(/_/g, ' ');
+  const income = body.data?.estimated_income ? `$${body.data.estimated_income.toLocaleString()}` : 'N/A';
+  const household = body.data?.household_size || 'N/A';
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -16,13 +18,19 @@ Deno.serve(async (req) => {
     body: JSON.stringify({
       from: 'GetCoveredFL <onboarding@resend.dev>',
       to: 'john@healthlinkagency.com',
-      subject: `New Lead: ${name}`,
-      html: `<h2>New Lead Submitted</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>ZIP:</strong> ${zip}</p>
-        <p><strong>Coverage:</strong> ${coverage}</p>`
+      subject: `New Lead: ${name} — ${zip}`,
+      html: `
+        <h2>New Lead Submitted</h2>
+        <table style="border-collapse:collapse;width:100%;max-width:500px">
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">ZIP Code</td><td style="padding:8px;border:1px solid #ddd">${zip}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Coverage Type</td><td style="padding:8px;border:1px solid #ddd">${coverage}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Household Size</td><td style="padding:8px;border:1px solid #ddd">${household}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Est. Income</td><td style="padding:8px;border:1px solid #ddd">${income}</td></tr>
+        </table>
+      `
     })
   });
 
