@@ -48,7 +48,7 @@ Deno.serve(async (req) => {
     if (event.type === 'create') {
       notifications.push(
         sendEmail({
-          to: 'brodus222@gmail.com',
+          to: 'john@healthlinkagency.com',
           subject: `New Lead: ${leadName}`,
           html: `
             <h2>New Lead Submitted</h2>
