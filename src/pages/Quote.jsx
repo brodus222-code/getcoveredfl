@@ -72,15 +72,12 @@ export default function Quote() {
     
     await base44.entities.Lead.create(leadData);
 
-    // Directly notify — don't rely on automation
-    try {
-      await base44.functions.invoke('notifyAgentNewLead', {
-        event: { type: 'create' },
-        data: leadData
-      });
-    } catch (e) {
-      console.error('Notification failed:', e);
-    }
+    console.log('Calling notifyAgentNewLead with:', leadData);
+    await base44.functions.invoke('notifyAgentNewLead', {
+      event: { type: 'create' },
+      data: leadData
+    });
+    console.log('notifyAgentNewLead done');
 
     setIsSubmitting(false);
     setCurrentStep(TOTAL_STEPS + 1);
