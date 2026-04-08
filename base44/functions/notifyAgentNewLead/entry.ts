@@ -3,14 +3,16 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
 Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
-    const { event, data } = await req.json();
+    const payload = await req.json();
 
-    const leadName = data.full_name;
-    const leadPhone = data.phone;
-    const leadEmail = data.email;
-    const zipCode = data.zip_code;
-    const coverageType = data.coverage_type;
-    const status = data.status;
+    console.log('Automation payload:', JSON.stringify(payload));
+
+    const event = payload.event;
+    const data = payload.data;
+
+    if (!data || !data.full_name) {
+      return Response.json({ success: true, message: 'No lead data, skipping' });
+    }
 
     const coverageLabels = {
       aca_marketplace: 'ACA Marketplace',
@@ -21,54 +23,54 @@ Deno.serve(async (req) => {
       most_affordable: 'Most Affordable'
     };
 
-    const notifications = [];
+    const { full_name, phone, email, zip_code, coverage_type, status, assigned_agent_email } = data;
 
-    if (event.type === 'create') {
-      notifications.push(
-        base44.asServiceRole.integrations.Core.SendEmail({
-          to: 'brodus222@gmail.com',
-          subject: `New Lead: ${leadName}`,
-          body: `
-            <h2>New Lead Submitted</h2>
-            <p>A new lead just came in through GetCoveredFL.</p>
-            <ul>
-              <li><strong>Name:</strong> ${leadName}</li>
-              <li><strong>Phone:</strong> ${leadPhone}</li>
-              <li><strong>Email:</strong> ${leadEmail}</li>
-              <li><strong>ZIP Code:</strong> ${zipCode}</li>
-              <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
-            </ul>
-          `
-        })
-      );
+    console.log('Event type:', event?.type);
+
+    if (event?.type === 'create') {
+      console.log('Sending new lead email to brodus222@gmail.com');
+      await base44.asServiceRole.integrations.Core.SendEmail({
+        to: 'brodus222@gmail.com',
+        subject: `New Lead: ${full_name}`,
+        body: `
+          <h2>New Lead Submitted</h2>
+          <p>A new lead just came in through GetCoveredFL.</p>
+          <ul>
+            <li><strong>Name:</strong> ${full_name}</li>
+            <li><strong>Phone:</strong> ${phone}</li>
+            <li><strong>Email:</strong> ${email}</li>
+            <li><strong>ZIP Code:</strong> ${zip_code}</li>
+            <li><strong>Coverage Type:</strong> ${coverageLabels[coverage_type] || coverage_type}</li>
+          </ul>
+        `
+      });
+      console.log('Email sent successfully');
     }
 
-    if (data.assigned_agent_email) {
-      notifications.push(
-        base44.asServiceRole.integrations.Core.SendEmail({
-          to: data.assigned_agent_email,
-          subject: `New Lead Assigned: ${leadName}`,
-          body: `
-            <h2>New Lead Assigned to You</h2>
-            <p>A lead has been assigned to you in GetCoveredFL.</p>
-            <ul>
-              <li><strong>Name:</strong> ${leadName}</li>
-              <li><strong>Phone:</strong> ${leadPhone}</li>
-              <li><strong>Email:</strong> ${leadEmail}</li>
-              <li><strong>ZIP Code:</strong> ${zipCode}</li>
-              <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
-              <li><strong>Status:</strong> ${status}</li>
-            </ul>
-            <p>Please log into the GetCoveredFL admin dashboard to view full details.</p>
-          `
-        })
-      );
+    if (assigned_agent_email) {
+      console.log('Sending assignment email to:', assigned_agent_email);
+      await base44.asServiceRole.integrations.Core.SendEmail({
+        to: assigned_agent_email,
+        subject: `New Lead Assigned: ${full_name}`,
+        body: `
+          <h2>New Lead Assigned to You</h2>
+          <p>A lead has been assigned to you in GetCoveredFL.</p>
+          <ul>
+            <li><strong>Name:</strong> ${full_name}</li>
+            <li><strong>Phone:</strong> ${phone}</li>
+            <li><strong>Email:</strong> ${email}</li>
+            <li><strong>ZIP Code:</strong> ${zip_code}</li>
+            <li><strong>Coverage Type:</strong> ${coverageLabels[coverage_type] || coverage_type}</li>
+            <li><strong>Status:</strong> ${status}</li>
+          </ul>
+          <p>Please log into the GetCoveredFL admin dashboard to view full details.</p>
+        `
+      });
     }
 
-    await Promise.all(notifications);
-
-    return Response.json({ success: true, message: 'Notifications sent' });
+    return Response.json({ success: true });
   } catch (error) {
+    console.error('Error:', error.message);
     return Response.json({ error: error.message }, { status: 500 });
   }
 });
