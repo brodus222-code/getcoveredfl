@@ -72,12 +72,6 @@ export default function Quote() {
     
     await base44.entities.Lead.create(leadData);
 
-    try {
-      await base44.functions.invoke('notifyAgentNewLead', { data: leadData });
-    } catch (e) {
-      console.error('Notification failed:', e);
-    }
-
     setIsSubmitting(false);
     setCurrentStep(TOTAL_STEPS + 1);
   };
