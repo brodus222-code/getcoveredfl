@@ -15,7 +15,7 @@ Deno.serve(async (req) => {
     },
     body: JSON.stringify({
       from: 'GetCoveredFL <onboarding@resend.dev>',
-      to: 'brodus222@gmail.com',
+      to: 'john@healthlinkagency.com',
       subject: `New Lead: ${name}`,
       html: `<h2>New Lead Submitted</h2>
         <p><strong>Name:</strong> ${name}</p>
