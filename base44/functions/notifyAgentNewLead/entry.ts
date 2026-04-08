@@ -1,8 +1,30 @@
-import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+
+async function sendEmail({ to, subject, html }) {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      from: "GetCoveredFL <onboarding@resend.dev>",
+      to,
+      subject,
+      html
+    })
+  });
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Resend error: ${err}`);
+  }
+  return res.json();
+}
 
 Deno.serve(async (req) => {
   try {
-    const base44 = createClientFromRequest(req);
     const { event, data } = await req.json();
 
     const leadName = data.full_name;
@@ -23,61 +45,52 @@ Deno.serve(async (req) => {
 
     const notifications = [];
 
-    // On new lead creation, always notify john@
     if (event.type === 'create') {
-      const emailBody = `
-        <h2>New Lead Submitted</h2>
-        <p>A new lead just came in through GetCoveredFL.</p>
-        <ul>
-          <li><strong>Name:</strong> ${leadName}</li>
-          <li><strong>Phone:</strong> ${leadPhone}</li>
-          <li><strong>Email:</strong> ${leadEmail}</li>
-          <li><strong>ZIP Code:</strong> ${zipCode}</li>
-          <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
-        </ul>
-      `;
       notifications.push(
-        base44.asServiceRole.integrations.Core.SendEmail({
+        sendEmail({
           to: 'john@healthlinkagency.com',
           subject: `New Lead: ${leadName}`,
-          body: emailBody
+          html: `
+            <h2>New Lead Submitted</h2>
+            <p>A new lead just came in through GetCoveredFL.</p>
+            <ul>
+              <li><strong>Name:</strong> ${leadName}</li>
+              <li><strong>Phone:</strong> ${leadPhone}</li>
+              <li><strong>Email:</strong> ${leadEmail}</li>
+              <li><strong>ZIP Code:</strong> ${zipCode}</li>
+              <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
+            </ul>
+          `
         })
       );
     }
 
-    // If assigned to an agent, notify them too
     if (data.assigned_agent_email) {
-      const agentEmailBody = `
-        <h2>New Lead Assigned to You</h2>
-        <p>A lead has been assigned to you in GetCoveredFL.</p>
-        <ul>
-          <li><strong>Name:</strong> ${leadName}</li>
-          <li><strong>Phone:</strong> ${leadPhone}</li>
-          <li><strong>Email:</strong> ${leadEmail}</li>
-          <li><strong>ZIP Code:</strong> ${zipCode}</li>
-          <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
-          <li><strong>Status:</strong> ${status}</li>
-        </ul>
-        <p>Please log into the GetCoveredFL admin dashboard to view full details.</p>
-      `;
       notifications.push(
-        base44.asServiceRole.integrations.Core.SendEmail({
+        sendEmail({
           to: data.assigned_agent_email,
           subject: `New Lead Assigned: ${leadName}`,
-          body: agentEmailBody
+          html: `
+            <h2>New Lead Assigned to You</h2>
+            <p>A lead has been assigned to you in GetCoveredFL.</p>
+            <ul>
+              <li><strong>Name:</strong> ${leadName}</li>
+              <li><strong>Phone:</strong> ${leadPhone}</li>
+              <li><strong>Email:</strong> ${leadEmail}</li>
+              <li><strong>ZIP Code:</strong> ${zipCode}</li>
+              <li><strong>Coverage Type:</strong> ${coverageLabels[coverageType] || coverageType}</li>
+              <li><strong>Status:</strong> ${status}</li>
+            </ul>
+            <p>Please log into the GetCoveredFL admin dashboard to view full details.</p>
+          `
         })
       );
     }
 
     await Promise.all(notifications);
 
-    return Response.json({ 
-      success: true, 
-      message: `Notifications sent` 
-    });
+    return Response.json({ success: true, message: 'Notifications sent' });
   } catch (error) {
-    return Response.json({ 
-      error: error.message 
-    }, { status: 500 });
+    return Response.json({ error: error.message }, { status: 500 });
   }
 });
