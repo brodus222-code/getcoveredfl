@@ -1,19 +1,33 @@
-import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
-
 Deno.serve(async (req) => {
-  const base44 = createClientFromRequest(req);
   const body = await req.json();
 
   const name = body.data?.full_name || 'Unknown';
   const phone = body.data?.phone || 'N/A';
   const email = body.data?.email || 'N/A';
   const zip = body.data?.zip_code || 'N/A';
+  const coverage = body.data?.coverage_type || 'N/A';
 
-  await base44.asServiceRole.integrations.Core.SendEmail({
-    to: 'brodus222@gmail.com',
-    subject: `New Lead: ${name}`,
-    body: `New lead submitted:\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nZIP: ${zip}`
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: 'GetCoveredFL <onboarding@resend.dev>',
+      to: 'brodus222@gmail.com',
+      subject: `New Lead: ${name}`,
+      html: `<h2>New Lead Submitted</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>ZIP:</strong> ${zip}</p>
+        <p><strong>Coverage:</strong> ${coverage}</p>`
+    })
   });
 
-  return Response.json({ ok: true });
+  const result = await res.json();
+  console.log('Resend response:', JSON.stringify(result));
+
+  return Response.json({ ok: true, result });
 });
