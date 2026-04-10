@@ -58,15 +58,6 @@ export default function ACA() {
       {/* Hero Banner */}
       <section className="bg-sky-100 py-6 px-4">
         <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-xl bg-white flex flex-col md:flex-row items-center">
-          {/* Image */}
-          <div className="md:w-2/5 w-full flex-shrink-0">
-            <img
-              src="https://media.base44.com/images/public/696f51421917c989be527824/f29d4326f_Floridaeligibility2.png"
-              alt="Florida ACA eligibility"
-              className="w-full h-full object-cover object-top"
-              style={{ maxHeight: '340px' }}
-            />
-          </div>
 
           {/* Text */}
           <div className="flex-1 px-8 py-10 flex flex-col items-center md:items-start text-center md:text-left">
