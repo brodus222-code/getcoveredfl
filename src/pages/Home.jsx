@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { createPageUrl } from "@/utils";
 import HeroSection from "@/components/landing/HeroSection";
+import EligibilityBanner from "@/components/landing/EligibilityBanner";
 import HowItWorks from "@/components/landing/HowItWorks";
 import CoverageTiles from "@/components/landing/CoverageTiles";
 import AboutSection from "@/components/landing/AboutSection";
@@ -49,6 +50,7 @@ export default function Home() {
           </div>
         </div>
       </header>
+      <EligibilityBanner />
       <HeroSection />
       <HowItWorks />
       <CoverageTiles />
