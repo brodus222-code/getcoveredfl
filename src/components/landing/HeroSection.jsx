@@ -1,5 +1,4 @@
 import React from 'react';
-import CallMeButton from './CallMeButton';
 import { Button } from "@/components/ui/button";
 import { Phone, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -33,7 +32,7 @@ export default function HeroSection() {
             Compare plans, explore alternatives, and choose coverage that fits your needs and budget.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 mb-4">
+          <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <Link to={createPageUrl("Quote")}>
               <Button 
                 size="lg" 
@@ -54,10 +53,6 @@ export default function HeroSection() {
             </a>
           </div>
 
-          <div className="mb-8">
-            <CallMeButton />
-          </div>
-          
           <div className="flex flex-wrap items-center gap-6 text-sm text-teal-200/80">
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
