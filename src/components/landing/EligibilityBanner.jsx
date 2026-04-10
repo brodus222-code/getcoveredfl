@@ -9,7 +9,7 @@ export default function EligibilityBanner() {
         {/* Image */}
         <div className="sm:w-2/5 w-full flex-shrink-0">
           <img
-            src="https://media.base44.com/images/public/696f51421917c989be527824/f29d4326f_Floridaeligibility2.png"
+            src="https://media.base44.com/images/public/696f51421917c989be527824/edd9dd31f_Floridaeligibility2.png"
             alt="Florida eligibility"
             className="w-full h-full object-cover object-top"
             style={{ maxHeight: '280px' }}
