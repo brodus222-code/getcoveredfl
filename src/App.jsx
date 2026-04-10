@@ -60,7 +60,7 @@ const AuthenticatedApp = () => {
           }
         />
       ))}
-      <Route path="/Eligibility" element={<ACA />} />
+      <Route path="/Marketplace" element={<ACA />} />
       <Route path="/GetCovered" element={<GetCovered />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
