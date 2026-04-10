@@ -60,7 +60,7 @@ const AuthenticatedApp = () => {
           }
         />
       ))}
-      <Route path="/FloridaMarketplace" element={<ACA />} />
+      <Route path="/Eligibility" element={<ACA />} />
       <Route path="/GetCovered" element={<GetCovered />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
