@@ -185,10 +185,10 @@ export default function Quote() {
       
       {/* Form Content */}
       <main className="max-w-4xl mx-auto px-6 py-12">
-        {currentStep <= TOTAL_STEPS && <SkipFormBanner />}
         <AnimatePresence mode="wait">
           {renderStep()}
         </AnimatePresence>
+        {currentStep === 1 && <SkipFormBanner />}
       </main>
       
       <MobileCallBar />
