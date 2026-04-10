@@ -8,6 +8,7 @@ import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ACA from './pages/ACA';
+import GetCovered from './pages/GetCovered';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -60,6 +61,7 @@ const AuthenticatedApp = () => {
         />
       ))}
       <Route path="/ACA" element={<ACA />} />
+      <Route path="/GetCovered" element={<GetCovered />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
