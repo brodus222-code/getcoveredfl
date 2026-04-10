@@ -15,6 +15,7 @@ import StepHealth from '@/components/quote/StepHealth';
 import StepContact from '@/components/quote/StepContact';
 import StepConfirmation from '@/components/quote/StepConfirmation';
 import MobileCallBar from '@/components/shared/MobileCallBar';
+import SkipFormBanner from '@/components/quote/SkipFormBanner';
 
 const TOTAL_STEPS = 7;
 
@@ -184,6 +185,7 @@ export default function Quote() {
       
       {/* Form Content */}
       <main className="max-w-4xl mx-auto px-6 py-12">
+        {currentStep <= TOTAL_STEPS && <SkipFormBanner />}
         <AnimatePresence mode="wait">
           {renderStep()}
         </AnimatePresence>
