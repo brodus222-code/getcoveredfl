@@ -61,7 +61,7 @@ export default function ACA() {
 
           {/* Text */}
           <div className="flex-1 px-8 py-10 flex flex-col items-center md:items-start text-center md:text-left">
-            <p className="text-sm font-semibold text-blue-500 uppercase tracking-widest mb-2">ACA Marketplace Plans · Florida</p>
+            <p className="text-sm font-semibold text-blue-500 uppercase tracking-widest mb-2">Florida Marketplace Plans</p>
             <h1 className="text-3xl md:text-4xl font-extrabold text-blue-900 leading-snug mb-3">
               You may qualify for{' '}
               <span className="text-green-500">$0/month</span>{' '}
