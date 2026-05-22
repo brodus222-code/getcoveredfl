@@ -1,0 +1,119 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "zip_code": {
+      "type": "string",
+      "description": "ZIP code for coverage area"
+    },
+    "household_size": {
+      "type": "number",
+      "description": "Number of people in household"
+    },
+    "ages": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "description": "Ages of household members"
+    },
+    "estimated_income": {
+      "type": "number",
+      "description": "Estimated annual household income"
+    },
+    "coverage_type": {
+      "type": "string",
+      "enum": [
+        "aca_marketplace",
+        "cobra_alternatives",
+        "short_term_gap",
+        "first_time_coverage",
+        "ppo_broad_network",
+        "most_affordable"
+      ],
+      "description": "Type of coverage interested in"
+    },
+    "currently_insured": {
+      "type": "boolean",
+      "description": "Whether currently insured"
+    },
+    "takes_prescriptions": {
+      "type": "boolean",
+      "description": "Whether takes regular prescriptions"
+    },
+    "prefers_specific_network": {
+      "type": "boolean",
+      "description": "Whether prefers specific doctor/hospital network"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Contact full name"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone number"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email address"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "quoted",
+        "enrolled",
+        "closed"
+      ],
+      "default": "new",
+      "description": "Lead status"
+    },
+    "assigned_agent_email": {
+      "type": "string",
+      "description": "Email of the agent assigned to this lead"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes about the lead"
+    }
+  },
+  "required": [
+    "zip_code",
+    "full_name",
+    "phone",
+    "email"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "$or": [
+        {
+          "data.assigned_agent_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.assigned_agent_email": "{{user.email}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
