@@ -6,8 +6,8 @@ import { createPageUrl } from '@/utils';
 export default function Footer() {
   return (
     <footer className="bg-navy text-white/80">
-      <div className="max-w-6xl mx-auto px-6 py-14">
-        <div className="grid md:grid-cols-3 gap-10 pb-10 border-b border-white/10">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 md:py-14">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-10 pb-10 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">

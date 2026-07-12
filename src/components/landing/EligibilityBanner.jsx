@@ -5,18 +5,17 @@ import { ArrowRight } from 'lucide-react';
 
 export default function EligibilityBanner() {
   return (
-    <section className="bg-sand py-12 px-4">
+    <section className="bg-sand py-10 px-4">
       <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-soft bg-white border border-sand-deep/40 flex flex-col md:flex-row items-center">
         <div className="md:w-2/5 w-full flex-shrink-0">
           <img
             src="https://media.base44.com/images/public/696f51421917c989be527824/edd9dd31f_Floridaeligibility2.png"
             alt="You may qualify for $0 plans"
-            className="w-full h-full object-cover object-top"
-            style={{ maxHeight: '320px' }}
+            className="w-full h-full object-cover object-top max-h-56 md:max-h-80"
           />
         </div>
 
-        <div className="flex-1 px-8 py-8 text-center md:text-left flex flex-col items-center md:items-start justify-center">
+        <div className="flex-1 px-6 py-6 md:px-8 md:py-8 text-center md:text-left flex flex-col items-center md:items-start justify-center">
           <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
             Eligibility Check
           </span>

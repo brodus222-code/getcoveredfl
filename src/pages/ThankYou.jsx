@@ -30,7 +30,7 @@ export default function ThankYou() {
       <SiteHeader variant="light" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-deep to-navy text-white py-16 md:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-deep to-navy text-white py-12 md:py-24">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-turquoise/25 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
@@ -84,9 +84,9 @@ export default function ThankYou() {
       <TrustBar />
 
       {/* What Happens Next */}
-      <section className="py-16 md:py-20 bg-sand">
+      <section className="py-12 md:py-20 bg-sand">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-12 font-heading">
+          <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-8 md:mb-12 font-heading">
             What Happens Next
           </h2>
 
@@ -116,13 +116,13 @@ export default function ThankYou() {
       </section>
 
       {/* While You Wait */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-12 md:py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
           <div className="bg-gradient-to-br from-primary-soft to-turquoise-soft rounded-3xl p-8 md:p-12">
             <h2 className="text-2xl md:text-3xl font-bold text-navy text-center mb-4 font-heading">
               While You Wait
             </h2>
-            <p className="text-navy-soft text-center mb-10 max-w-2xl mx-auto">
+            <p className="text-navy-soft text-center mb-8 max-w-2xl mx-auto">
               You may qualify for:
             </p>
 

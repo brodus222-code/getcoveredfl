@@ -130,7 +130,7 @@ export default function CoverageGuide() {
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-turquoise/25 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
         </div>
-        <div className="relative max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 text-center">
+        <div className="relative max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-24 md:pb-28 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
             <Shield className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-white/90">Plain-English Insurance Guide</span>
@@ -154,9 +154,9 @@ export default function CoverageGuide() {
       <TrustBar />
 
       {/* Terms Grid */}
-      <section className="py-16 md:py-20 px-6 bg-white">
+      <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
               Key Terminology
             </span>
@@ -197,9 +197,9 @@ export default function CoverageGuide() {
       </section>
 
       {/* How costs flow */}
-      <section className="py-16 md:py-20 px-6 bg-sand">
+      <section className="py-12 md:py-20 px-6 bg-sand">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
               How It Works
             </span>
@@ -231,9 +231,9 @@ export default function CoverageGuide() {
       </section>
 
       {/* Metal Tiers */}
-      <section className="py-16 md:py-20 px-6 bg-white">
+      <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
               ACA Plan Categories
             </span>
@@ -272,7 +272,7 @@ export default function CoverageGuide() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 md:py-20 px-6 bg-sand">
+      <section className="py-12 md:py-20 px-6 bg-sand">
         <div className="max-w-3xl mx-auto">
           <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3 text-center w-full">
             FAQ
@@ -311,7 +311,7 @@ export default function CoverageGuide() {
       </section>
 
       {/* Tips */}
-      <section className="py-16 md:py-20 px-6 bg-white">
+      <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <div className="bg-gradient-to-br from-primary-soft to-turquoise-soft rounded-3xl p-8 md:p-12">
             <div className="flex items-center gap-3 mb-6">

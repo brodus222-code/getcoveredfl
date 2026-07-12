@@ -26,7 +26,7 @@ export default function HeroSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gradient-radial from-white/5 to-transparent rounded-full" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 pt-28 pb-20 md:pt-36 md:pb-28">
+      <div className="relative max-w-6xl mx-auto px-6 pt-24 pb-16 md:pt-36 md:pb-28">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -118,7 +118,7 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Phone alternative */}
-          <div className="mt-10 pt-8 border-t border-white/10">
+          <div className="mt-8 pt-6 border-t border-white/10">
             <p className="text-sm text-white/60 mb-2">Prefer to talk to someone now?</p>
             <a
               href="tel:+18555925924"

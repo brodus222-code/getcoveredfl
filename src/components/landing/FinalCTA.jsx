@@ -13,7 +13,7 @@ export default function FinalCTA() {
   };
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <section className="relative py-14 md:py-28 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-deep to-navy" />
 
       <div className="absolute inset-0 pointer-events-none">

@@ -10,9 +10,9 @@ const features = [
 
 export default function AboutSection() {
   return (
-    <section className="py-20 md:py-28 bg-white overflow-hidden">
+    <section className="py-14 md:py-28 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -26,7 +26,7 @@ export default function AboutSection() {
               Your Trusted Partner for Health Coverage
             </h2>
 
-            <p className="text-lg text-navy-soft mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-navy-soft mb-6 leading-relaxed">
               GetCoveredFL helps Floridians compare health insurance options with clear guidance and licensed support. Whether you're reviewing ACA plans, COBRA alternatives, or temporary coverage, our advisors help you find the right fit at the best available price.
             </p>
 

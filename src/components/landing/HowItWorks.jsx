@@ -25,21 +25,21 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-28 bg-white">
+    <section className="py-14 md:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
             Simple Process
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 font-heading text-balance">
             How It Works
           </h2>
-          <p className="text-lg text-navy-soft max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-navy-soft max-w-2xl mx-auto">
             Get your personalized insurance options in just three easy steps
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid md:grid-cols-3 gap-5 md:gap-10">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -53,7 +53,7 @@ export default function HowItWorks() {
                 <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-primary/30 to-transparent" />
               )}
 
-              <div className="relative bg-gradient-to-br from-sand to-white rounded-3xl p-8 border border-sand-deep/50 hover:border-primary/30 transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
+              <div className="relative bg-gradient-to-br from-sand to-white rounded-3xl p-6 md:p-8 border border-sand-deep/50 hover:border-primary/30 transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
                 <div className="absolute -top-4 -left-4 text-6xl font-bold text-primary/10 select-none font-heading">
                   {step.number}
                 </div>

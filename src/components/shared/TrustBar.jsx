@@ -11,7 +11,7 @@ const defaultItems = [
 export default function TrustBar({ items = defaultItems, dark = false }) {
   return (
     <div className={`w-full ${dark ? 'bg-white/10 backdrop-blur-sm' : 'bg-sand-deep/50'}`}>
-      <div className="max-w-6xl mx-auto px-6 py-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-3 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-sm font-medium">
         {items.map(({ icon: Icon, label }) => (
           <span
             key={label}

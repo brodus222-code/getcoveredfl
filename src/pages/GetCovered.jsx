@@ -44,7 +44,7 @@ export default function GetCovered() {
       <EligibilityBanner />
 
       {/* Fix Marketplace Account */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-12 px-6 bg-white">
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-sand-deep/40">
             <div className="flex flex-col sm:flex-row items-center gap-6 p-8">
@@ -79,7 +79,7 @@ export default function GetCovered() {
       </section>
 
       {/* Trust signals */}
-      <section className="py-16 px-6 bg-sand">
+      <section className="py-12 px-6 bg-sand">
         <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
           {[
             { icon: ShieldCheck, title: 'Licensed & Bonded', desc: 'Florida-licensed insurance agency with trained advisors.' },

@@ -51,7 +51,7 @@ export default function ACA() {
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 text-center">
+        <div className="relative max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-24 md:pb-28 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
             <Shield className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-white/90">Florida ACA Marketplace Plans</span>
@@ -98,7 +98,7 @@ export default function ACA() {
       <TrustBar />
 
       {/* Benefits */}
-      <section className="py-16 md:py-20 px-6 bg-white">
+      <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
             What's Included
@@ -124,7 +124,7 @@ export default function ACA() {
       </section>
 
       {/* Mid CTA */}
-      <section className="bg-gradient-to-br from-primary to-primary-deep py-16 px-6 text-white text-center relative overflow-hidden">
+      <section className="bg-gradient-to-br from-primary to-primary-deep py-12 px-6 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-turquoise/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
@@ -156,7 +156,7 @@ export default function ACA() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 md:py-20 px-6 bg-sand">
+      <section className="py-12 md:py-20 px-6 bg-sand">
         <div className="max-w-3xl mx-auto">
           <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3 text-center w-full">
             FAQ

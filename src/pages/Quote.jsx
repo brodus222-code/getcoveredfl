@@ -120,7 +120,7 @@ export default function Quote() {
         </div>
       )}
 
-      <main className="max-w-3xl mx-auto px-6 py-10 md:py-12">
+      <main className="max-w-3xl mx-auto px-6 py-8 md:py-12">
         <AnimatePresence mode="wait">
           {renderStep()}
         </AnimatePresence>
