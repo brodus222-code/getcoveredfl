@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Shield, Phone } from 'lucide-react';
 import { createPageUrl } from '@/utils';
 
-export default function SiteHeader({ variant = 'light', isAdmin = false }) {
+export default function SiteHeader({ variant = 'light' }) {
   const isTransparent = variant === 'transparent';
 
   return (
@@ -25,14 +25,6 @@ export default function SiteHeader({ variant = 'light', isAdmin = false }) {
         </Link>
 
         <div className="flex items-center gap-3 sm:gap-4">
-          {isAdmin && (
-            <Link
-              to={createPageUrl('LeadManagement')}
-              className={`text-sm font-semibold px-4 py-2 rounded-full transition-colors ${isTransparent ? 'bg-white/15 text-white hover:bg-white/25' : 'bg-primary-soft text-primary hover:bg-primary-soft/70'}`}
-            >
-              Lead Management
-            </Link>
-          )}
           <a
             href="tel:+18555925924"
             className={`flex items-center gap-2 font-semibold transition-colors ${isTransparent ? 'text-white hover:text-accent' : 'text-navy hover:text-primary'}`}
