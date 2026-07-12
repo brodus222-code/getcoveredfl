@@ -27,7 +27,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li><Link to={createPageUrl('Home')} className="hover:text-accent transition-colors">Home</Link></li>
               <li><Link to={createPageUrl('Quote')} className="hover:text-accent transition-colors">Get a Quote</Link></li>
-              <li><Link to={createPageUrl('ACA')} className="hover:text-accent transition-colors">ACA Marketplace</Link></li>
+              <li><Link to="/Marketplace" className="hover:text-accent transition-colors">ACA Marketplace</Link></li>
               <li><Link to={createPageUrl('GetCovered')} className="hover:text-accent transition-colors">Check Eligibility</Link></li>
               <li><Link to="/coverage-guide" className="hover:text-accent transition-colors">Coverage Guide</Link></li>
               <li><Link to="/blog" className="hover:text-accent transition-colors">Insurance News</Link></li>
