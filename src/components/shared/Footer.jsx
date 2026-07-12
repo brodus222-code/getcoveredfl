@@ -29,6 +29,7 @@ export default function Footer() {
               <li><Link to={createPageUrl('Quote')} className="hover:text-accent transition-colors">Get a Quote</Link></li>
               <li><Link to={createPageUrl('ACA')} className="hover:text-accent transition-colors">ACA Marketplace</Link></li>
               <li><Link to={createPageUrl('GetCovered')} className="hover:text-accent transition-colors">Check Eligibility</Link></li>
+              <li><Link to="/coverage-guide" className="hover:text-accent transition-colors">Coverage Guide</Link></li>
             </ul>
           </div>
 
