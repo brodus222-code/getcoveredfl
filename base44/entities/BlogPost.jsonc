@@ -1,0 +1,77 @@
+{
+  "name": "BlogPost",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Post title"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-friendly slug for the post"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "Short summary shown on the blog listing"
+    },
+    "content": {
+      "type": "string",
+      "description": "Full post body in markdown"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "open_enrollment",
+        "new_options",
+        "deadlines",
+        "tips",
+        "general"
+      ],
+      "default": "general",
+      "description": "Post category"
+    },
+    "author": {
+      "type": "string",
+      "description": "Author name"
+    },
+    "published_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Publication date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "published"
+      ],
+      "default": "published",
+      "description": "Publication status"
+    }
+  },
+  "required": [
+    "title",
+    "slug",
+    "excerpt",
+    "content",
+    "published_date"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

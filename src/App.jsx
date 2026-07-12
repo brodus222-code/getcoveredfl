@@ -13,6 +13,8 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Licensing from './pages/Licensing';
 import CoverageGuide from './pages/CoverageGuide';
+import Blog from './pages/Blog';
+import BlogPostDetail from './pages/BlogPostDetail';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -70,6 +72,8 @@ const AuthenticatedApp = () => {
       <Route path="/Privacy" element={<Privacy />} />
       <Route path="/Licensing" element={<Licensing />} />
       <Route path="/coverage-guide" element={<CoverageGuide />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPostDetail />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
