@@ -47,23 +47,34 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 grid md:grid-cols-2 gap-6 text-xs text-white/50">
-          <div className="space-y-3">
-            <p>
-              This website is not affiliated with Healthcare.gov or any government agency. We are an independent licensed insurance agency.
+        {/* Compliance Bar */}
+        <div className="pt-8 border-t border-white/10 space-y-4 text-xs text-white/50">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link to={createPageUrl('Terms')} className="hover:text-white/80 transition-colors">Terms of Service</Link>
+            <span className="text-white/20">|</span>
+            <Link to={createPageUrl('Privacy')} className="hover:text-white/80 transition-colors">Privacy Policy</Link>
+            <span className="text-white/20">|</span>
+            <Link to={createPageUrl('Licensing')} className="hover:text-white/80 transition-colors">Licensing</Link>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-white/70 font-medium">
+              HealthLink Insurance Agency LLC · FL Lic# L131967 · NPN# 21554495
             </p>
-            <p className="flex items-center gap-2">
-              <Lock className="w-3.5 h-3.5" />
-              Your information is secure and never sold.
+            <p>
+              AOR: Nick Loucks · FL Lic# G233885 · NPN# 21137267
+            </p>
+            <p className="flex items-start gap-2">
+              <Lock className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
+              <span>
+                This website is not affiliated with Healthcare.gov, CMS, or any government agency. We are an independent licensed insurance agency. Your information is secure and never sold.
+              </span>
             </p>
           </div>
-          <div className="md:text-right">
+
+          <div className="flex flex-col md:flex-row md:justify-between gap-2 pt-2">
             <p>© {new Date().getFullYear()} HealthLink Insurance Agency LLC. All rights reserved.</p>
-            <div className="flex md:justify-end gap-4 mt-2">
-              <a href="#" className="hover:text-white/80 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white/80 transition-colors">Terms</a>
-              <a href="#" className="hover:text-white/80 transition-colors">Licensing</a>
-            </div>
+            <p>contact@getcoveredfl.com</p>
           </div>
         </div>
       </div>

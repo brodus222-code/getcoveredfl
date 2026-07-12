@@ -9,6 +9,9 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ACA from './pages/ACA';
 import GetCovered from './pages/GetCovered';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import Licensing from './pages/Licensing';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -62,6 +65,9 @@ const AuthenticatedApp = () => {
       ))}
       <Route path="/Marketplace" element={<ACA />} />
       <Route path="/GetCovered" element={<GetCovered />} />
+      <Route path="/Terms" element={<Terms />} />
+      <Route path="/Privacy" element={<Privacy />} />
+      <Route path="/Licensing" element={<Licensing />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
