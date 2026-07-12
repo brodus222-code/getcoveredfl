@@ -3,10 +3,12 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import NavigationTracker from '@/lib/NavigationTracker'
 import { pagesConfig } from './pages.config'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import ProtectedRoute from '@/components/ProtectedRoute';
+import LeadManagement from './pages/LeadManagement';
 import ACA from './pages/ACA';
 import GetCovered from './pages/GetCovered';
 import Terms from './pages/Terms';
@@ -74,6 +76,11 @@ const AuthenticatedApp = () => {
       <Route path="/coverage-guide" element={<CoverageGuide />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPostDetail />} />
+      <Route path="/LeadManagement" element={
+        <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
+          <LeadManagement />
+        </ProtectedRoute>
+      } />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { base44 } from '@/api/base44Client';
+import { useAuth } from '@/lib/AuthContext';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Shield, UserPlus, Filter, Phone, Mail, DollarSign, Users, Calendar, CheckCircle2, Clock, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +14,7 @@ import { Input } from '@/components/ui/input';
 import moment from 'moment';
 
 export default function LeadManagement() {
-  const [user, setUser] = useState(null);
+  const { user } = useAuth();
   const [statusFilter, setStatusFilter] = useState('all');
   const [selectedLead, setSelectedLead] = useState(null);
   const [notes, setNotes] = useState('');
@@ -22,22 +23,6 @@ export default function LeadManagement() {
   const [inviteRole, setInviteRole] = useState('user');
   const [isInviting, setIsInviting] = useState(false);
   const queryClient = useQueryClient();
-
-  // Check if user is admin
-  React.useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const currentUser = await base44.auth.me();
-        if (currentUser?.role !== 'admin') {
-          window.location.href = '/';
-        }
-        setUser(currentUser);
-      } catch (error) {
-        window.location.href = '/';
-      }
-    };
-    checkAuth();
-  }, []);
 
   const { data: leads = [], isLoading } = useQuery({
     queryKey: ['leads'],
@@ -128,17 +113,6 @@ export default function LeadManagement() {
     ppo_broad_network: 'PPO Broad Network',
     most_affordable: 'Most Affordable'
   };
-
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <Shield className="w-12 h-12 text-teal-600 mx-auto mb-4" />
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gray-50">

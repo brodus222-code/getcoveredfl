@@ -6,18 +6,28 @@ Deno.serve(async (req) => {
   // Support both direct call (data at root) and entity automation (data nested)
   const lead = body.data || body;
 
-  const name = lead.full_name || 'Unknown';
-  const phone = lead.phone || 'N/A';
-  const email = lead.email || 'N/A';
-  const zip = lead.zip_code || 'N/A';
-  const coverage = (lead.coverage_type || 'N/A').replace(/_/g, ' ');
+  // Escape all user-provided fields to prevent HTML injection in the email body
+  const escapeHtml = (str) => String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+  // Strip newlines to prevent email header injection in the Subject line
+  const sanitizeHeader = (str) => String(str).replace(/[\r\n]/g, ' ');
+
+  const name = escapeHtml(lead.full_name || 'Unknown');
+  const phone = escapeHtml(lead.phone || 'N/A');
+  const email = escapeHtml(lead.email || 'N/A');
+  const zip = escapeHtml(lead.zip_code || 'N/A');
+  const coverage = escapeHtml((lead.coverage_type || 'N/A').replace(/_/g, ' '));
   const income = lead.estimated_income ? `$${Number(lead.estimated_income).toLocaleString()}` : 'N/A';
-  const household = lead.household_size || 'N/A';
+  const household = escapeHtml(lead.household_size || 'N/A');
 
   const base44 = createClientFromRequest(req);
   const { accessToken } = await base44.asServiceRole.connectors.getConnection('gmail');
 
-  const subject = `New Lead: ${name} — ${zip}`;
+  const subject = `New Lead: ${sanitizeHeader(lead.full_name || 'Unknown')} — ${sanitizeHeader(lead.zip_code || 'N/A')}`;
   const htmlBody = `
     <h2>New Lead Submitted</h2>
     <table style="border-collapse:collapse;width:100%;max-width:500px">
