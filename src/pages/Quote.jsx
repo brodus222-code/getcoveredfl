@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
+import { MapPin } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
-import { Shield, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
 
+import SiteHeader from '@/components/shared/SiteHeader';
 import ProgressBar from '@/components/quote/ProgressBar';
 import StepZipCode from '@/components/quote/StepZipCode';
 import StepHousehold from '@/components/quote/StepHousehold';
@@ -20,11 +20,14 @@ import SkipFormBanner from '@/components/quote/SkipFormBanner';
 const TOTAL_STEPS = 7;
 
 export default function Quote() {
-  const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(1);
+  const [searchParams] = useSearchParams();
+  const initialZip = searchParams.get('zip') || '';
+  const hasInitialZip = initialZip.length === 5;
+
+  const [currentStep, setCurrentStep] = useState(hasInitialZip ? 2 : 1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    zip_code: '',
+    zip_code: initialZip,
     household_size: null,
     ages: [],
     estimated_income: null,
@@ -34,28 +37,28 @@ export default function Quote() {
     prefers_specific_network: null,
     full_name: '',
     phone: '',
-    email: ''
+    email: '',
   });
-  
+
   const updateFormData = (updates) => {
-    setFormData(prev => ({ ...prev, ...updates }));
+    setFormData((prev) => ({ ...prev, ...updates }));
   };
-  
+
   const nextStep = () => {
     if (currentStep < TOTAL_STEPS + 1) {
-      setCurrentStep(prev => prev + 1);
+      setCurrentStep((prev) => prev + 1);
     }
   };
-  
+
   const prevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(prev => prev - 1);
+      setCurrentStep((prev) => prev - 1);
     }
   };
-  
+
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    
+
     const leadData = {
       zip_code: formData.zip_code,
       household_size: formData.household_size,
@@ -68,129 +71,65 @@ export default function Quote() {
       full_name: formData.full_name,
       phone: formData.phone,
       email: formData.email,
-      status: 'new'
+      status: 'new',
     };
-    
+
     await base44.entities.Lead.create(leadData);
     await base44.functions.invoke('notifyAgentNewLead', { data: leadData });
 
     setIsSubmitting(false);
     setCurrentStep(TOTAL_STEPS + 1);
   };
-  
+
   const renderStep = () => {
     switch (currentStep) {
-      case 1:
-        return (
-          <StepZipCode 
-            data={formData} 
-            onChange={updateFormData} 
-            onNext={nextStep} 
-          />
-        );
-      case 2:
-        return (
-          <StepHousehold 
-            data={formData} 
-            onChange={updateFormData} 
-            onNext={nextStep} 
-            onBack={prevStep}
-          />
-        );
-      case 3:
-        return (
-          <StepAges 
-            data={formData} 
-            onChange={updateFormData} 
-            onNext={nextStep} 
-            onBack={prevStep}
-          />
-        );
-      case 4:
-        return (
-          <StepIncome 
-            data={formData} 
-            onChange={updateFormData} 
-            onNext={nextStep} 
-            onBack={prevStep}
-          />
-        );
-      case 5:
-        return (
-          <StepCoverage 
-            data={formData} 
-            onChange={updateFormData} 
-            onNext={nextStep} 
-            onBack={prevStep}
-          />
-        );
-      case 6:
-        return (
-          <StepHealth 
-            data={formData} 
-            onChange={updateFormData} 
-            onNext={nextStep} 
-            onBack={prevStep}
-          />
-        );
-      case 7:
-        return (
-          <StepContact 
-            data={formData} 
-            onChange={updateFormData} 
-            onSubmit={handleSubmit}
-            onBack={prevStep}
-            isSubmitting={isSubmitting}
-          />
-        );
-      case 8:
-        return <StepConfirmation data={formData} />;
-      default:
-        return null;
+      case 1: return <StepZipCode data={formData} onChange={updateFormData} onNext={nextStep} />;
+      case 2: return <StepHousehold data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 3: return <StepAges data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 4: return <StepIncome data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 5: return <StepCoverage data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 6: return <StepHealth data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 7: return <StepContact data={formData} onChange={updateFormData} onSubmit={handleSubmit} onBack={prevStep} isSubmitting={isSubmitting} />;
+      case 8: return <StepConfirmation data={formData} />;
+      default: return null;
     }
   };
-  
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pb-20 md:pb-0">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to={createPageUrl("Home")} className="flex items-center gap-2">
-              <Shield className="w-7 h-7 text-teal-600" />
-              <span className="text-lg font-bold text-gray-900">GetCoveredFL</span>
-            </Link>
-            
-            {currentStep <= TOTAL_STEPS && (
-              <Link 
-                to={createPageUrl("Home")} 
-                className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">Back to Home</span>
-              </Link>
-            )}
-          </div>
-        </div>
-      </header>
-      
-      {/* Progress Bar */}
+    <div className="min-h-screen bg-gradient-to-b from-sand to-white pb-20 md:pb-0">
+      <SiteHeader variant="light" />
+
       {currentStep <= TOTAL_STEPS && (
-        <div className="bg-white border-b border-gray-100">
-          <div className="max-w-4xl mx-auto px-6 py-4">
+        <div className="bg-white/90 backdrop-blur-md border-b border-sand-deep/40 sticky top-[72px] z-30">
+          <div className="max-w-3xl mx-auto px-6 py-4">
             <ProgressBar currentStep={currentStep} totalSteps={TOTAL_STEPS} />
           </div>
         </div>
       )}
-      
-      {/* Form Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
+
+      {formData.zip_code && currentStep > 1 && currentStep <= TOTAL_STEPS && (
+        <div className="max-w-3xl mx-auto px-6 pt-6 flex justify-center">
+          <button
+            onClick={() => setCurrentStep(1)}
+            className="inline-flex items-center gap-2 bg-primary-soft text-primary px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-soft/70 transition-colors"
+          >
+            <MapPin className="w-4 h-4" />
+            ZIP {formData.zip_code} · Change
+          </button>
+        </div>
+      )}
+
+      <main className="max-w-3xl mx-auto px-6 py-10 md:py-12">
         <AnimatePresence mode="wait">
           {renderStep()}
         </AnimatePresence>
-        {currentStep === 1 && <div className="mt-10"><SkipFormBanner /></div>}
+        {currentStep === 1 && (
+          <div className="mt-10">
+            <SkipFormBanner />
+          </div>
+        )}
       </main>
-      
+
       <MobileCallBar />
     </div>
   );

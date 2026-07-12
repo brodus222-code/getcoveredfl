@@ -1,9 +1,8 @@
 import React from 'react';
-import { CheckCircle2, Phone } from "lucide-react";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "@/utils";
-import { Button } from "@/components/ui/button";
+import { CheckCircle2, Phone, Calendar, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
 
 export default function StepConfirmation({ data }) {
   return (
@@ -12,41 +11,60 @@ export default function StepConfirmation({ data }) {
       animate={{ opacity: 1, scale: 1 }}
       className="w-full max-w-md mx-auto text-center"
     >
-      <motion.div 
+      <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-        className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 text-green-600 mb-6"
+        transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
+        className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary-deep text-white mb-6 shadow-glow-primary"
       >
-        <CheckCircle2 className="w-10 h-10" />
+        <CheckCircle2 className="w-11 h-11" />
       </motion.div>
-      
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-        Thank you — your information has been submitted!
+
+      <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4 font-heading">
+        You're all set!
       </h2>
-      
-      <p className="text-gray-600 mb-8 leading-relaxed">
+
+      <p className="text-navy-soft mb-8 leading-relaxed">
         A licensed advisor from HealthLink Insurance Agency LLC will review your details and reach out shortly to help you compare plans and choose the best option.
       </p>
-      
-      <div className="bg-teal-50 rounded-2xl p-6 mb-8">
-        <p className="text-sm font-medium text-teal-800 mb-3">Want help right now?</p>
-        <a 
-          href="tel:+18555925924" 
-          className="inline-flex items-center gap-2 text-teal-600 font-semibold text-lg hover:text-teal-700 transition-colors"
-        >
-          <Phone className="w-5 h-5" />
-          Call Now: (855) 592-5924
-        </a>
+
+      <div className="bg-gradient-to-br from-primary-soft to-turquoise-soft rounded-3xl p-6 mb-8 text-left">
+        <p className="text-sm font-semibold text-navy mb-4 uppercase tracking-wider">What happens next</p>
+        <div className="space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+              <Phone className="w-4 h-4 text-primary" />
+            </div>
+            <span className="text-sm text-navy-soft">A licensed agent calls you within minutes</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+              <Calendar className="w-4 h-4 text-primary" />
+            </div>
+            <span className="text-sm text-navy-soft">We compare plans in your ZIP code</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+              <Mail className="w-4 h-4 text-primary" />
+            </div>
+            <span className="text-sm text-navy-soft">Results sent to {data.email || 'your email'}</span>
+          </div>
+        </div>
       </div>
-      
-      <Link to={createPageUrl("ThankYou")}>
-        <Button 
-          variant="outline"
-          className="w-full py-5 text-lg font-medium rounded-xl"
-        >
-          View More Information
-        </Button>
+
+      <a
+        href="tel:+18555925924"
+        className="inline-flex items-center justify-center gap-2 w-full bg-accent hover:bg-accent-deep text-white font-bold py-5 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5 mb-4"
+      >
+        <Phone className="w-5 h-5" />
+        Call Now: (855) 592-5924
+      </a>
+
+      <Link
+        to={createPageUrl('ThankYou')}
+        className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-2xl border-2 border-sand-deep text-navy-soft font-medium hover:bg-sand transition-colors"
+      >
+        View More Information
       </Link>
     </motion.div>
   );
