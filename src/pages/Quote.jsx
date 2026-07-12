@@ -15,6 +15,7 @@ import StepHealth from '@/components/quote/StepHealth';
 import StepContact from '@/components/quote/StepContact';
 import StepConfirmation from '@/components/quote/StepConfirmation';
 import MobileCallBar from '@/components/shared/MobileCallBar';
+import Footer from '@/components/shared/Footer';
 import SkipFormBanner from '@/components/quote/SkipFormBanner';
 
 const TOTAL_STEPS = 7;
@@ -130,6 +131,7 @@ export default function Quote() {
         )}
       </main>
 
+      <Footer />
       <MobileCallBar />
     </div>
   );
