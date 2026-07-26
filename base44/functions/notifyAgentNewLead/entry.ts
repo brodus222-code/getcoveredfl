@@ -4,16 +4,15 @@ Deno.serve(async (req) => {
   try {
     const base44 = createClientFromRequest(req);
 
-    // Verify the caller is authenticated before using service-role privileges
-    const user = await base44.auth.me();
-    if (!user) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const body = await req.json();
 
     // Support both direct call (data at root) and entity automation (data nested)
     const lead = body.data || body;
+
+    // Validate required lead fields to prevent abuse via direct calls
+    if (!lead.full_name || !lead.email) {
+      return Response.json({ error: 'Invalid lead data' }, { status: 400 });
+    }
 
     // Escape all user-provided fields to prevent HTML injection in the email body
     const escapeHtml = (str) => String(str)
@@ -78,9 +77,6 @@ Deno.serve(async (req) => {
 
     return Response.json({ ok: true, result });
   } catch (error) {
-    if (error.status === 401 || error.status === 403) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
-    }
     return Response.json({ error: error.message }, { status: 500 });
   }
 });

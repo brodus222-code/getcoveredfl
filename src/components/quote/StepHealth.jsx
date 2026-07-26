@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Heart, Check, ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -12,6 +12,12 @@ const ADVANCE_DELAY = 450;
 
 export default function StepHealth({ data, onChange, onNext, onBack }) {
   const timerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   const allAnswered = questions.every((q) => data[q.key] !== null && data[q.key] !== undefined);
 
@@ -94,7 +100,10 @@ export default function StepHealth({ data, onChange, onNext, onBack }) {
         </button>
         <button
           type="button"
-          onClick={onNext}
+          onClick={() => {
+            if (timerRef.current) clearTimeout(timerRef.current);
+            onNext();
+          }}
           disabled={!allAnswered}
           className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-primary transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
         >
