@@ -81,7 +81,7 @@ export default function ACA() {
               Call Me Instead
             </button>
             <a
-              href="tel:+18555925924"
+              href="tel:+18556345343"
               className="md:hidden inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium"
             >
               <Phone className="w-5 h-5" />
@@ -145,11 +145,11 @@ export default function ACA() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
-              href="tel:+18555925924"
+              href="tel:+18556345343"
               className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
             >
               <Phone className="w-5 h-5" />
-              (855) 592-5924
+              (855) 634-5343
             </a>
           </div>
         </div>

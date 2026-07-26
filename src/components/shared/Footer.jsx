@@ -37,11 +37,11 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Talk to a Licensed Agent</h4>
             <a
-              href="tel:+18555925924"
+              href="tel:+18556345343"
               className="inline-flex items-center gap-2 text-white hover:text-accent transition-colors mb-3"
             >
               <Phone className="w-5 h-5 text-accent" />
-              <span className="font-bold text-lg font-heading">(855) 592-5924</span>
+              <span className="font-bold text-lg font-heading">(855) 634-5343</span>
             </a>
             <p className="text-xs text-white/50 leading-relaxed">
               Free consultation · No obligation · Licensed Florida agents available Mon–Sat

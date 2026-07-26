@@ -109,7 +109,7 @@ export default function Privacy() {
           <div className="mt-2 text-sm text-navy-soft leading-relaxed">
             <p className="font-semibold text-navy">HealthLink Insurance Agency LLC</p>
             <p>Email: <a href="mailto:contact@getcoveredfl.com" className="text-primary underline hover:text-primary-deep">contact@getcoveredfl.com</a></p>
-            <p>Phone: <a href="tel:+18555925924" className="text-primary underline hover:text-primary-deep">(855) 592-5924</a></p>
+            <p>Phone: <a href="tel:+18556345343" className="text-primary underline hover:text-primary-deep">(855) 634-5343</a></p>
             <p>2501 Chatham Rd, Suite R, Springfield, IL 62704</p>
           </div>
         </section>

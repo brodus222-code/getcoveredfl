@@ -71,11 +71,11 @@ export default function FinalCTA() {
         </motion.form>
 
         <a
-          href="tel:+18555925924"
+          href="tel:+18556345343"
           className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
         >
           <Phone className="w-5 h-5" />
-          Or Call Now: (855) 592-5924
+          Or Call Now: (855) 634-5343
         </a>
       </div>
     </section>

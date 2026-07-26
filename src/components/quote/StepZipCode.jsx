@@ -56,11 +56,11 @@ export default function StepZipCode({ data, onChange, onNext }) {
       <div className="mt-8 text-center">
         <p className="text-sm text-navy-soft mb-2">Prefer to speak with someone?</p>
         <a
-          href="tel:+18555925924"
+          href="tel:+18556345343"
           className="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-deep transition-colors"
         >
           <Phone className="w-4 h-4" />
-          Call Now: (855) 592-5924
+          Call Now: (855) 634-5343
         </a>
       </div>
     </motion.div>

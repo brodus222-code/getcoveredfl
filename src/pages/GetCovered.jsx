@@ -17,7 +17,7 @@ export default function GetCovered() {
   const CallbackCta = ({ mobile = false }) => (
     mobile ? (
       <a
-        href="tel:+18555925924"
+        href="tel:+18556345343"
         className="md:hidden inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent"
       >
         <Phone className="w-4 h-4" />

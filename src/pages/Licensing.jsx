@@ -96,13 +96,13 @@ export default function Licensing() {
                 <p className="text-sm font-semibold">contact@getcoveredfl.com</p>
               </div>
             </a>
-            <a href="tel:+18555925924" className="flex items-center gap-3 hover:text-accent transition-colors">
+            <a href="tel:+18556345343" className="flex items-center gap-3 hover:text-accent transition-colors">
               <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center">
                 <Phone className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs text-white/50 uppercase tracking-wider">Phone</p>
-                <p className="text-sm font-semibold">(855) 592-5924</p>
+                <p className="text-sm font-semibold">(855) 634-5343</p>
               </div>
             </a>
           </div>

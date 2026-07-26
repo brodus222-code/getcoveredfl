@@ -121,7 +121,7 @@ export default function HeroSection() {
           <div className="mt-8 pt-6 border-t border-white/10">
             <p className="text-sm text-white/60 mb-2">Prefer to talk to someone now?</p>
             <a
-              href="tel:+18555925924"
+              href="tel:+18556345343"
               className="inline-flex items-center gap-3 text-white hover:text-accent transition-colors group"
             >
               <div className="w-11 h-11 rounded-full bg-white/10 group-hover:bg-white/15 flex items-center justify-center transition-colors">
@@ -129,7 +129,7 @@ export default function HeroSection() {
               </div>
               <div>
                 <div className="text-xs text-white/60">Licensed agents available</div>
-                <div className="text-lg font-bold font-heading">(855) 592-5924</div>
+                <div className="text-lg font-bold font-heading">(855) 634-5343</div>
               </div>
             </a>
           </div>
