@@ -77,6 +77,16 @@ export default function Quote() {
 
     await base44.entities.Lead.create(leadData);
 
+    // Fire Bing UET custom event for conversion tracking
+    if (typeof window !== 'undefined') {
+      window.uetq = window.uetq || [];
+      window.uetq.push('event', 'lead_submit', {
+        event_category: 'form',
+        event_label: 'quote_request',
+        event_value: 0,
+      });
+    }
+
     try {
       await base44.functions.invoke('notifyAgentNewLead', { data: leadData });
     } catch (e) {

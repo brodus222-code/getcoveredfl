@@ -1,9 +1,6 @@
 import React from 'react';
 import { CheckCircle2, Phone, Calendar, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
-
 export default function StepConfirmation({ data }) {
   return (
     <motion.div
@@ -60,12 +57,6 @@ export default function StepConfirmation({ data }) {
         Call Now: (855) 634-5343
       </a>
 
-      <Link
-        to={createPageUrl('ThankYou')}
-        className="inline-flex items-center justify-center gap-2 w-full px-6 py-4 rounded-2xl border-2 border-sand-deep text-navy-soft font-medium hover:bg-sand transition-colors"
-      >
-        View More Information
-      </Link>
     </motion.div>
   );
 }
