@@ -6,6 +6,21 @@ Deno.serve(async (req) => {
 
     const body = await req.json();
 
+    // Restrict invocation to requests originating from the app itself
+    // (production domain, Base44 preview/staging environments, and local dev).
+    // This prevents arbitrary external abuse of the public lead-notification endpoint.
+    const origin = (req.headers.get('origin') || req.headers.get('referer') || '').toLowerCase();
+    const isAllowedOrigin =
+      origin.startsWith('https://getcoveredfl.com') ||
+      origin.startsWith('http://getcoveredfl.com') ||
+      origin.startsWith('https://www.getcoveredfl.com') ||
+      origin.includes('.base44.app') ||
+      origin.includes('base44.com') ||
+      origin.startsWith('http://localhost');
+    if (!isAllowedOrigin) {
+      return Response.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
     // Support both direct call (data at root) and entity automation (data nested)
     const lead = body.data || body;
 
