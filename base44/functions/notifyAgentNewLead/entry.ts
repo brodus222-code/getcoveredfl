@@ -1,33 +1,26 @@
-import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
 import { secrets } from 'base44:runtime';
 
-Deno.serve(async (req) => {
+// Sends a new-lead notification to the agency inbox (john@healthlinkagency.com)
+// via Resend. Triggered by the "Notify Agent on New Lead" workflow on every
+// Lead create. Only a lead_id is accepted; the lead is read from this app's DB
+// (service role), so callers cannot inject arbitrary email content, and the
+// recipient is a fixed internal address (no open-relay risk). No client-
+// supplied headers (Origin/Referer) are trusted for authorization.
+
+export default async function(req) {
   try {
     const base44 = createClientFromRequest(req);
 
     const body = await req.json();
-
-    // Restrict invocation to requests originating from the app itself
-    // (production domain, Base44 preview/staging environments, and local dev).
-    // This prevents arbitrary external abuse of the public lead-notification endpoint.
-    const origin = (req.headers.get('origin') || req.headers.get('referer') || '').toLowerCase();
-    const isAllowedOrigin =
-      origin.startsWith('https://getcoveredfl.com') ||
-      origin.startsWith('http://getcoveredfl.com') ||
-      origin.startsWith('https://www.getcoveredfl.com') ||
-      origin.includes('.base44.app') ||
-      origin.includes('base44.com') ||
-      origin.startsWith('http://localhost');
-    if (!isAllowedOrigin) {
-      return Response.json({ error: 'Forbidden' }, { status: 403 });
+    const leadId = body && (body.lead_id || (body.data && body.data.lead_id));
+    if (!leadId) {
+      return Response.json({ error: 'lead_id is required' }, { status: 400 });
     }
 
-    // Support both direct call (data at root) and entity automation (data nested)
-    const lead = body.data || body;
-
-    // Validate required lead fields to prevent abuse via direct calls
-    if (!lead.full_name || !lead.email) {
-      return Response.json({ error: 'Invalid lead data' }, { status: 400 });
+    const lead = await base44.asServiceRole.entities.Lead.get(leadId);
+    if (!lead || !lead.full_name || !lead.email) {
+      return Response.json({ error: 'Lead not found' }, { status: 404 });
     }
 
     // Escape all user-provided fields to prevent HTML injection in the email body
@@ -78,9 +71,8 @@ Deno.serve(async (req) => {
     });
 
     const result = await res.json();
-    console.log('Resend send response:', JSON.stringify(result));
-
     if (!res.ok) {
+      console.log('Resend error:', JSON.stringify(result));
       return Response.json({ error: 'Email send failed', details: result }, { status: 502 });
     }
 
@@ -88,4 +80,4 @@ Deno.serve(async (req) => {
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
-});
+}
