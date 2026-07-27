@@ -6,28 +6,25 @@ export default async function(req) {
     const base44 = createClientFromRequest(req);
     const body = await req.json();
 
-    // Restrict to requests originating from the app itself (prevents this being
-    // abused as an open email relay by arbitrary external callers).
-    const origin = (req.headers.get('origin') || req.headers.get('referer') || '').toLowerCase();
-    const isAllowedOrigin =
-      origin.startsWith('https://getcoveredfl.com') ||
-      origin.startsWith('http://getcoveredfl.com') ||
-      origin.startsWith('https://www.getcoveredfl.com') ||
-      origin.includes('.base44.app') ||
-      origin.includes('base44.com') ||
-      origin.startsWith('http://localhost');
-    if (!isAllowedOrigin) {
-      return Response.json({ error: 'Forbidden' }, { status: 403 });
+    // Only the lead record id is accepted from the request — never the
+    // recipient address. The actual email is read from the stored Lead record
+    // (service role), so this endpoint cannot be used as an open mail relay to
+    // arbitrary attacker-supplied addresses.
+    const leadId = body && (body.lead_id || (body.data && body.data.lead_id));
+    if (!leadId) {
+      return Response.json({ error: 'lead_id is required' }, { status: 400 });
     }
 
-    // Support direct call (data at root) and entity-automation (data nested)
-    const lead = body.data || body;
-
-    if (!lead.email || !lead.full_name) {
-      return Response.json({ error: 'Invalid lead data' }, { status: 400 });
+    const lead = await base44.asServiceRole.entities.Lead.get(leadId);
+    if (!lead || !lead.email || !lead.full_name) {
+      return Response.json({ error: 'Lead not found' }, { status: 404 });
     }
 
-    // Validate email format to reduce abuse
+    // Idempotency / replay guard: send at most one confirmation per lead.
+    if (lead.confirmation_email_sent) {
+      return Response.json({ ok: true, alreadySent: true });
+    }
+
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(lead.email));
     if (!emailOk) {
       return Response.json({ error: 'Invalid email address' }, { status: 400 });
@@ -103,6 +100,13 @@ export default async function(req) {
     if (!res.ok) {
       console.log('Resend error:', JSON.stringify(result));
       return Response.json({ error: 'Email send failed', details: result }, { status: 502 });
+    }
+
+    // Mark sent so repeated calls (replays) cannot trigger additional emails.
+    try {
+      await base44.asServiceRole.entities.Lead.update(leadId, { confirmation_email_sent: true });
+    } catch (e) {
+      // Non-fatal: email was delivered; flag update failed.
     }
 
     return Response.json({ ok: true, id: result.id });

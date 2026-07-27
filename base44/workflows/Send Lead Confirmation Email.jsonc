@@ -1,0 +1,40 @@
+{
+  "name": "Send Lead Confirmation Email",
+  "description": "Sends a branded confirmation email to a new lead when their Lead record is created. Triggered server-side so no client request can drive the email relay.",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Lead"
+    },
+    "condition": "${ .trigger.data.confirmation_email_sent != true }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "send_lead_confirmation_email",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "send_confirmation": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendLeadConfirmationEmail",
+            "args": {
+              "lead_id": "${ .trigger.entity_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Send confirmation email",
+            "description": "Branded email to the new lead"
+          }
+        }
+      }
+    ]
+  }
+}

@@ -100,11 +100,8 @@ export default function Quote() {
       // Agent notification failed — lead is still saved
     }
 
-    try {
-      await base44.functions.invoke('sendLeadConfirmationEmail', { data: leadData });
-    } catch (e) {
-      // Confirmation email to lead failed — lead is still saved
-    }
+    // Confirmation email is sent server-side by the "Send Lead Confirmation Email"
+    // workflow (entity-create trigger), so no client call is needed here.
 
     setIsSubmitting(false);
     setCurrentStep(TOTAL_STEPS + 1);

@@ -76,6 +76,11 @@
     "notes": {
       "type": "string",
       "description": "Internal notes about the lead"
+    },
+    "confirmation_email_sent": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the branded confirmation email has been sent to this lead"
     }
   },
   "required": [
