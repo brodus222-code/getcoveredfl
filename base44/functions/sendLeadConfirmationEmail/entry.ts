@@ -6,6 +6,16 @@ export default async function(req) {
     const base44 = createClientFromRequest(req);
     const body = await req.json();
 
+    // Require an authenticated caller. Unauthenticated external HTTP clients
+    // (curl, bots) have no session and are rejected — this prevents the
+    // endpoint from being abused as an open/spam relay. Platform-internal
+    // invocations (entity-create workflow, SDK calls from logged-in users)
+    // carry an authenticated context and pass this check.
+    const user = await base44.auth.me().catch(() => null);
+    if (!user) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     // Only the lead record id is accepted from the request — never the
     // recipient address. The actual email is read from the stored Lead record
     // (service role), so this endpoint cannot be used as an open mail relay to
