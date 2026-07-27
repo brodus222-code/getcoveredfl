@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.23';
+import { secrets } from 'base44:runtime';
 
 Deno.serve(async (req) => {
   try {
@@ -47,8 +48,6 @@ Deno.serve(async (req) => {
     const income = lead.estimated_income ? `$${Number(lead.estimated_income).toLocaleString()}` : 'N/A';
     const household = escapeHtml(lead.household_size || 'N/A');
 
-    const { accessToken } = await base44.asServiceRole.connectors.getConnection('gmail');
-
     const subject = `New Lead: ${sanitizeHeader(lead.full_name || 'Unknown')} — ${sanitizeHeader(lead.zip_code || 'N/A')}`;
     const htmlBody = `
       <h2>New Lead Submitted</h2>
@@ -63,34 +62,29 @@ Deno.serve(async (req) => {
       </table>
     `;
 
-    // Build RFC 2822 email message
-    const messageParts = [
-      `To: john@healthlinkagency.com`,
-      `Subject: ${subject}`,
-      `MIME-Version: 1.0`,
-      `Content-Type: text/html; charset=utf-8`,
-      ``,
-      htmlBody
-    ];
-    const rawMessage = messageParts.join('\r\n');
-    const encodedMessage = btoa(unescape(encodeURIComponent(rawMessage)))
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_')
-      .replace(/=+$/, '');
-
-    const res = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
+        'Authorization': `Bearer ${secrets.get('RESEND_API_KEY')}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ raw: encodedMessage })
+      body: JSON.stringify({
+        from: 'GetCovered FL <no-reply@getcoveredfl.com>',
+        reply_to: 'john@healthlinkagency.com',
+        to: 'john@healthlinkagency.com',
+        subject,
+        html: htmlBody
+      })
     });
 
     const result = await res.json();
-    console.log('Gmail send response:', JSON.stringify(result));
+    console.log('Resend send response:', JSON.stringify(result));
 
-    return Response.json({ ok: true, result });
+    if (!res.ok) {
+      return Response.json({ error: 'Email send failed', details: result }, { status: 502 });
+    }
+
+    return Response.json({ ok: true, id: result.id });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
   }
