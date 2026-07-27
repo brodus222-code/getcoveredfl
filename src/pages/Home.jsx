@@ -2,6 +2,7 @@ import React from 'react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import HeroSection from '@/components/landing/HeroSection';
 import TrustBar from '@/components/shared/TrustBar';
+import CarrierLogos from '@/components/landing/CarrierLogos';
 import HowItWorks from '@/components/landing/HowItWorks';
 import CoverageTiles from '@/components/landing/CoverageTiles';
 import AboutSection from '@/components/landing/AboutSection';
@@ -14,6 +15,7 @@ export default function Home() {
     <div className="min-h-screen bg-white pb-16 md:pb-0">
       <SiteHeader variant="transparent" />
       <HeroSection />
+      <CarrierLogos />
       <TrustBar />
       <HowItWorks />
       <CoverageTiles />
