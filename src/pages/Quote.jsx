@@ -97,7 +97,13 @@ export default function Quote() {
     try {
       await base44.functions.invoke('notifyAgentNewLead', { data: leadData });
     } catch (e) {
-      // Email notification failed — lead is still saved
+      // Agent notification failed — lead is still saved
+    }
+
+    try {
+      await base44.functions.invoke('sendLeadConfirmationEmail', { data: leadData });
+    } catch (e) {
+      // Confirmation email to lead failed — lead is still saved
     }
 
     setIsSubmitting(false);
