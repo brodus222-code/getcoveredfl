@@ -8,6 +8,7 @@ import { categoryConfig } from '@/lib/blogCategories';
 import SiteHeader from '@/components/shared/SiteHeader';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
+import CarrierLogos from '@/components/landing/CarrierLogos';
 
 const markdownComponents = {
   h1: ({ children }) => <h1 className="text-2xl font-bold text-navy font-heading mt-8 mb-4">{children}</h1>,
@@ -78,6 +79,8 @@ export default function BlogPostDetail() {
               </h1>
             </div>
           </section>
+
+          <CarrierLogos />
 
           <article className="max-w-3xl mx-auto px-5 sm:px-6 py-10 md:py-16">
             <ReactMarkdown components={markdownComponents}>

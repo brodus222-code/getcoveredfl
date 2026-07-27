@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import TrustBar from '@/components/shared/TrustBar';
+import CarrierLogos from '@/components/landing/CarrierLogos';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -150,6 +151,8 @@ export default function CoverageGuide() {
           </Link>
         </div>
       </section>
+
+      <CarrierLogos />
 
       <TrustBar />
 

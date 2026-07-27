@@ -5,6 +5,7 @@ import { Phone, ArrowRight, Wrench, ShieldCheck, Clock } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import HeroSection from '@/components/landing/HeroSection';
 import TrustBar from '@/components/shared/TrustBar';
+import CarrierLogos from '@/components/landing/CarrierLogos';
 import EligibilityBanner from '@/components/landing/EligibilityBanner';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
@@ -38,6 +39,7 @@ export default function GetCovered() {
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <SiteHeader variant="transparent" />
       <HeroSection />
+      <CarrierLogos />
       <TrustBar />
 
       {/* Eligibility banner with image */}

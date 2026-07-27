@@ -8,6 +8,7 @@ import { categoryConfig, categories } from '@/lib/blogCategories';
 import SiteHeader from '@/components/shared/SiteHeader';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
+import CarrierLogos from '@/components/landing/CarrierLogos';
 
 export default function Blog() {
   const [posts, setPosts] = useState([]);
@@ -48,6 +49,8 @@ export default function Blog() {
           </p>
         </div>
       </section>
+
+      <CarrierLogos />
 
       {/* Category filters */}
       <div className="bg-white border-b border-sand-deep/40">
