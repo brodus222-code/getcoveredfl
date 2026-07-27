@@ -1,0 +1,40 @@
+{
+  "name": "Push Lead to CRM",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Lead"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "push_lead_to_crm",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "push_to_crm": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "pushLeadToCrm",
+            "args": {
+              "lead_id": "${ .trigger.entity_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Push lead to CRM",
+            "description": "Send key fields to CRM app webhook"
+          }
+        }
+      }
+    ]
+  },
+  "description": "When a new Lead is created in this app, pushes its key fields to the separate CRM app via the pushLeadToCrm webhook function."
+}
