@@ -77,9 +77,16 @@ export default function Quote() {
 
     await base44.entities.Lead.create(leadData);
 
-    // Fire Bing UET custom event for conversion tracking
+    // Fire Bing UET custom event for conversion tracking (with enhanced conversions PII)
     if (typeof window !== 'undefined') {
       window.uetq = window.uetq || [];
+      // Pass hashed-eligible PII for enhanced conversions (UET tag auto-hashes before sending)
+      window.uetq.push('set', {
+        pid: {
+          em: formData.email || '',
+          ph: formData.phone || '',
+        },
+      });
       window.uetq.push('event', 'lead_submit', {
         event_category: 'form',
         event_label: 'quote_request',
