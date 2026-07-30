@@ -1,16 +1,4 @@
 {
-  "name": "Notify Agent on New Lead",
-  "description": "",
-  "trigger": {
-    "condition": null,
-    "config": {
-      "trigger_type": "entity",
-      "events": [
-        "create"
-      ],
-      "entity_name": "Lead"
-    }
-  },
   "definition": {
     "document": {
       "dsl": "1.0.0",
@@ -24,11 +12,29 @@
           "call": "invoke_backend_function",
           "with": {
             "function_name": "notifyAgentNewLead",
-            "args": {}
+            "args": {
+              "lead_id": "${ .trigger.entity_id }"
+            }
           },
-          "then": "end"
+          "then": "end",
+          "x-base44": {
+            "title": "Notify agent",
+            "description": "Email lead details to agency inbox"
+          }
         }
       }
     ]
-  }
+  },
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "Lead"
+    }
+  },
+  "name": "Notify Agent on New Lead",
+  "description": ""
 }

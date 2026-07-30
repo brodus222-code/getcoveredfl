@@ -25,7 +25,9 @@
           "call": "invoke_backend_function",
           "with": {
             "function_name": "notifyAgentNewLead",
-            "args": {}
+            "args": {
+              "lead_id": "${ .trigger.entity_id }"
+            }
           },
           "then": "end"
         }
