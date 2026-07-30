@@ -17,6 +17,7 @@ import StepConfirmation from '@/components/quote/StepConfirmation';
 import MobileCallBar from '@/components/shared/MobileCallBar';
 import Footer from '@/components/shared/Footer';
 import SkipFormBanner from '@/components/quote/SkipFormBanner';
+import CarrierLogos from '@/components/landing/CarrierLogos';
 
 const TOTAL_STEPS = 7;
 
@@ -155,6 +156,8 @@ export default function Quote() {
           </div>
         )}
       </main>
+
+      <CarrierLogos />
 
       <Footer />
       <MobileCallBar />
