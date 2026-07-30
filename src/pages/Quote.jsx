@@ -151,13 +151,16 @@ export default function Quote() {
           {renderStep()}
         </AnimatePresence>
         {currentStep === 1 && (
-          <div className="mt-10">
-            <SkipFormBanner />
-          </div>
+          <>
+            <div className="mt-10">
+              <CarrierLogos />
+            </div>
+            <div className="mt-10">
+              <SkipFormBanner />
+            </div>
+          </>
         )}
       </main>
-
-      <CarrierLogos />
 
       <Footer />
       <MobileCallBar />
