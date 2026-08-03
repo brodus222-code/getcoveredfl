@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import LeadManagement from './pages/LeadManagement';
+import Start from './pages/Start';
 import ACA from './pages/ACA';
 import GetCovered from './pages/GetCovered';
 import Terms from './pages/Terms';
@@ -71,6 +72,7 @@ const AuthenticatedApp = () => {
       ))}
       <Route path="/Marketplace" element={<ACA />} />
       <Route path="/GetCovered" element={<GetCovered />} />
+      <Route path="/start" element={<Start />} />
       <Route path="/Terms" element={<Terms />} />
       <Route path="/Privacy" element={<Privacy />} />
       <Route path="/Licensing" element={<Licensing />} />
