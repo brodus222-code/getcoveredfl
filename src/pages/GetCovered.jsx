@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Phone, ArrowRight, Wrench, ShieldCheck, Clock } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
-import HeroSection from '@/components/landing/HeroSection';
+import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
 import CarrierLogos from '@/components/landing/CarrierLogos';
 import EligibilityBanner from '@/components/landing/EligibilityBanner';
@@ -38,7 +38,12 @@ export default function GetCovered() {
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <SiteHeader variant="transparent" />
-      <HeroSection />
+      <ZipHero
+        badgeText="Florida's Trusted Health Insurance Guide"
+        heading="Find Affordable Health Insurance in Florida"
+        subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
+        onAgentClick={() => setModalOpen(true)}
+      />
       <CarrierLogos />
       <TrustBar />
 

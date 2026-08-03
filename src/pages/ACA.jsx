@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Shield, CheckCircle, Phone, Star, ArrowRight, Plus, Minus } from 'lucide-react';
+import { CheckCircle, Phone, Star, ArrowRight, Plus, Minus } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
+import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
 import CarrierLogos from '@/components/landing/CarrierLogos';
 import FinalCTA from '@/components/landing/FinalCTA';
@@ -45,56 +46,12 @@ export default function ACA() {
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <SiteHeader variant="light" />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-deep to-navy text-white">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-turquoise/25 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-24 md:pb-28 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
-            <Shield className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium text-white/90">Florida ACA Marketplace Plans</span>
-          </div>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] mb-5 tracking-tight font-heading text-balance">
-            You may qualify for <span className="text-accent">$0/month</span> health coverage
-          </h1>
-
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Most Florida residents don't realize their savings change when income or household info changes — <strong className="text-white">even slightly.</strong> Let us check in minutes.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              to={createPageUrl('Quote')}
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
-            >
-              Check My Eligibility
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="hidden md:inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
-            >
-              <Phone className="w-5 h-5" />
-              Call Me Instead
-            </button>
-            <a
-              href="tel:+18556345343"
-              className="md:hidden inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium"
-            >
-              <Phone className="w-5 h-5" />
-              Call Me Instead
-            </a>
-          </div>
-
-          <p className="text-xs text-white/60 mt-6">
-            Independent licensed Florida agency — not a government site.
-          </p>
-        </div>
-      </section>
+      <ZipHero
+        badgeText="Florida ACA Marketplace Plans"
+        heading={<>You may qualify for <span className="text-accent">$0/month</span> health coverage</>}
+        subheading={<>Most Florida residents don't realize their savings change when income or household info changes — <strong className="text-white">even slightly.</strong> Let us check in minutes.</>}
+        onAgentClick={() => setModalOpen(true)}
+      />
 
       <CarrierLogos />
 
