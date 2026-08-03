@@ -11,6 +11,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import LeadManagement from './pages/LeadManagement';
 import PrivatePPO from './pages/PrivatePPO';
+import SelfEmployed from './pages/SelfEmployed';
 import ACA from './pages/ACA';
 import GetCovered from './pages/GetCovered';
 import Terms from './pages/Terms';
@@ -73,6 +74,7 @@ const AuthenticatedApp = () => {
       <Route path="/Marketplace" element={<ACA />} />
       <Route path="/GetCovered" element={<GetCovered />} />
       <Route path="/ppo" element={<PrivatePPO />} />
+      <Route path="/self-employed" element={<SelfEmployed />} />
       <Route path="/Terms" element={<Terms />} />
       <Route path="/Privacy" element={<Privacy />} />
       <Route path="/Licensing" element={<Licensing />} />
