@@ -8,8 +8,8 @@ const carriers = [
     offset: 'mt-[10px]',
   },
   {
-    name: 'Ambetter',
-    src: 'https://media.base44.com/images/public/696f51421917c989be527824/01d54e428_ambetter_logo_transparent.png',
+    name: 'UnitedHealthcare',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/bd726061f_uhc_logo.png',
   },
   {
     name: 'Aetna',
