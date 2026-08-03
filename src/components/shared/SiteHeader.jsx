@@ -29,7 +29,7 @@ export default function SiteHeader({ variant = 'light' }) {
             href="tel:+18556345343"
             className={`flex items-center gap-2 font-semibold transition-colors ${isTransparent ? 'text-white hover:text-accent' : 'text-navy hover:text-primary'}`}
           >
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isTransparent ? 'bg-white/15' : 'bg-accent-soft'}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center animate-call-pulse ${isTransparent ? 'bg-white/15' : 'bg-accent-soft'}`}>
               <Phone className={`w-4 h-4 ${isTransparent ? 'text-white' : 'text-accent'}`} />
             </div>
             <span className="hidden sm:inline text-sm">(855) 634-5343</span>

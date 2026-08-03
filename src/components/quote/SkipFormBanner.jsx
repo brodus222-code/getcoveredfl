@@ -28,14 +28,14 @@ export default function SkipFormBanner() {
 
             <a
               href="tel:+18556345343"
-              className="md:hidden inline-flex items-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent"
+              className="md:hidden inline-flex items-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent animate-call-pulse"
             >
               <Phone className="w-4 h-4" />
               Have an Agent Call Me
             </a>
             <button
               onClick={() => setModalOpen(true)}
-              className="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent"
+              className="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent animate-call-pulse"
             >
               <Phone className="w-4 h-4" />
               Have an Agent Call Me

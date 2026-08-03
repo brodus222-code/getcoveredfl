@@ -102,6 +102,10 @@ module.exports = {
   			'pulse-soft': {
   				'0%, 100%': { opacity: '1' },
   				'50%': { opacity: '0.7' }
+  			},
+  			'call-pulse': {
+  				'0%, 100%': { boxShadow: '0 0 0 0 hsl(11 100% 68% / 0.45)' },
+  				'50%': { boxShadow: '0 0 0 8px hsl(11 100% 68% / 0)' }
   			}
   		},
   		animation: {
@@ -109,7 +113,8 @@ module.exports = {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			'fade-in': 'fade-in 0.4s ease-out',
   			'slide-up': 'slide-up 0.5s ease-out',
-  			'pulse-soft': 'pulse-soft 2s ease-in-out infinite'
+  			'pulse-soft': 'pulse-soft 2s ease-in-out infinite',
+			'call-pulse': 'call-pulse 2s ease-in-out infinite'
   		},
   		boxShadow: {
   			'glow-primary': '0 20px 50px -12px hsl(187 81% 29% / 0.35)',
