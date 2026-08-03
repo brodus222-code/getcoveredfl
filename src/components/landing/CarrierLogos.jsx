@@ -5,6 +5,7 @@ const carriers = [
   {
     name: 'Blue Cross Blue Shield',
     src: 'https://media.base44.com/images/public/696f51421917c989be527824/63996acff_bcbs_logo_transparent.png',
+    offset: 'mt-[10px]',
   },
   {
     name: 'Ambetter',
@@ -34,7 +35,7 @@ export default function CarrierLogos() {
               src={c.src}
               alt={`${c.name} logo`}
               title={c.name}
-              className="h-10 sm:h-12 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity"
+              className={`h-10 sm:h-12 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity ${c.offset || ''}`}
             />
           ))}
         </div>
