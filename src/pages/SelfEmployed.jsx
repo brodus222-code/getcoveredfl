@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
+import { MapPin } from 'lucide-react';
 import { Shield, CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, CalendarClock } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import TrustBar from '@/components/shared/TrustBar';
@@ -11,7 +12,7 @@ import MobileCallBar from '@/components/shared/MobileCallBar';
 import CallbackModal from '@/components/quote/CallbackModal';
 
 const benefits = [
-  'ACA subsidies that can bring your premium to $0 based on net income',
+  'ACA subsidies that can lower your premium based on net income',
   'Self-employment income qualifies for premium tax credits',
   'Write off qualified medical and premium expenses on Schedule C',
   'Dental, vision & HSA-compatible plan options',
@@ -23,7 +24,7 @@ const reasons = [
   {
     icon: Calculator,
     title: 'Income-based subsidies',
-    body: 'ACA premium credits are based on your net self-employment income, not gross. Many freelancers and contractors qualify for $0/month plans after subsidies.',
+    body: 'ACA premium credits are based on your net self-employment income, not gross. Many freelancers and contractors qualify for significantly reduced premiums after subsidies.',
   },
   {
     icon: Briefcase,
@@ -63,19 +64,29 @@ const faqs = [
 export default function SelfEmployed() {
   const [openFaq, setOpenFaq] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [zipInput, setZipInput] = useState('');
+  const navigate = useNavigate();
+
+  const handleZipSubmit = (e) => {
+    e.preventDefault();
+    const zip = zipInput.replace(/\D/g, '').slice(0, 5);
+    if (zip.length === 5) {
+      navigate(`/Quote?zip=${zip}`);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <SiteHeader variant="light" />
 
-      {/* Hero */}
+      {/* Hero with ZIP entry */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-deep to-navy text-white">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-turquoise/25 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-24 md:pb-28 text-center">
+        <div className="relative max-w-3xl mx-auto px-6 pt-12 pb-10 md:pt-20 md:pb-14 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
             <Shield className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-white/90">Health Insurance for the Self-Employed</span>
@@ -85,41 +96,75 @@ export default function SelfEmployed() {
             Coverage that works <span className="text-accent">as hard</span> as you do
           </h1>
 
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Self-employed in Florida? You may qualify for subsidies that bring your premium to $0 — and keep your coverage when clients, gigs, or income change.
+          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Self-employed in Florida? Find affordable health plans that stay with you — not tied to an employer or client.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              to={createPageUrl('Quote')}
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
-            >
-              Check My Subsidy
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <button
-              onClick={() => setModalOpen(true)}
-              className="hidden md:inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
-            >
-              <Phone className="w-5 h-5" />
-              Talk to an Agent
-            </button>
+          {/* ZIP entry form */}
+          <form onSubmit={handleZipSubmit} className="max-w-md mx-auto mb-4">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  value={zipInput}
+                  onChange={(e) => setZipInput(e.target.value.replace(/\D/g, '').slice(0, 5))}
+                  placeholder="Enter your ZIP code"
+                  className="w-full pl-12 pr-4 py-4 text-lg rounded-2xl bg-white text-navy placeholder:text-navy-soft/50 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
+                  aria-label="ZIP code"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={zipInput.length !== 5}
+                className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0 whitespace-nowrap"
+              >
+                Get Quotes
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </form>
+
+          <p className="text-xs text-white/60 mb-8">
+            Takes 2 minutes · No obligation · Licensed Florida agents
+          </p>
+
+          {/* First two carrier logos for initial-load trust */}
+          <div className="flex items-center justify-center gap-8 mt-6">
+            <img
+              src="https://media.base44.com/images/public/696f51421917c989be527824/63996acff_bcbs_logo_transparent.png"
+              alt="Blue Cross Blue Shield logo"
+              title="Blue Cross Blue Shield"
+              className="h-9 w-auto max-w-[130px] object-contain opacity-60"
+            />
+            <img
+              src="https://media.base44.com/images/public/696f51421917c989be527824/bd726061f_uhc_logo.png"
+              alt="UnitedHealthcare logo"
+              title="UnitedHealthcare"
+              className="h-9 w-auto max-w-[130px] object-contain opacity-60"
+            />
+          </div>
+
+          {/* Secondary call option */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
             <a
               href="tel:+18556345343"
-              className="md:hidden inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium"
+              className="md:hidden inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium"
             >
               <Phone className="w-5 h-5" />
               Call Me Instead
             </a>
+            <button
+              onClick={() => setModalOpen(true)}
+              className="hidden md:inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
+            >
+              <Phone className="w-5 h-5" />
+              Talk to an Agent
+            </button>
           </div>
-
-          <p className="text-xs text-white/60 mt-6">
-            Independent licensed Florida agency — built for freelancers, contractors & small-business owners.
-          </p>
         </div>
       </section>
-
-      <CarrierLogos />
 
       <TrustBar />
 
