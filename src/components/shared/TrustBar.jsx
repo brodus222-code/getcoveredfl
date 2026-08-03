@@ -2,7 +2,6 @@ import React from 'react';
 import { Star, ShieldCheck, Lock, BadgeCheck } from 'lucide-react';
 
 const defaultItems = [
-  { icon: BadgeCheck, label: 'Licensed Florida Agents' },
   { icon: Star, label: '100% Free to Use' },
   { icon: ShieldCheck, label: 'No Obligation' },
   { icon: Lock, label: 'Secure & Private' },

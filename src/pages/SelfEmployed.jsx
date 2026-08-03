@@ -127,24 +127,8 @@ export default function SelfEmployed() {
           </form>
 
           <p className="text-xs text-white/60 mb-8">
-            Takes 2 minutes · No obligation · Licensed Florida agents
+            Takes 2 minutes · No obligation
           </p>
-
-          {/* First two carrier logos for initial-load trust */}
-          <div className="flex items-center justify-center gap-8 mt-6">
-            <img
-              src="https://media.base44.com/images/public/696f51421917c989be527824/63996acff_bcbs_logo_transparent.png"
-              alt="Blue Cross Blue Shield logo"
-              title="Blue Cross Blue Shield"
-              className="h-9 w-auto max-w-[130px] object-contain opacity-60"
-            />
-            <img
-              src="https://media.base44.com/images/public/696f51421917c989be527824/bd726061f_uhc_logo.png"
-              alt="UnitedHealthcare logo"
-              title="UnitedHealthcare"
-              className="h-9 w-auto max-w-[130px] object-contain opacity-60"
-            />
-          </div>
 
           {/* Secondary call option */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
@@ -167,6 +151,8 @@ export default function SelfEmployed() {
       </section>
 
       <TrustBar />
+
+      <CarrierLogos />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
