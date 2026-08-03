@@ -126,12 +126,8 @@ export default function SelfEmployed() {
             </div>
           </form>
 
-          <p className="text-xs text-white/60 mb-8">
-            Takes 2 minutes · No obligation
-          </p>
-
           {/* Secondary call option */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
             <a
               href="tel:+18556345343"
               className="md:hidden inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium"
