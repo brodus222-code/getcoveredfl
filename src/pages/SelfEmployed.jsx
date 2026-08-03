@@ -86,7 +86,7 @@ export default function SelfEmployed() {
           <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-3xl mx-auto px-6 pt-12 pb-10 md:pt-20 md:pb-14 text-center">
+        <div className="relative max-w-3xl mx-auto px-6 pt-8 pb-8 md:pt-14 md:pb-10 text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
             <Shield className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-white/90">Health Insurance for the Self-Employed</span>
@@ -97,7 +97,7 @@ export default function SelfEmployed() {
           </h1>
 
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Self-employed in Florida? Find affordable health plans that stay with you — not tied to an employer or client.
+            Self-employed in Florida? Find affordable health plans that stay with you — not tied to an employer.
           </p>
 
           {/* ZIP entry form */}
@@ -110,7 +110,7 @@ export default function SelfEmployed() {
                   inputMode="numeric"
                   value={zipInput}
                   onChange={(e) => setZipInput(e.target.value.replace(/\D/g, '').slice(0, 5))}
-                  placeholder="Enter your ZIP code"
+                  placeholder="Zip Code"
                   className="w-full pl-12 pr-4 py-4 text-lg rounded-2xl bg-white text-navy placeholder:text-navy-soft/50 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
                   aria-label="ZIP code"
                 />
