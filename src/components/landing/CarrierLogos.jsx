@@ -1,12 +1,23 @@
 import React from 'react';
 
-// Carrier wordmarks displayed under the hero for trust. Each uses its brand
-// color via inline style (one-off brand values, not theme tokens).
+// Carrier logos uploaded by the agency — displayed under the hero for trust.
 const carriers = [
-  { name: 'Cigna', color: '#007EA7' },
-  { name: 'UnitedHealthcare', color: '#002677' },
-  { name: 'Aetna', color: '#003C71' },
-  { name: 'Ambetter', color: '#EC008C' },
+  {
+    name: 'Blue Cross Blue Shield',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/63996acff_bcbs_logo_transparent.png',
+  },
+  {
+    name: 'Ambetter',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/01d54e428_ambetter_logo_transparent.png',
+  },
+  {
+    name: 'Aetna',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/404e068e7_aetna_logo.png',
+  },
+  {
+    name: 'Cigna',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/c22bad847_cigna_logo.svg',
+  },
 ];
 
 export default function CarrierLogos() {
@@ -18,13 +29,13 @@ export default function CarrierLogos() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-5">
           {carriers.map((c) => (
-            <span
+            <img
               key={c.name}
-              className="text-xl sm:text-2xl font-bold tracking-tight opacity-70 hover:opacity-100 transition-opacity font-heading"
-              style={{ color: c.color }}
-            >
-              {c.name}
-            </span>
+              src={c.src}
+              alt={`${c.name} logo`}
+              title={c.name}
+              className="h-10 sm:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+            />
           ))}
         </div>
       </div>
