@@ -6,8 +6,7 @@ const carriers = [
   { name: 'Cigna', color: '#007EA7' },
   { name: 'UnitedHealthcare', color: '#002677' },
   { name: 'Aetna', color: '#003C71' },
-  { name: 'Health First', color: '#0072CE' },
-  { name: 'Ambetter', color: '#F37021' },
+  { name: 'Ambetter', color: '#EC008C' },
 ];
 
 export default function CarrierLogos() {
