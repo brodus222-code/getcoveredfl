@@ -64,7 +64,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
         <div className="flex gap-3 justify-center mt-4">
           <a
             href="tel:+18556345343"
-            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium animate-call-pulse"
           >
             <Phone className="w-5 h-5" />
             Call Me Instead
@@ -94,7 +94,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
               {onAgentClick ? (
                 <button
                   onClick={onAgentClick}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all animate-call-pulse"
                 >
                   <Phone className="w-5 h-5" />
                   Talk to an Agent
@@ -102,7 +102,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
               ) : (
                 <a
                   href="tel:+18556345343"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all animate-call-pulse"
                 >
                   <Phone className="w-5 h-5" />
                   Talk to an Agent
