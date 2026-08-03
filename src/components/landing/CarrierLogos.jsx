@@ -27,14 +27,14 @@ export default function CarrierLogos() {
         <p className="text-center text-xs uppercase tracking-widest font-semibold text-navy-soft mb-6">
           Plans from carriers you trust
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-5">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-12 gap-y-5">
           {carriers.map((c) => (
             <img
               key={c.name}
               src={c.src}
               alt={`${c.name} logo`}
               title={c.name}
-              className="h-10 sm:h-12 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity"
+              className="h-10 sm:h-12 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity"
             />
           ))}
         </div>
