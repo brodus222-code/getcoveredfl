@@ -47,9 +47,9 @@ export default function ACA() {
       <SiteHeader variant="light" />
 
       <ZipHero
-        badgeText="Florida ACA Marketplace Plans"
-        heading={<>You may qualify for <span className="text-accent">$0/month</span> health coverage</>}
-        subheading={<>Most Florida residents don't realize their savings change when income or household info changes — <strong className="text-white">even slightly.</strong> Let us check in minutes.</>}
+        badgeText="Florida's Official ACA Marketplace"
+        heading={<>Florida's official <span className="text-accent">Health Insurance Marketplace</span></>}
+        subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-white">in minutes.</strong></>}
         onAgentClick={() => setModalOpen(true)}
       />
 
