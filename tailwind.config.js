@@ -117,7 +117,7 @@ module.exports = {
 			'call-pulse': 'call-pulse 2s ease-in-out infinite'
   		},
   		boxShadow: {
-  			'glow-primary': '0 20px 50px -12px hsl(208 67% 26% / 0.35)',
+  			'glow-primary': '0 20px 50px -12px hsl(208 58% 36% / 0.35)',
   			'glow-accent': '0 20px 50px -12px hsl(43 85% 38% / 0.4)',
   			'soft': '0 10px 40px -12px hsl(208 50% 18% / 0.12)'
   		}

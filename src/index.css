@@ -8,18 +8,18 @@
   :root {
     /* GetCoveredFL — Ocean Navy + Metallic Gold */
     --background: 0 0% 100%;
-    --foreground: 208 50% 18%;
+    --foreground: 208 45% 24%;
 
     --card: 0 0% 100%;
-    --card-foreground: 208 50% 18%;
+    --card-foreground: 208 45% 24%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 208 50% 18%;
+    --popover-foreground: 208 45% 24%;
 
-    /* Primary: Deep Ocean Navy #16466F — trust, authority, stability */
-    --primary: 208 67% 26%;
+    /* Primary: Ocean Navy #2A6BA0 — trust, authority, stability */
+    --primary: 208 58% 36%;
     --primary-foreground: 0 0% 100%;
-    --primary-deep: 206 76% 16%;
+    --primary-deep: 206 62% 24%;
     --primary-soft: 208 40% 93%;
 
     /* Accent: Metallic Gold #B8860B — premium CTA, warmth, credibility */
@@ -37,11 +37,11 @@
     --sand-deep: 40 33% 91%;
 
     /* Navy text */
-    --navy: 208 50% 18%;
-    --navy-soft: 208 30% 40%;
+    --navy: 208 45% 24%;
+    --navy-soft: 208 30% 44%;
 
     --secondary: 208 30% 96%;
-    --secondary-foreground: 208 50% 18%;
+    --secondary-foreground: 208 45% 24%;
 
     --muted: 40 30% 95%;
     --muted-foreground: 208 12% 48%;
@@ -51,9 +51,9 @@
 
     --border: 40 25% 90%;
     --input: 40 25% 90%;
-    --ring: 208 67% 26%;
+    --ring: 208 58% 36%;
 
-    --chart-1: 208 67% 26%;
+    --chart-1: 208 58% 36%;
     --chart-2: 43 85% 38%;
     --chart-3: 188 94% 43%;
     --chart-4: 40 80% 55%;
@@ -62,13 +62,13 @@
     --radius: 0.75rem;
 
     --sidebar-background: 40 50% 96%;
-    --sidebar-foreground: 208 50% 18%;
-    --sidebar-primary: 208 67% 26%;
+    --sidebar-foreground: 208 45% 24%;
+    --sidebar-primary: 208 58% 36%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 208 30% 95%;
-    --sidebar-accent-foreground: 208 50% 18%;
+    --sidebar-accent-foreground: 208 45% 24%;
     --sidebar-border: 40 25% 90%;
-    --sidebar-ring: 208 67% 26%;
+    --sidebar-ring: 208 58% 36%;
 
     --font-heading: 'Poppins', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
@@ -82,9 +82,9 @@
     --card-foreground: 40 30% 95%;
     --popover: 208 35% 12%;
     --popover-foreground: 40 30% 95%;
-    --primary: 208 60% 40%;
+    --primary: 208 55% 48%;
     --primary-foreground: 0 0% 100%;
-    --primary-deep: 206 70% 25%;
+    --primary-deep: 206 60% 30%;
     --primary-soft: 208 40% 18%;
     --accent: 43 75% 50%;
     --accent-foreground: 0 0% 100%;
@@ -104,15 +104,15 @@
     --destructive-foreground: 0 0% 98%;
     --border: 208 30% 22%;
     --input: 208 30% 22%;
-    --ring: 208 60% 40%;
+    --ring: 208 55% 48%;
     --sidebar-background: 208 40% 8%;
     --sidebar-foreground: 40 30% 95%;
-    --sidebar-primary: 208 60% 40%;
+    --sidebar-primary: 208 55% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 208 30% 18%;
     --sidebar-accent-foreground: 40 30% 95%;
     --sidebar-border: 208 30% 22%;
-    --sidebar-ring: 208 60% 40%;
+    --sidebar-ring: 208 55% 48%;
   }
 }
 
