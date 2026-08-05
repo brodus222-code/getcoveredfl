@@ -23,10 +23,10 @@
     --primary-soft: 208 40% 93%;
 
     /* Accent: Metallic Gold #B8860B — premium CTA, warmth, credibility */
-    --accent: 43 85% 38%;
+    --accent: 50 85% 40%;
     --accent-foreground: 0 0% 100%;
-    --accent-deep: 43 90% 30%;
-    --accent-soft: 45 60% 95%;
+    --accent-deep: 50 90% 30%;
+    --accent-soft: 50 60% 95%;
 
     /* Turquoise secondary (tropical water) */
     --turquoise: 188 94% 43%;
@@ -54,7 +54,7 @@
     --ring: 208 58% 36%;
 
     --chart-1: 208 58% 36%;
-    --chart-2: 43 85% 38%;
+    --chart-2: 50 85% 40%;
     --chart-3: 188 94% 43%;
     --chart-4: 40 80% 55%;
     --chart-5: 280 65% 60%;
@@ -86,10 +86,10 @@
     --primary-foreground: 0 0% 100%;
     --primary-deep: 206 60% 30%;
     --primary-soft: 208 40% 18%;
-    --accent: 43 75% 50%;
+    --accent: 50 75% 52%;
     --accent-foreground: 0 0% 100%;
-    --accent-deep: 43 85% 38%;
-    --accent-soft: 43 40% 15%;
+    --accent-deep: 50 85% 38%;
+    --accent-soft: 50 40% 15%;
     --turquoise: 188 70% 50%;
     --turquoise-soft: 188 40% 20%;
     --sand: 208 30% 12%;
