@@ -37,7 +37,7 @@ export default function GetCovered() {
 
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
-      <SiteHeader variant="transparent" />
+      <SiteHeader variant="light" />
       <ZipHero
         badgeText="Florida's Trusted Health Insurance Guide"
         heading="Find Affordable Health Insurance in Florida"

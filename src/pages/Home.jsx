@@ -13,7 +13,7 @@ import MobileCallBar from '@/components/shared/MobileCallBar';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white pb-16 md:pb-0">
-      <SiteHeader variant="transparent" />
+      <SiteHeader variant="light" />
       <ZipHero
         badgeText="Florida's Trusted Health Insurance Guide"
         heading="Find Affordable Health Insurance in Florida"
