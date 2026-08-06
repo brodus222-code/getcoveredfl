@@ -6,6 +6,7 @@ import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
 import CarrierLogos from '@/components/landing/CarrierLogos';
+import RatingBadge from '@/components/landing/RatingBadge';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -78,6 +79,7 @@ export default function PrivatePPO() {
 
       <TrustBar />
       <CarrierLogos />
+      <RatingBadge />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">

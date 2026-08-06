@@ -3,6 +3,7 @@ import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
 import CarrierLogos from '@/components/landing/CarrierLogos';
+import RatingBadge from '@/components/landing/RatingBadge';
 import HowItWorks from '@/components/landing/HowItWorks';
 import CoverageTiles from '@/components/landing/CoverageTiles';
 import AboutSection from '@/components/landing/AboutSection';
@@ -21,6 +22,7 @@ export default function Home() {
       />
       <TrustBar />
       <CarrierLogos />
+      <RatingBadge />
       <HowItWorks />
       <CoverageTiles />
       <AboutSection />

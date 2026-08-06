@@ -6,6 +6,7 @@ import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
 import CarrierLogos from '@/components/landing/CarrierLogos';
+import RatingBadge from '@/components/landing/RatingBadge';
 import EligibilityBanner from '@/components/landing/EligibilityBanner';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
@@ -46,6 +47,7 @@ export default function GetCovered() {
       />
       <TrustBar />
       <CarrierLogos />
+      <RatingBadge />
 
       {/* Eligibility banner with image */}
       <EligibilityBanner />
