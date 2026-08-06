@@ -76,9 +76,9 @@ export default function SelfEmployed() {
         onAgentClick={() => setModalOpen(true)}
       />
 
-      <TrustBar />
-
       <CarrierLogos />
+
+      <TrustBar />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">

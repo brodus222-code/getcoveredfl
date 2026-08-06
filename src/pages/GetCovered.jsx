@@ -44,8 +44,8 @@ export default function GetCovered() {
         subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
         onAgentClick={() => setModalOpen(true)}
       />
-      <TrustBar />
       <CarrierLogos />
+      <TrustBar />
 
       {/* Eligibility banner with image */}
       <EligibilityBanner />
