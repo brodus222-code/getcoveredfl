@@ -99,7 +99,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
             </div>
           </div>
 
-          <CallButton className="animate-call-pulse" />
+          <CallButton className="animate-call-pulse hidden md:inline-flex" />
         </div>
       </div>
     </section>
