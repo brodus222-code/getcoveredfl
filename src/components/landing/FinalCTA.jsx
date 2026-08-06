@@ -63,7 +63,7 @@ export default function FinalCTA() {
           <button
             type="submit"
             disabled={zip.length !== 5}
-            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-5 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-5 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
           >
             Get My Quotes
             <ArrowRight className="w-5 h-5" />
