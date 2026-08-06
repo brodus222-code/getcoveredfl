@@ -105,14 +105,14 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
             type="button"
             onClick={onBack}
             disabled={isSubmitting}
-            className="flex-1 inline-flex items-center justify-center gap-1 py-5 text-lg font-medium rounded-2xl border-2 border-sand-deep text-navy-soft hover:bg-sand transition-colors disabled:opacity-50"
+            className="flex-1 inline-flex items-center justify-center gap-1 py-5 text-lg font-medium rounded-2xl border-2 border-sand-deep text-navy-soft hover:bg-sand transition-colors"
           >
             ← Back
           </button>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5 disabled:opacity-70 disabled:hover:translate-y-0"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
           >
             {isSubmitting ? (
               <>

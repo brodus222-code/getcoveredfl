@@ -46,7 +46,7 @@ export default function StepZipCode({ data, onChange, onNext }) {
         <button
           type="submit"
           disabled={!data.zip_code || data.zip_code.length !== 5}
-          className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-primary transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
+          className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-primary transition-all hover:-translate-y-0.5"
         >
           Continue
           <ArrowRight className="w-5 h-5" />
