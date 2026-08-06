@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
-import { ArrowLeft, Newspaper, Calendar } from 'lucide-react';
+import { ArrowLeft, Newspaper, Calendar, Phone } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { categoryConfig } from '@/lib/blogCategories';
 import SiteHeader from '@/components/shared/SiteHeader';
@@ -12,8 +12,8 @@ import CarrierLogos from '@/components/landing/CarrierLogos';
 
 const markdownComponents = {
   h1: ({ children }) => <h1 className="text-2xl font-bold text-navy font-heading mt-8 mb-4">{children}</h1>,
-  h2: ({ children }) => <h2 className="text-xl font-bold text-navy font-heading mt-7 mb-3">{children}</h2>,
-  h3: ({ children }) => <h3 className="text-lg font-bold text-navy font-heading mt-6 mb-2">{children}</h3>,
+  h2: ({ children }) => <h2 className="text-xl font-bold text-navy font-heading mt-7 mb-3 scroll-mt-24" id={typeof children === 'string' ? children.toLowerCase().replace(/[^a-z0-9]+/g, '-') : undefined}>{children}</h2>,
+  h3: ({ children }) => <h3 className="text-lg font-bold text-navy font-heading mt-6 mb-2 scroll-mt-24" id={typeof children === 'string' ? children.toLowerCase().replace(/[^a-z0-9]+/g, '-') : undefined}>{children}</h3>,
   p: ({ children }) => <p className="text-navy-soft leading-relaxed mb-4">{children}</p>,
   ul: ({ children }) => <ul className="list-disc list-inside text-navy-soft mb-4 space-y-1.5">{children}</ul>,
   ol: ({ children }) => <ol className="list-decimal list-inside text-navy-soft mb-4 space-y-1.5">{children}</ol>,
@@ -22,6 +22,100 @@ const markdownComponents = {
   blockquote: ({ children }) => <blockquote className="border-l-4 border-primary pl-4 italic text-navy-soft my-5">{children}</blockquote>,
   hr: () => <hr className="border-sand-deep my-6" />,
 };
+
+// Inject JSON-LD structured data for Google rich results (Article + FAQPage schema)
+function useSeoSchema(post) {
+  useEffect(() => {
+    if (!post) return;
+
+    // Set document title
+    document.title = post.title;
+
+    // Set or update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', post.meta_description || post.excerpt || '');
+
+    // Build JSON-LD structured data
+    const url = `https://getcoveredfl.com/blog/${post.slug}`;
+    const articleSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      description: post.meta_description || post.excerpt,
+      datePublished: post.published_date,
+      author: {
+        '@type': 'Organization',
+        name: post.author || 'HealthLink Insurance Agency',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'GetCoveredFL',
+        url: 'https://getcoveredfl.com',
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': url,
+      },
+      keywords: post.focus_keyword || '',
+    };
+
+    const schemas = [articleSchema];
+
+    // Add FAQ schema if faq_content exists — powers Google featured snippets
+    if (post.faq_content) {
+      const faqPairs = [];
+      const lines = post.faq_content.split('\n');
+      let currentQ = null;
+      let currentA = [];
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('###')) {
+          if (currentQ && currentA.length) {
+            faqPairs.push({ q: currentQ, a: currentA.join(' ').trim() });
+          }
+          currentQ = trimmed.replace(/^#+\s*/, '').replace(/^Q:?\s*/i, '');
+          currentA = [];
+        } else if (currentQ && trimmed) {
+          currentA.push(trimmed);
+        }
+      }
+      if (currentQ && currentA.length) {
+        faqPairs.push({ q: currentQ, a: currentA.join(' ').trim() });
+      }
+      if (faqPairs.length) {
+        schemas.push({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqPairs.map(p => ({
+            '@type': 'Question',
+            name: p.q,
+            acceptedAnswer: { '@type': 'Answer', text: p.a },
+          })),
+        });
+      }
+    }
+
+    // Remove any existing schema script
+    const existing = document.getElementById('blog-jsonld');
+    if (existing) existing.remove();
+
+    const script = document.createElement('script');
+    script.id = 'blog-jsonld';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schemas);
+    document.head.appendChild(script);
+
+    return () => {
+      const el = document.getElementById('blog-jsonld');
+      if (el) el.remove();
+    };
+  }, [post]);
+}
 
 export default function BlogPostDetail() {
   const { slug } = useParams();
@@ -35,6 +129,8 @@ export default function BlogPostDetail() {
       .catch(() => setPost(null))
       .finally(() => setLoading(false));
   }, [slug]);
+
+  useSeoSchema(post);
 
   const cat = post ? (categoryConfig[post.category] || categoryConfig.general) : null;
   const CatIcon = cat?.icon;
@@ -87,7 +183,33 @@ export default function BlogPostDetail() {
               {post.content}
             </ReactMarkdown>
 
+            {post.faq_content && (
+              <div className="mt-10 pt-8 border-t border-sand-deep/40">
+                <h2 className="text-xl font-bold text-navy font-heading mb-5">Frequently Asked Questions</h2>
+                <div className="space-y-6">
+                  <ReactMarkdown components={markdownComponents}>
+                    {post.faq_content}
+                  </ReactMarkdown>
+                </div>
+              </div>
+            )}
+
             <div className="mt-10 pt-8 border-t border-sand-deep/40">
+              <div className="rounded-2xl bg-primary-soft p-6 text-center">
+                <h3 className="text-lg font-bold text-navy font-heading mb-2">Ready to find your plan?</h3>
+                <p className="text-navy-soft text-sm mb-4">Get free quotes from licensed Florida agents in minutes.</p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link to="/GetCovered" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-3 rounded-2xl transition-colors">
+                    Get Free Quotes
+                  </Link>
+                  <a href="tel:+18556345343" className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white font-bold px-6 py-3 rounded-2xl transition-colors">
+                    <Phone className="w-4 h-4" /> (855) 634-5343
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8">
               <Link to="/blog" className="inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-2xl hover:bg-primary-deep transition-colors">
                 <ArrowLeft className="w-4 h-4" /> Back to Blog
               </Link>

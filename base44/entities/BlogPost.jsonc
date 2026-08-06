@@ -14,9 +14,21 @@
       "type": "string",
       "description": "Short summary shown on the blog listing"
     },
+    "meta_description": {
+      "type": "string",
+      "description": "SEO meta description for search engines (under 160 chars)"
+    },
+    "focus_keyword": {
+      "type": "string",
+      "description": "Primary SEO keyword the post targets"
+    },
     "content": {
       "type": "string",
       "description": "Full post body in markdown"
+    },
+    "faq_content": {
+      "type": "string",
+      "description": "FAQ section in markdown \u2014 powers FAQ schema for Google featured snippets"
     },
     "category": {
       "type": "string",

@@ -1,6 +1,6 @@
 {
   "name": "Auto-Generate SEO Blog Posts",
-  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post twice a week (Monday and Thursday at 9am ET)",
+  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post twice a week (Monday and Thursday at 9am ET) using Claude Sonnet for top-quality long-form content with FAQ schema and keyword targeting.",
   "trigger": {
     "condition": null,
     "config": {
@@ -31,7 +31,9 @@
           "call": "invoke_backend_function",
           "with": {
             "function_name": "generateSeoBlogPost",
-            "secret": "${ $ENV.BLOG_GENERATION_SECRET }"
+            "args": {
+              "secret": "${ $ENV.BLOG_GENERATION_SECRET }"
+            }
           },
           "then": "end",
           "x-base44": {
