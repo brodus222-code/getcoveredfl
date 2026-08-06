@@ -1,0 +1,44 @@
+{
+  "name": "Auto-Generate SEO Blog Posts",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 9 * * 1,4",
+      "one_time_date": null,
+      "timezone": "America/New_York",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "auto_seo_blog_post",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "generate_post": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "generateSeoBlogPost"
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Generate SEO blog post",
+            "description": "AI-generated Florida health insurance content"
+          }
+        }
+      }
+    ]
+  },
+  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post twice a week (Monday and Thursday at 9am ET)"
+}
