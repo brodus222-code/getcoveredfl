@@ -24,11 +24,11 @@ const carriers = [
 export default function CarrierLogos() {
   return (
     <section className="w-full bg-sand">
-      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-8">
-        <p className="text-center text-xs uppercase tracking-widest font-semibold text-navy-soft mb-6">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 pt-4 pb-8 sm:py-8">
+        <p className="hidden sm:block text-center text-xs uppercase tracking-widest font-semibold text-navy-soft mb-6">
           Plans from carriers you trust
         </p>
-        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-12 gap-y-5">
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-items-center sm:justify-center gap-x-8 sm:gap-x-12 gap-y-4">
           {carriers.map((c) => (
             <img
               key={c.name}
