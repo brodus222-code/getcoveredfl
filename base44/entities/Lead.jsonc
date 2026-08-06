@@ -29,7 +29,8 @@
         "short_term_gap",
         "first_time_coverage",
         "ppo_broad_network",
-        "most_affordable"
+        "most_affordable",
+        "callback_request"
       ],
       "description": "Type of coverage interested in"
     },

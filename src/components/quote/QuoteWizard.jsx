@@ -95,14 +95,8 @@ export default function QuoteWizard() {
       });
     }
 
-    try {
-      await base44.functions.invoke('notifyAgentNewLead', { data: leadData });
-    } catch (e) {
-      // Agent notification failed — lead is still saved
-    }
-
-    // Confirmation email is sent server-side by the "Send Lead Confirmation Email"
-    // workflow (entity-create trigger), so no client call is needed here.
+    // Agent notification and confirmation email are both sent server-side by
+    // workflows (entity-create trigger) — no client-side function calls needed.
 
     setIsSubmitting(false);
     setCurrentStep(TOTAL_STEPS + 1);

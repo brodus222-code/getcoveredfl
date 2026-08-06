@@ -21,14 +21,18 @@ export default function CallbackModal({ open, onClose }) {
     e.preventDefault();
     if (!name.trim() || phone.replace(/\D/g, '').length < 10) return;
     setLoading(true);
-    await base44.functions.invoke('notifyAgentNewLead', {
-      data: {
-        full_name: name,
-        phone,
-        email: 'callback-request@getcoveredfl.com',
-        zip_code: 'N/A',
-        coverage_type: 'callback_request',
-      },
+    // Create a Lead entity — the "Notify Agent on New Lead" workflow fires
+    // server-side on Lead create and calls notifyAgentNewLead with the
+    // WORKFLOW_SECRET, so no client-side function call is needed.
+    // confirmation_email_sent is set true to skip the confirmation-email
+    // workflow, since callback requests have no real email address.
+    await base44.entities.Lead.create({
+      full_name: name,
+      phone,
+      email: 'callback-request@getcoveredfl.com',
+      zip_code: 'N/A',
+      coverage_type: 'callback_request',
+      confirmation_email_sent: true,
     });
     setLoading(false);
     setSubmitted(true);
