@@ -74,7 +74,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
             <button
               type="submit"
               disabled={zipInput.length !== 5}
-              className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:hover:translate-y-0"
+              className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
             >
               See My Options
               <ArrowRight className="w-5 h-5" />
