@@ -19,8 +19,8 @@ export default function Home() {
         heading="Find Affordable Health Insurance in Florida"
         subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
       />
-      <CarrierLogos />
       <TrustBar />
+      <CarrierLogos />
       <HowItWorks />
       <CoverageTiles />
       <AboutSection />
