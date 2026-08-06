@@ -1,5 +1,6 @@
 {
   "name": "Auto-Generate SEO Blog Posts",
+  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post twice a week (Monday and Thursday at 9am ET)",
   "trigger": {
     "condition": null,
     "config": {
@@ -29,7 +30,8 @@
         "generate_post": {
           "call": "invoke_backend_function",
           "with": {
-            "function_name": "generateSeoBlogPost"
+            "function_name": "generateSeoBlogPost",
+            "secret": "${ $ENV.BLOG_GENERATION_SECRET }"
           },
           "then": "end",
           "x-base44": {
@@ -39,6 +41,5 @@
         }
       }
     ]
-  },
-  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post twice a week (Monday and Thursday at 9am ET)"
+  }
 }
