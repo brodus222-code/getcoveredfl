@@ -8,8 +8,12 @@ import { secrets } from 'base44:runtime';
 
 export default async function(req) {
   try {
+    const body = await req.json().catch(() => ({}));
+    if (!body.secret || body.secret !== process.env.WORKFLOW_SECRET) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const base44 = createClientFromRequest(req);
-    const body = await req.json();
 
     // Only the lead record id is accepted; the lead is read from this app's DB
     // (service role), so callers cannot inject arbitrary CRM payload data.

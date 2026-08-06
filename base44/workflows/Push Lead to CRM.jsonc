@@ -24,7 +24,8 @@
           "with": {
             "function_name": "pushLeadToCrm",
             "args": {
-              "lead_id": "${ .trigger.entity_id }"
+              "lead_id": "${ .trigger.entity_id }",
+              "secret": "${ $ENV.WORKFLOW_SECRET }"
             }
           },
           "then": "end",
