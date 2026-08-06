@@ -23,7 +23,7 @@ const carriers = [
 
 export default function CarrierLogos() {
   return (
-    <section className="w-full bg-white border-y border-sand-deep/40">
+    <section className="w-full bg-sand">
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-8">
         <p className="text-center text-xs uppercase tracking-widest font-semibold text-navy-soft mb-6">
           Plans from carriers you trust
