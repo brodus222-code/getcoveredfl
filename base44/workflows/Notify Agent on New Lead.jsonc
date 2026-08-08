@@ -13,8 +13,7 @@
           "with": {
             "function_name": "notifyAgentNewLead",
             "args": {
-              "lead_id": "${ .trigger.entity_id }",
-              "secret": "${ $ENV.WORKFLOW_SECRET }"
+              "lead_id": "${ .trigger.entity_id }"
             }
           },
           "then": "end",

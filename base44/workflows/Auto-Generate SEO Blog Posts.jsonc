@@ -31,9 +31,7 @@
           "call": "invoke_backend_function",
           "with": {
             "function_name": "generateSeoBlogPost",
-            "args": {
-              "secret": "${ $ENV.BLOG_GENERATION_SECRET }"
-            }
+            "args": {}
           },
           "then": "end",
           "x-base44": {

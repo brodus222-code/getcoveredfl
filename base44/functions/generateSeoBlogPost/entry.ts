@@ -40,12 +40,6 @@ const TOPIC_AREAS = [
 
 export default async function(req) {
   try {
-    // Verify caller is authorized — only the scheduled workflow has the secret
-    const body = await req.json().catch(() => ({}));
-    if (!body.secret || body.secret !== process.env.BLOG_GENERATION_SECRET) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const base44 = createClientFromRequest(req);
 
     // Pick a topic based on the current day index (rotates through the list)

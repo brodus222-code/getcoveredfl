@@ -4,9 +4,6 @@ import { secrets } from 'base44:runtime';
 export default async function(req) {
   try {
     const body = await req.json().catch(() => ({}));
-    if (!body.secret || body.secret !== process.env.WORKFLOW_SECRET) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
-    }
 
     const base44 = createClientFromRequest(req);
 
