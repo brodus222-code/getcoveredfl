@@ -86,6 +86,13 @@ const AuthenticatedApp = () => {
           <LeadManagement />
         </ProtectedRoute>
       } />
+      {/* 301 redirects for old URLs Google has indexed */}
+      <Route path="/terms-of-service" element={<Navigate to="/Terms" replace />} />
+      <Route path="/privacy-policy" element={<Navigate to="/Privacy" replace />} />
+      <Route path="/request-quote" element={<Navigate to="/Quote" replace />} />
+      <Route path="/special-enrollment" element={<Navigate to="/Marketplace" replace />} />
+      <Route path="/plans/short-term-coverage" element={<Navigate to="/ppo" replace />} />
+      <Route path="/plans/family-plans" element={<Navigate to="/Quote" replace />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
