@@ -1,13 +1,13 @@
 {
   "name": "Auto-Generate SEO Blog Posts",
-  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post twice a week (Monday and Thursday at 9am ET) using Claude Sonnet for top-quality long-form content with FAQ schema and keyword targeting.",
+  "description": "Generates and auto-publishes an SEO-optimized Florida health insurance blog post three times a week (Monday, Wednesday, and Friday at 9am ET) using Claude Sonnet for top-quality long-form content with FAQ schema and keyword targeting.",
   "trigger": {
     "condition": null,
     "config": {
       "trigger_type": "scheduled",
       "events": [],
       "schedule_mode": "recurring",
-      "cron_expression": "0 9 * * 1,4",
+      "cron_expression": "0 9 * * 1,3,5",
       "one_time_date": null,
       "timezone": "America/New_York",
       "interval_value": null,
