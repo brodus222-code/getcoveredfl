@@ -94,11 +94,11 @@ export default function QuoteWizard() {
         event_value: 0,
       });
 
-      // Fire Facebook Pixel Lead conversion event
+      // Fire Facebook Pixel Contact conversion event
       if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Lead', {
-          content_name: 'Health Insurance Quote Request',
-          content_category: 'Insurance Lead',
+        window.fbq('track', 'Contact', {
+          content_name: 'Quote Request',
+          content_category: 'Contact Form',
           value: 0,
           currency: 'USD',
           test_event_code: 'TEST55007',
