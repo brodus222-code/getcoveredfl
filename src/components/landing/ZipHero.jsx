@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight, Headphones } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
@@ -37,7 +37,9 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
   return (
     <section className="bg-sand">
       {/* Hero content */}
-      <div className="max-w-3xl mx-auto px-5 sm:px-6 pt-10 pb-8 md:pt-16 md:pb-12 text-center">
+      <div className={`mx-auto px-5 sm:px-6 pt-10 pb-8 md:pt-16 md:pb-12 text-center ${heroImage ? 'max-w-6xl lg:text-left' : 'max-w-3xl'}`}>
+        <div className={heroImage ? 'lg:flex lg:items-center lg:gap-12' : ''}>
+        <div className={heroImage ? 'lg:flex-1' : ''}>
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-[#FDF1D3] rounded-full px-4 py-2 mb-6">
           <Calendar className="w-4 h-4 text-accent-deep" />
@@ -81,6 +83,17 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick }
             </button>
           </div>
         </form>
+        </div>
+        {heroImage && (
+          <div className="hidden lg:block lg:flex-1">
+            <img
+              src={heroImage}
+              alt="Florida health insurance"
+              className="w-full h-[420px] object-cover rounded-3xl shadow-soft"
+            />
+          </div>
+        )}
+        </div>
       </div>
 
       {/* Bottom utility bar */}

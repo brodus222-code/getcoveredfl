@@ -52,6 +52,7 @@ export default function ACA() {
         heading={<>Florida's official <span className="text-accent">Health Insurance Marketplace</span></>}
         subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-white">in minutes.</strong></>}
         onAgentClick={() => setModalOpen(true)}
+        heroImage="https://images.unsplash.com/photo-1576091160399-2ba5f5c9c989?w=800&auto=format&fit=crop&q=80"
       />
 
       <TrustBar />
