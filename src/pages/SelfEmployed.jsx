@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, CalendarClock } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, CalendarClock, Network } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
@@ -14,8 +14,10 @@ import CallbackModal from '@/components/quote/CallbackModal';
 
 const benefits = [
   'ACA subsidies that can lower your premium based on net income',
+  'Private PPO plans with broad nationwide doctor & hospital networks',
   'Self-employment income qualifies for premium tax credits',
   'Write off qualified medical and premium expenses on Schedule C',
+  'PPO options that let you see specialists without a referral',
   'Dental, vision & HSA-compatible plan options',
   'Special Enrollment Periods when your income changes mid-year',
   'Coverage that travels with you — not tied to an employer',
@@ -26,6 +28,11 @@ const reasons = [
     icon: Calculator,
     title: 'Income-based subsidies',
     body: 'ACA premium credits are based on your net self-employment income, not gross. Many freelancers and contractors qualify for significantly reduced premiums after subsidies.',
+  },
+  {
+    icon: Network,
+    title: 'Private PPO flexibility',
+    body: 'Want to skip the Marketplace entirely? Private PPO plans offer broad nationwide networks and specialist access without referrals — ideal when you travel for work or see out-of-state providers.',
   },
   {
     icon: Briefcase,
@@ -59,6 +66,14 @@ const faqs = [
   {
     q: 'What if I just lost my employer coverage?',
     a: 'Losing employer-sponsored coverage is a qualifying life event that opens a Special Enrollment Period. We can get you covered in days, not months.',
+  },
+  {
+    q: 'Should I choose an ACA plan or a private PPO?',
+    a: 'It depends on your income and network needs. If you qualify for subsidies, an ACA Marketplace plan is often the most affordable. If you earn too much for subsidies or want a broader nationwide network with no referrals, a private PPO may be the better fit. Our agents compare both side by side so you can decide.',
+  },
+  {
+    q: 'Can a private PPO cover me if I travel for work?',
+    a: 'Yes. Private PPO plans typically feature large nationwide networks, so you can see doctors and specialists across state lines — a major advantage for self-employed Floridians who travel or work with out-of-state clients.',
   },
 ];
 
@@ -119,7 +134,7 @@ export default function SelfEmployed() {
               Your coverage shouldn&apos;t depend on an employer
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {reasons.map((r) => {
               const Icon = r.icon;
               return (
@@ -147,10 +162,10 @@ export default function SelfEmployed() {
         </div>
         <div className="relative max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-balance">
-            See your real subsidy in 2 minutes
+            Compare ACA and private PPO options in 2 minutes
           </h2>
           <p className="text-white/80 mb-8 text-lg">
-            Enter your ZIP and income and a licensed agent will show you exactly what you qualify for — no obligation.
+            Enter your ZIP and a licensed agent will show you both subsidized Marketplace plans and private PPO options — no obligation.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
