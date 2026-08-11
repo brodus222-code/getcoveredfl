@@ -5,7 +5,7 @@ import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, Hear
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import CarrierLogos, { carriers } from '@/components/landing/CarrierLogos';
+import { carriers } from '@/components/landing/CarrierLogos';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -78,25 +78,10 @@ export default function PrivatePPO() {
         leftAlignForm
         belowButton={
           <div className="mt-6 max-w-md mx-auto lg:mx-0">
-            <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm">
-              <div className="flex items-center gap-0.5 flex-shrink-0">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Star key={i} className="w-5 h-5 text-[#FFC107] fill-[#FFC107]" />
-                ))}
-              </div>
-              <div className="text-left">
-                <span className="block text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
-                <span className="block text-xs text-[#607D8B] leading-snug">average rating from verified shoppers across our network</span>
-              </div>
-            </div>
-          </div>
-        }
-        belowImage={
-          <div className="mt-6">
-            <p className="text-[11px] uppercase tracking-widest font-semibold text-[#607D8B] mb-3 text-center">
+            <p className="text-[11px] uppercase tracking-widest font-semibold text-[#607D8B] mb-3 text-center lg:text-left">
               Compare plans from top carriers
             </p>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-center lg:justify-start gap-3">
               {carriers.map((c) => (
                 <div
                   key={c.name}
@@ -113,11 +98,36 @@ export default function PrivatePPO() {
             </div>
           </div>
         }
+        belowImage={
+          <div className="mt-6">
+            <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm max-w-xs mx-auto">
+              <div className="flex items-center gap-0.5 flex-shrink-0">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star key={i} className="w-5 h-5 text-[#FFC107] fill-[#FFC107]" />
+                ))}
+              </div>
+              <div className="text-left">
+                <span className="block text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
+                <span className="block text-xs text-[#607D8B] leading-snug">average rating from verified shoppers across our network</span>
+              </div>
+            </div>
+          </div>
+        }
       />
 
-      {/* Mobile-only carrier logos (desktop shows them under the hero image) */}
-      <div className="lg:hidden">
-        <CarrierLogos />
+      {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
+      <div className="lg:hidden px-5 sm:px-6 pb-2">
+        <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm max-w-sm mx-auto">
+          <div className="flex items-center gap-0.5 flex-shrink-0">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} className="w-5 h-5 text-[#FFC107] fill-[#FFC107]" />
+            ))}
+          </div>
+          <div className="text-left">
+            <span className="block text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
+            <span className="block text-xs text-[#607D8B] leading-snug">average rating from verified shoppers across our network</span>
+          </div>
+        </div>
       </div>
 
       <TrustBar />
