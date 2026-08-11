@@ -101,6 +101,7 @@ export default function QuoteWizard() {
           content_category: 'Insurance Lead',
           value: 0,
           currency: 'USD',
+          test_event_code: 'TEST55007',
         });
       }
     }
