@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, HeartPulse, Star } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, HeartPulse } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import { carriers } from '@/components/landing/CarrierLogos';
+import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
+import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -76,57 +77,14 @@ export default function PrivatePPO() {
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/b2fb8c723_generated_image.png"
         leftAlignForm
-        belowButton={
-          <div className="mt-6 max-w-md mx-auto lg:mx-0">
-            <p className="text-[11px] uppercase tracking-widest font-semibold text-[#607D8B] mb-3 text-center lg:text-left">
-              Compare plans from top carriers
-            </p>
-            <div className="flex items-center justify-center lg:justify-start gap-3">
-              {carriers.map((c) => (
-                <div
-                  key={c.name}
-                  className="bg-white rounded-xl border border-sand-deep/60 px-3 py-2 flex items-center justify-center"
-                >
-                  <img
-                    src={c.src}
-                    alt={`${c.name} logo`}
-                    title={c.name}
-                    className={`h-6 w-auto object-contain opacity-80 ${c.offset || ''}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        }
-        belowImage={
-          <div className="mt-6">
-            <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm w-full">
-              <div className="flex items-center gap-0.5 flex-shrink-0">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Star key={i} className="w-5 h-5 text-[#FFC107] fill-[#FFC107]" />
-                ))}
-              </div>
-              <div className="text-left">
-                <span className="block text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
-                <span className="block text-xs text-[#607D8B] leading-snug">average rating from verified shoppers across our network</span>
-              </div>
-            </div>
-          </div>
-        }
+        belowButton={<HeroCarrierLogos />}
+        belowImage={<HeroTrustBubble />}
       />
 
       {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
       <div className="lg:hidden px-5 sm:px-6 pb-2">
-        <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm max-w-sm mx-auto">
-          <div className="flex items-center gap-0.5 flex-shrink-0">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <Star key={i} className="w-5 h-5 text-[#FFC107] fill-[#FFC107]" />
-            ))}
-          </div>
-          <div className="text-left">
-            <span className="block text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
-            <span className="block text-xs text-[#607D8B] leading-snug">average rating from verified shoppers across our network</span>
-          </div>
+        <div className="max-w-sm mx-auto">
+          <HeroTrustBubble />
         </div>
       </div>
 

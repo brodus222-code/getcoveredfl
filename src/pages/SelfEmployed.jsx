@@ -5,8 +5,8 @@ import { CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, Cal
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import CarrierLogos from '@/components/landing/CarrierLogos';
-import RatingBadge from '@/components/landing/RatingBadge';
+import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
+import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -91,11 +91,19 @@ export default function SelfEmployed() {
         subheading="Self-employed in Florida? Find affordable health plans that stay with you — not tied to an employer."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/d1ec83eaa_generated_image.png"
+        leftAlignForm
+        belowButton={<HeroCarrierLogos />}
+        belowImage={<HeroTrustBubble />}
       />
 
+      {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
+      <div className="lg:hidden px-5 sm:px-6 pb-2">
+        <div className="max-w-sm mx-auto">
+          <HeroTrustBubble />
+        </div>
+      </div>
+
       <TrustBar />
-      <CarrierLogos />
-      <RatingBadge />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">

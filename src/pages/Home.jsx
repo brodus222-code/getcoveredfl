@@ -2,8 +2,8 @@ import React from 'react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import CarrierLogos from '@/components/landing/CarrierLogos';
-import RatingBadge from '@/components/landing/RatingBadge';
+import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
+import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import HowItWorks from '@/components/landing/HowItWorks';
 import CoverageTiles from '@/components/landing/CoverageTiles';
 import AboutSection from '@/components/landing/AboutSection';
@@ -20,10 +20,19 @@ export default function Home() {
         heading="Find Affordable Health Insurance in Florida"
         subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/3d0905bcf_generated_image.png"
+        leftAlignForm
+        belowButton={<HeroCarrierLogos />}
+        belowImage={<HeroTrustBubble />}
       />
+
+      {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
+      <div className="lg:hidden px-5 sm:px-6 pb-2">
+        <div className="max-w-sm mx-auto">
+          <HeroTrustBubble />
+        </div>
+      </div>
+
       <TrustBar />
-      <CarrierLogos />
-      <RatingBadge />
       <HowItWorks />
       <CoverageTiles />
       <AboutSection />

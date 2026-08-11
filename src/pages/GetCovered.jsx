@@ -5,8 +5,8 @@ import { Phone, ArrowRight, Wrench, ShieldCheck, Clock } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import CarrierLogos from '@/components/landing/CarrierLogos';
-import RatingBadge from '@/components/landing/RatingBadge';
+import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
+import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import EligibilityBanner from '@/components/landing/EligibilityBanner';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
@@ -45,10 +45,19 @@ export default function GetCovered() {
         subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/3d0905bcf_generated_image.png"
+        leftAlignForm
+        belowButton={<HeroCarrierLogos />}
+        belowImage={<HeroTrustBubble />}
       />
+
+      {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
+      <div className="lg:hidden px-5 sm:px-6 pb-2">
+        <div className="max-w-sm mx-auto">
+          <HeroTrustBubble />
+        </div>
+      </div>
+
       <TrustBar />
-      <CarrierLogos />
-      <RatingBadge />
 
       {/* Eligibility banner with image */}
       <EligibilityBanner />
