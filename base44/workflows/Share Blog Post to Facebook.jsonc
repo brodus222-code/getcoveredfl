@@ -1,0 +1,40 @@
+{
+  "name": "Share Blog Post to Facebook",
+  "description": "Automatically publishes new blog posts to the agency's Facebook Page when they are created, driving social traffic and amplifying SEO content.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "entity",
+      "events": [
+        "create"
+      ],
+      "entity_name": "BlogPost"
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "share_blog_to_facebook",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "post_to_facebook": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "postBlogToFacebook",
+            "args": {
+              "post_id": "${ .trigger.entity_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Post to Facebook",
+            "description": "Share the new blog post to the agency Facebook Page"
+          }
+        }
+      }
+    ]
+  }
+}
