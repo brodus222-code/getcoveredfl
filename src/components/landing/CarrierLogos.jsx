@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Carrier logos uploaded by the agency — displayed under the hero for trust.
-const carriers = [
+export const carriers = [
   {
     name: 'Blue Cross Blue Shield',
     src: 'https://media.base44.com/images/public/696f51421917c989be527824/63996acff_bcbs_logo_transparent.png',

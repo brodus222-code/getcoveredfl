@@ -5,7 +5,7 @@ import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, Hear
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import CarrierLogos from '@/components/landing/CarrierLogos';
+import { carriers } from '@/components/landing/CarrierLogos';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -75,24 +75,39 @@ export default function PrivatePPO() {
         subheading="Private PPO plans give Florida residents broad-network coverage with no referrals and year-round enrollment — built for people who want flexibility over restrictions."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/b2fb8c723_generated_image.png"
-        belowButton={
-          <div className="flex items-center gap-2 justify-center lg:justify-start mt-5 max-w-md mx-auto lg:mx-0">
-            <div className="flex items-center gap-0.5">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="w-4 h-4 text-[#FFC107] fill-[#FFC107]" />
-              ))}
-            </div>
-            <span className="text-sm font-bold text-[#1A2432]">4.8/5</span>
-            <span className="text-xs text-[#607D8B]">from verified shoppers</span>
-          </div>
-        }
-        belowImage={<CarrierLogos />}
       />
 
+      {/* Rating badge + carrier logos in line, under the hero */}
+      <section className="bg-sand px-5 sm:px-6 pb-8 md:pb-10">
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
+          <div className="w-full max-w-sm lg:w-auto lg:flex-shrink-0">
+            <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm">
+              <div className="flex items-center gap-0.5 flex-shrink-0">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star key={i} className="w-5 h-5 text-[#FFC107] fill-[#FFC107]" />
+                ))}
+              </div>
+              <div className="text-left">
+                <span className="block text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
+                <span className="block text-xs text-[#607D8B] leading-snug">average rating from verified shoppers across our network</span>
+              </div>
+            </div>
+          </div>
+          <div className="flex-1 flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-end gap-6 lg:gap-10">
+            {carriers.map((c) => (
+              <img
+                key={c.name}
+                src={c.src}
+                alt={`${c.name} logo`}
+                title={c.name}
+                className={`h-10 sm:h-12 w-auto object-contain opacity-70 ${c.offset || ''}`}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <TrustBar />
-      <div className="lg:hidden">
-        <CarrierLogos />
-      </div>
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
