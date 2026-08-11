@@ -75,8 +75,9 @@ export default function PrivatePPO() {
         subheading="Private PPO plans give Florida residents broad-network coverage with no referrals and year-round enrollment — built for people who want flexibility over restrictions."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/b2fb8c723_generated_image.png"
+        leftAlignForm
         belowButton={
-          <div className="mt-6 max-w-md mx-auto">
+          <div className="mt-6 max-w-md mx-auto lg:mx-0">
             <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm">
               <div className="flex items-center gap-0.5 flex-shrink-0">
                 {[0, 1, 2, 3, 4].map((i) => (

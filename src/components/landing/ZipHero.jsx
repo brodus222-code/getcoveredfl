@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         </p>
 
         {/* Form */}
-        <form onSubmit={handleZipSubmit} className="max-w-md mx-auto">
+        <form onSubmit={handleZipSubmit} className={`max-w-md mx-auto ${leftAlignForm ? 'lg:mx-0' : ''}`}>
           {/* Progress line */}
           <div className="flex h-1.5 rounded-full overflow-hidden mb-6 bg-gray-200">
             <div className="w-1/2 bg-accent" />
