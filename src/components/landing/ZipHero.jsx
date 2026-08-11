@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, Phone, ArrowRight, Headphones } from 'lucide-react';
+import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
 export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage }) {
   const [zipInput, setZipInput] = useState('');
@@ -96,25 +96,6 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         </div>
       </div>
 
-      {/* Bottom utility bar */}
-      <div className="bg-[#1A2432] text-white hidden md:block">
-        <div className="max-w-3xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                <Headphones className="w-5 h-5 text-white" />
-              </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-[#1A2432]" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs text-white/70">Licensed Advisor Available</div>
-              <div className="text-sm font-bold font-heading">(855) 634-5343</div>
-            </div>
-          </div>
-
-          <CallButton className="animate-call-pulse hidden md:inline-flex" />
-        </div>
-      </div>
     </section>
   );
 }

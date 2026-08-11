@@ -55,10 +55,9 @@ export default function ACA() {
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
       />
 
-      <TrustBar />
-
       <CarrierLogos />
       <RatingBadge />
+      <TrustBar />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
