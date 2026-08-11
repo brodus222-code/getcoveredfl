@@ -63,6 +63,19 @@ export default async function(req) {
     const recent = await base44.asServiceRole.entities.BlogPost.list('-published_date', 15);
     const recentTitles = recent.map(p => p.title).join('\n') || '(none yet)';
 
+    // Fetch existing published posts for internal linking (up to 30)
+    const existingPosts = await base44.asServiceRole.entities.BlogPost.filter(
+      { status: 'published' },
+      '-published_date',
+      30
+    );
+    const internalLinkList = existingPosts
+      .map(p => `- "${p.title}" → /blog/${p.slug}`)
+      .join('\n');
+    const internalLinksBlock = internalLinkList
+      ? `\nEXISTING POSTS (for internal linking — use these EXACT URLs):\n${internalLinkList}`
+      : '\nEXISTING POSTS: (none yet — skip internal links this time)';
+
     const prompt = `You are an elite SEO content strategist and Florida health insurance expert writing for GetCoveredFL.com — a licensed Florida insurance agency (HealthLink Insurance Agency). Your goal: produce a blog post that ranks on page 1 of Google for the target keyword.
 
 TARGET KEYWORD: "${keyword}"
@@ -80,6 +93,14 @@ CONTENT STRUCTURE & LENGTH:
 - Include at least one bulleted list and one numbered list for scannability (Google loves lists)
 - Add a comparison table or quick-reference summary where relevant
 
+INTERNAL LINKING (critical for SEO — keeps visitors engaged and improves rankings):
+- Insert 3-5 contextual internal links to EXISTING posts within the body content where naturally relevant
+- Use keyword-rich anchor text (not "click here" or the full title) — e.g., [ACA subsidy eligibility](/blog/some-slug)
+- Place links where they add value to the reader, not forced — link when mentioning a concept that another post covers in depth
+- Use the EXACT URLs provided below — do not invent slugs
+- If there are no existing posts yet, skip internal linking
+${internalLinksBlock}
+
 E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness):
 - Write with the authority of a licensed Florida insurance professional
 - Cite specific ACA rules, income thresholds, and Florida-specific details (e.g., Florida Medicaid income limits, federally-facilitated Marketplace)
@@ -94,6 +115,11 @@ FAQ SECTION (critical for featured snippets):
 - Generate 4-5 common questions and answers (40-80 words each) that people search for on this topic
 - Format as: ### Question\nAnswer text (no "Q:" prefix)
 - These power FAQ schema markup for Google rich results
+
+RELATED READING SECTION (before the CTA):
+- Add a "## Related Reading" section near the end (before the CTA) with a bulleted list of 2-3 links to the most relevant EXISTING posts
+- Use the post titles as anchor text, linking to their exact URLs from the list above
+- If there are no existing posts, omit this section entirely
 
 CALL TO ACTION:
 - End with a natural CTA: readers can get free quotes at GetCoveredFL.com or call (855) 634-5343 to speak with a licensed Florida agent
