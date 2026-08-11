@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, HeartPulse } from 'lucide-react';
+import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, HeartPulse, Star } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
 import CarrierLogos from '@/components/landing/CarrierLogos';
-import RatingBadge from '@/components/landing/RatingBadge';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -76,11 +75,24 @@ export default function PrivatePPO() {
         subheading="Private PPO plans give Florida residents broad-network coverage with no referrals and year-round enrollment — built for people who want flexibility over restrictions."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/b2fb8c723_generated_image.png"
+        belowButton={
+          <div className="flex items-center gap-2 justify-center lg:justify-start mt-5 max-w-md mx-auto lg:mx-0">
+            <div className="flex items-center gap-0.5">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className="w-4 h-4 text-[#FFC107] fill-[#FFC107]" />
+              ))}
+            </div>
+            <span className="text-sm font-bold text-[#1A2432]">4.8/5</span>
+            <span className="text-xs text-[#607D8B]">from verified shoppers</span>
+          </div>
+        }
+        belowImage={<CarrierLogos />}
       />
 
       <TrustBar />
-      <CarrierLogos />
-      <RatingBadge />
+      <div className="lg:hidden">
+        <CarrierLogos />
+      </div>
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">

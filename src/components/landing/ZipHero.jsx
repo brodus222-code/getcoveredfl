@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
@@ -83,6 +83,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
             </button>
           </div>
         </form>
+        {belowButton}
         </div>
         {heroImage && (
           <div className="hidden lg:block lg:flex-1">
@@ -91,6 +92,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
               alt="Florida health insurance"
               className="w-full h-[420px] object-cover rounded-3xl shadow-soft"
             />
+            {belowImage}
           </div>
         )}
         </div>
