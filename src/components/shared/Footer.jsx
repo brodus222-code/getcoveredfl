@@ -65,9 +65,6 @@ export default function Footer() {
             <p className="text-white/70 font-medium">
               HealthLink Insurance Agency LLC · FL Lic# L131967 · NPN# 21554495
             </p>
-            <p>
-              AOR: Nick Loucks · FL Lic# G233885 · NPN# 21137267
-            </p>
             <p className="flex items-start gap-2">
               <Lock className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
               <span>

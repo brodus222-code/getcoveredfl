@@ -58,6 +58,11 @@
       "type": "string",
       "description": "Contact email address"
     },
+    "sms_opt_in": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the lead opted in to receive SMS updates about their quote"
+    },
     "status": {
       "type": "string",
       "enum": [
