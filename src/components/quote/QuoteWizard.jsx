@@ -78,6 +78,9 @@ export default function QuoteWizard() {
 
     await base44.entities.Lead.create(leadData);
 
+    // Brief processing delay for UX — gives the form a "working on it" feel
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     // Fire Bing UET custom event for conversion tracking (with enhanced conversions PII)
     if (typeof window !== 'undefined') {
       window.uetq = window.uetq || [];
