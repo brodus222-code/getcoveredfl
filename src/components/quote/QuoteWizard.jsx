@@ -93,6 +93,16 @@ export default function QuoteWizard() {
         event_label: 'quote_request',
         event_value: 0,
       });
+
+      // Fire Facebook Pixel Lead conversion event
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Lead', {
+          content_name: 'Health Insurance Quote Request',
+          content_category: 'Insurance Lead',
+          value: 0,
+          currency: 'USD',
+        });
+      }
     }
 
     // Agent notification and confirmation email are both sent server-side by
