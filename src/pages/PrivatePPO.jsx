@@ -5,7 +5,7 @@ import { CheckCircle, Phone, ArrowRight, Plus, Minus, Stethoscope, Network, Hear
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import { carriers } from '@/components/landing/CarrierLogos';
+import CarrierLogos, { carriers } from '@/components/landing/CarrierLogos';
 import FinalCTA from '@/components/landing/FinalCTA';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -75,12 +75,8 @@ export default function PrivatePPO() {
         subheading="Private PPO plans give Florida residents broad-network coverage with no referrals and year-round enrollment — built for people who want flexibility over restrictions."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/b2fb8c723_generated_image.png"
-      />
-
-      {/* Rating badge + carrier logos in line, under the hero */}
-      <section className="bg-sand px-5 sm:px-6 pb-8 md:pb-10">
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-6 lg:gap-10">
-          <div className="w-full max-w-sm lg:w-auto lg:flex-shrink-0">
+        belowButton={
+          <div className="mt-6 max-w-md mx-auto">
             <div className="bg-white rounded-2xl border border-sand-deep/60 px-5 py-4 flex items-center gap-4 shadow-sm">
               <div className="flex items-center gap-0.5 flex-shrink-0">
                 {[0, 1, 2, 3, 4].map((i) => (
@@ -93,19 +89,35 @@ export default function PrivatePPO() {
               </div>
             </div>
           </div>
-          <div className="flex-1 flex flex-wrap lg:flex-nowrap items-center justify-center lg:justify-end gap-6 lg:gap-10">
-            {carriers.map((c) => (
-              <img
-                key={c.name}
-                src={c.src}
-                alt={`${c.name} logo`}
-                title={c.name}
-                className={`h-10 sm:h-12 w-auto object-contain opacity-70 ${c.offset || ''}`}
-              />
-            ))}
+        }
+        belowImage={
+          <div className="mt-6">
+            <p className="text-[11px] uppercase tracking-widest font-semibold text-[#607D8B] mb-3 text-center">
+              Compare plans from top carriers
+            </p>
+            <div className="flex items-center justify-center gap-3">
+              {carriers.map((c) => (
+                <div
+                  key={c.name}
+                  className="bg-white rounded-xl border border-sand-deep/60 px-3 py-2 flex items-center justify-center"
+                >
+                  <img
+                    src={c.src}
+                    alt={`${c.name} logo`}
+                    title={c.name}
+                    className={`h-6 w-auto object-contain opacity-80 ${c.offset || ''}`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        }
+      />
+
+      {/* Mobile-only carrier logos (desktop shows them under the hero image) */}
+      <div className="lg:hidden">
+        <CarrierLogos />
+      </div>
 
       <TrustBar />
 
