@@ -31,6 +31,8 @@ export default function Footer() {
               <li><Link to={createPageUrl('GetCovered')} className="hover:text-accent transition-colors">Check Eligibility</Link></li>
               <li><Link to="/coverage-guide" className="hover:text-accent transition-colors">Coverage Guide</Link></li>
               <li><Link to="/blog" className="hover:text-accent transition-colors">Insurance News</Link></li>
+              <li><Link to="/about" className="hover:text-accent transition-colors">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 
