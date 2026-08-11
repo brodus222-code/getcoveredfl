@@ -3,7 +3,7 @@ import { Headphones, Phone } from 'lucide-react';
 
 export default function MobileCallBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#1A2432] text-white py-3.5 px-5 flex items-center justify-between gap-3 shadow-soft">
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#1A2432] text-white py-2.5 px-4 flex items-center justify-between gap-3 shadow-soft">
       <a href="tel:+18556345343" className="flex items-center gap-3 flex-1 min-w-0">
         <div className="relative flex-shrink-0">
           <div className="w-10 h-10 rounded-full bg-[#2C394B] flex items-center justify-center">
