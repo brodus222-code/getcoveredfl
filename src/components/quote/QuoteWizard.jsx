@@ -8,15 +8,14 @@ import ProgressBar from '@/components/quote/ProgressBar';
 import StepZipCode from '@/components/quote/StepZipCode';
 import StepHousehold from '@/components/quote/StepHousehold';
 import StepAges from '@/components/quote/StepAges';
-// StepIncome temporarily removed — re-enable when Facebook Pixel review is complete
-// import StepIncome from '@/components/quote/StepIncome';
+import StepIncome from '@/components/quote/StepIncome';
 import StepCoverage from '@/components/quote/StepCoverage';
 import StepContact from '@/components/quote/StepContact';
 import StepConfirmation from '@/components/quote/StepConfirmation';
 import SkipFormBanner from '@/components/quote/SkipFormBanner';
 import CarrierLogos from '@/components/landing/CarrierLogos';
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 6;
 
 // Shared quote wizard — owns the step state, lead submission, and on-wizard
 // chrome (progress bar, ZIP chip, step 1 trust extras). Pages wrap it in their
@@ -104,7 +103,6 @@ export default function QuoteWizard() {
           content_category: 'Contact Form',
           value: 0,
           currency: 'USD',
-          test_event_code: 'TEST55007',
         });
       }
     }
@@ -121,9 +119,10 @@ export default function QuoteWizard() {
       case 1: return <StepZipCode data={formData} onChange={updateFormData} onNext={nextStep} />;
       case 2: return <StepHousehold data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
       case 3: return <StepAges data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 4: return <StepCoverage data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 5: return <StepContact data={formData} onChange={updateFormData} onSubmit={handleSubmit} onBack={prevStep} isSubmitting={isSubmitting} />;
-      case 6: return <StepConfirmation data={formData} />;
+      case 4: return <StepIncome data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 5: return <StepCoverage data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 6: return <StepContact data={formData} onChange={updateFormData} onSubmit={handleSubmit} onBack={prevStep} isSubmitting={isSubmitting} />;
+      case 7: return <StepConfirmation data={formData} />;
       default: return null;
     }
   };
