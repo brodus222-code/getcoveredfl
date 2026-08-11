@@ -1,8 +1,14 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.40';
+import { secrets } from 'base44:runtime';
 
 // Publishes a newly created BlogPost to the agency's Facebook Page.
 // Triggered by the "Share Blog Post to Facebook" workflow on BlogPost create.
 // Uses the shared facebook_pages connector (builder's account).
+//
+// Auth: publishing to the official Facebook Page is a privileged side effect,
+// so this endpoint MUST NOT be callable by unauthenticated external parties.
+// Only the platform workflow engine (authenticated service context) or a
+// caller presenting the shared WORKFLOW_SECRET may proceed.
 
 const BASE_URL = 'https://getcoveredfl.com';
 const FB_API = 'https://graph.facebook.com/v25.0';
@@ -12,6 +18,18 @@ export default async function(req) {
     const base44 = createClientFromRequest(req);
 
     const body = await req.json().catch(() => ({}));
+
+    // Trust-boundary check: require either an authenticated platform context
+    // (workflow engine) or the shared server-to-server WORKFLOW_SECRET.
+    const isAuth = await base44.auth.isAuthenticated().catch(() => false);
+    const workflowSecret = secrets.get("WORKFLOW_SECRET");
+    const headerSecret = req.headers.get("x-workflow-secret");
+    const bodySecret = body && body.workflow_secret;
+    const secretOk = !!workflowSecret && (headerSecret === workflowSecret || bodySecret === workflowSecret);
+    if (!isAuth && !secretOk) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const postId = body && (body.post_id || (body.data && body.data.post_id));
     if (!postId) {
       return Response.json({ error: 'post_id is required' }, { status: 400 });
