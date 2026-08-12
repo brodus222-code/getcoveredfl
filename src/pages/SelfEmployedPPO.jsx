@@ -82,7 +82,7 @@ export default function SelfEmployedPPO() {
               <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2">
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
                   <ShieldCheck className="w-3 h-3" />
-                  FL DOI Licensed
+                  Licensed by the FL Dept of Insurance
                 </span>
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
                   <Lock className="w-3 h-3" />
