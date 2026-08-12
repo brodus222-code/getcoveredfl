@@ -60,11 +60,11 @@ export default function SelfEmployedPPO() {
           <form onSubmit={handleZipSubmit} className="max-w-md mx-auto">
             <div className="mb-2 flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
               <Lock className="w-4 h-4 text-accent-deep" />
-              <span>WE NEVER SELL YOUR INFORMATION</span>
+              <span>We never sell your information</span>
             </div>
             <div className="mb-6 flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
               <ShieldCheck className="w-4 h-4 text-accent-deep" />
-              <span>LICENSED & APPROVED BY THE FL DEPT OF INSURANCE</span>
+              <span>Licensed & Approved by the FL Dept of Insurance</span>
             </div>
             <div className="space-y-3">
               <input
