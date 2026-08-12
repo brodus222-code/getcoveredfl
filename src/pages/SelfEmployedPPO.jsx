@@ -58,8 +58,9 @@ export default function SelfEmployedPPO() {
           </p>
 
           <form onSubmit={handleZipSubmit} className="max-w-md mx-auto">
-            <div className="flex h-1.5 rounded-full overflow-hidden mb-6 bg-gray-200">
-              <div className="w-1/2 bg-accent" />
+            <div className="mb-6 flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
+              <Lock className="w-4 h-4 text-accent-deep" />
+              <span>WE NEVER SELL YOUR INFORMATION</span>
             </div>
             <div className="space-y-3">
               <input
@@ -89,12 +90,6 @@ export default function SelfEmployedPPO() {
               <span className="block text-sm font-bold text-white">Fully Licensed & Approved</span>
               <span className="block text-xs text-white/70">by Florida Dept. of Insurance</span>
             </div>
-          </div>
-
-          {/* Privacy badge */}
-          <div className="mt-3 max-w-md mx-auto flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
-            <Lock className="w-4 h-4 text-accent-deep" />
-            <span>WE NEVER SELL YOUR INFORMATION</span>
           </div>
 
           {/* Trust bubble */}
