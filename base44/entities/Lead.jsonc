@@ -21,6 +21,26 @@
       "type": "number",
       "description": "Estimated annual household income"
     },
+    "start_coverage": {
+      "type": "string",
+      "enum": [
+        "asap",
+        "few_weeks",
+        "not_sure"
+      ],
+      "description": "When the lead hopes to start coverage"
+    },
+    "lead_reason": {
+      "type": "string",
+      "enum": [
+        "lost_coverage",
+        "job_change",
+        "moved",
+        "family_changes",
+        "none"
+      ],
+      "description": "What brought the lead to seek coverage"
+    },
     "coverage_type": {
       "type": "string",
       "enum": [

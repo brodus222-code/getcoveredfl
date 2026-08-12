@@ -9,12 +9,16 @@ import StepZipCode from '@/components/quote/StepZipCode';
 import StepHousehold from '@/components/quote/StepHousehold';
 import StepAges from '@/components/quote/StepAges';
 import StepIncome from '@/components/quote/StepIncome';
+import StepHouseholdCount from '@/components/quote/StepHouseholdCount';
+import StepStartCoverage from '@/components/quote/StepStartCoverage';
+import StepName from '@/components/quote/StepName';
+import StepReason from '@/components/quote/StepReason';
 import StepContact from '@/components/quote/StepContact';
 import StepConfirmation from '@/components/quote/StepConfirmation';
 import SkipFormBanner from '@/components/quote/SkipFormBanner';
 import CarrierLogos from '@/components/landing/CarrierLogos';
 
-const TOTAL_STEPS = 5;
+const TOTAL_STEPS = 9;
 
 // Shared quote wizard — owns the step state, lead submission, and on-wizard
 // chrome (progress bar, ZIP chip, step 1 trust extras). Pages wrap it in their
@@ -31,6 +35,8 @@ export default function QuoteWizard() {
     household_size: null,
     ages: [],
     estimated_income: null,
+    start_coverage: '',
+    lead_reason: '',
     full_name: '',
     phone: '',
     email: '',
@@ -60,6 +66,8 @@ export default function QuoteWizard() {
       household_size: formData.household_size,
       ages: formData.ages,
       estimated_income: formData.estimated_income,
+      start_coverage: formData.start_coverage,
+      lead_reason: formData.lead_reason,
       full_name: formData.full_name,
       phone: formData.phone,
       email: formData.email,
@@ -109,10 +117,14 @@ export default function QuoteWizard() {
     switch (currentStep) {
       case 1: return <StepZipCode data={formData} onChange={updateFormData} onNext={nextStep} />;
       case 2: return <StepHousehold data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 3: return <StepAges data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 4: return <StepIncome data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 5: return <StepContact data={formData} onChange={updateFormData} onSubmit={handleSubmit} onBack={prevStep} isSubmitting={isSubmitting} />;
-      case 6: return <StepConfirmation data={formData} />;
+      case 3: return <StepHouseholdCount data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 4: return <StepAges data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 5: return <StepStartCoverage data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 6: return <StepIncome data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 7: return <StepName data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 8: return <StepReason data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 9: return <StepContact data={formData} onChange={updateFormData} onSubmit={handleSubmit} onBack={prevStep} isSubmitting={isSubmitting} />;
+      case 10: return <StepConfirmation data={formData} />;
       default: return null;
     }
   };

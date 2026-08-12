@@ -11,7 +11,7 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
   const validatePhone = (phone) => phone.replace(/\D/g, '').length >= 10;
 
   useEffect(() => {
-    const input = document.getElementById('contact-name');
+    const input = document.getElementById('contact-phone');
     if (input) input.focus();
   }, []);
 
@@ -19,7 +19,6 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
     e.preventDefault();
     const newErrors = {};
 
-    if (!data.full_name?.trim()) newErrors.full_name = 'Please enter your name';
     if (!data.phone || !validatePhone(data.phone)) newErrors.phone = 'Please enter a valid phone number';
     if (!data.email || !validateEmail(data.email)) newErrors.email = 'Please enter a valid email address';
 
@@ -60,21 +59,7 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
       <form onSubmit={handleSubmit} className="space-y-4 mb-6">
         <div>
           <Input
-            id="contact-name"
-            type="text"
-            placeholder="Full Name"
-            value={data.full_name || ''}
-            onChange={(e) => {
-              onChange({ full_name: e.target.value });
-              if (errors.full_name) setErrors({ ...errors, full_name: null });
-            }}
-            className={`py-5 h-14 text-lg border-2 rounded-2xl ${errors.full_name ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
-          />
-          {errors.full_name && <p className="text-sm text-destructive mt-1">{errors.full_name}</p>}
-        </div>
-
-        <div>
-          <Input
+            id="contact-phone"
             type="tel"
             placeholder="Phone Number"
             value={data.phone || ''}
@@ -129,7 +114,7 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
             {isSubmitting ? (
               <>
                 <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Submitting...
+                Searching for plans...
               </>
             ) : (
               'See My Plans & Prices'
