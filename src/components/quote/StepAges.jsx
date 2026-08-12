@@ -4,32 +4,24 @@ import { User, ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function StepAges({ data, onChange, onNext, onBack }) {
-  const householdSize = data.household_size || 1;
-  const ages = data.ages || [];
+  const age = (data.ages && data.ages[0]) || '';
 
-  // Auto-focus first age input on mount
   useEffect(() => {
-    const firstInput = document.getElementById('age-input-0');
-    if (firstInput) firstInput.focus();
+    const input = document.getElementById('primary-age-input');
+    if (input) input.focus();
   }, []);
 
-  const handleAgeChange = (index, value) => {
-    const newAges = [...ages];
-    newAges[index] = value ? parseInt(value) : '';
-    onChange({ ages: newAges });
+  const handleAgeChange = (value) => {
+    const parsed = value ? parseInt(value) : '';
+    onChange({ ages: parsed ? [parsed] : [] });
   };
 
-  const allAgesValid = ages.length === householdSize && ages.every((age) => age && age > 0 && age < 120);
+  const ageValid = age && age > 0 && age < 120;
 
-  const handleKeyDown = (e, index) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (allAgesValid) {
-        onNext();
-      } else {
-        const nextInput = document.getElementById(`age-input-${index + 1}`);
-        if (nextInput) nextInput.focus();
-      }
+      if (ageValid) onNext();
     }
   };
 
@@ -46,33 +38,26 @@ export default function StepAges({ data, onChange, onNext, onBack }) {
           <User className="w-8 h-8" />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3 font-heading">
-          What are the ages of the people in your household?
+          What's your age?
         </h2>
         <p className="text-navy-soft">
-          Just the ages — no names needed.
+          Age of the primary applicant.
         </p>
       </div>
 
-      <div className="space-y-3 mb-6">
-        {Array.from({ length: householdSize }).map((_, index) => (
-          <div key={index} className="flex items-center gap-4">
-            <span className="text-sm font-medium text-navy-soft w-20">
-              Person {index + 1}
-            </span>
-            <Input
-              id={`age-input-${index}`}
-              type="number"
-              inputMode="numeric"
-              min="0"
-              max="120"
-              placeholder="Age"
-              value={ages[index] || ''}
-              onChange={(e) => handleAgeChange(index, e.target.value)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              className="flex-1 text-center text-lg py-5 h-14 font-medium border-2 border-sand-deep focus:border-primary focus:ring-primary rounded-2xl"
-            />
-          </div>
-        ))}
+      <div className="mb-6">
+        <Input
+          id="primary-age-input"
+          type="number"
+          inputMode="numeric"
+          min="0"
+          max="120"
+          placeholder="Enter your age"
+          value={age}
+          onChange={(e) => handleAgeChange(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className="w-full text-center text-2xl py-6 h-16 font-medium border-2 border-sand-deep focus:border-primary focus:ring-primary rounded-2xl"
+        />
       </div>
 
       <div className="flex gap-3">
@@ -87,7 +72,7 @@ export default function StepAges({ data, onChange, onNext, onBack }) {
         <button
           type="button"
           onClick={onNext}
-          disabled={!allAgesValid}
+          disabled={!ageValid}
           className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-primary transition-all hover:-translate-y-0.5"
         >
           Continue

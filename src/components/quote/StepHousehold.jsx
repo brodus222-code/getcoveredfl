@@ -1,15 +1,21 @@
 import React, { useRef } from 'react';
-import { Users, ArrowLeft, ArrowRight } from 'lucide-react';
+import { User, Heart, Baby, Users, ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const householdOptions = [1, 2, 3, 4, 5];
+const householdOptions = [
+  { id: 'just_me', icon: User, title: 'Just Me', size: 1 },
+  { id: 'me_spouse', icon: Heart, title: 'Me + Spouse', size: 2 },
+  { id: 'me_kids', icon: Baby, title: 'Me + Kids', size: 3 },
+  { id: 'whole_family', icon: Users, title: 'Whole Family', size: 4 },
+];
+
 const ADVANCE_DELAY = 380;
 
 export default function StepHousehold({ data, onChange, onNext, onBack }) {
   const timerRef = useRef(null);
 
-  const handleSelect = (size) => {
-    onChange({ household_size: size });
+  const handleSelect = (option) => {
+    onChange({ household_size: option.size });
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => onNext(), ADVANCE_DELAY);
   };
@@ -20,40 +26,50 @@ export default function StepHousehold({ data, onChange, onNext, onBack }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="w-full max-w-md mx-auto"
+      className="w-full max-w-lg mx-auto"
     >
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-soft text-primary mb-6">
           <Users className="w-8 h-8" />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3 font-heading">
-          How many people are in your household?
+          Who needs coverage?
         </h2>
         <p className="text-navy-soft">
-          This helps us check eligibility and available savings.
+          Select the option that best describes your household.
         </p>
       </div>
 
-      <div className="mb-6">
-        <div className="grid grid-cols-5 gap-3">
-          {householdOptions.map((size) => (
+      <div className="grid grid-cols-2 gap-3 mb-6">
+        {householdOptions.map((option) => {
+          const selected = data.household_size === option.size;
+          return (
             <button
-              key={size}
+              key={option.id}
               type="button"
-              onClick={() => handleSelect(size)}
-              className={`relative h-16 rounded-2xl font-bold text-lg transition-all duration-200 ${
-                data.household_size === size
-                  ? 'bg-gradient-to-br from-primary to-primary-deep text-white shadow-glow-primary scale-105'
-                  : 'bg-sand text-navy hover:bg-sand-deep/60 border border-sand-deep/50'
+              onClick={() => handleSelect(option)}
+              className={`relative flex flex-col items-center gap-3 p-6 rounded-2xl border-2 transition-all duration-200 ${
+                selected
+                  ? 'border-primary bg-primary-soft shadow-soft scale-[1.02]'
+                  : 'border-sand-deep/60 bg-white hover:border-primary/40 hover:bg-sand/50'
               }`}
             >
-              {size}{size === 5 ? '+' : ''}
+              <div
+                className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
+                  selected ? 'bg-primary text-white' : 'bg-primary-soft text-primary'
+                }`}
+              >
+                <option.icon className="w-6 h-6" />
+              </div>
+              <span className="font-semibold text-navy">{option.title}</span>
+              {selected && (
+                <div className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+                  <Check className="w-4 h-4 text-white" />
+                </div>
+              )}
             </button>
-          ))}
-        </div>
-        <p className="text-sm text-navy-soft mt-4 text-center">
-          Tap your household size to continue
-        </p>
+          );
+        })}
       </div>
 
       <div className="flex gap-3">
