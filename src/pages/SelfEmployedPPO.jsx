@@ -84,21 +84,9 @@ export default function SelfEmployedPPO() {
                 <ShieldCheck className="w-4 h-4 text-accent-deep" />
                 <span>Licensed & Approved by the FL Dept of Insurance</span>
               </div>
-              <div className="flex items-center justify-center gap-4 text-[11px] font-semibold text-[#1A2432]/60 pt-2">
-                <span className="flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-accent-deep" />
-                  HIPAA Compliant
-                </span>
-                <span className="text-[#1A2432]/30">•</span>
-                <span className="flex items-center gap-1.5">
-                  <CheckCircle className="w-3.5 h-3.5 text-accent-deep" />
-                  No Obligation
-                </span>
-                <span className="text-[#1A2432]/30">•</span>
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-accent-deep" />
-                  Secure & Private
-                </span>
+              <div className="flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70 pt-2">
+                <Lock className="w-4 h-4 text-accent-deep" />
+                <span>HIPAA Compliant • 256-bit Encryption • Secure & Private</span>
               </div>
             </div>
           </form>
