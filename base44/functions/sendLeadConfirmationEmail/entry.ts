@@ -7,12 +7,15 @@ export default async function(req) {
 
     const base44 = createClientFromRequest(req);
 
-    // No user-auth check here: this function is invoked solely by the
-    // "Send Lead Confirmation Email" server-side workflow (entity-create
-    // trigger). Safety is enforced by: only a lead_id is accepted (never the
-    // recipient address), the email is read from the stored Lead record
-    // (service role), and an idempotency flag prevents replay — so it cannot
-    // be used as an open/spam relay.
+    // Trust-boundary check: only allow authenticated app users or the
+    // platform workflow runner (pre-shared WORKFLOW_SECRET) to invoke this
+    // function. Rejects unauthenticated external callers.
+    const isAuthenticated = await base44.auth.isAuthenticated().catch(() => false);
+    const workflowSecret = secrets.get('WORKFLOW_SECRET');
+    const providedSecret = body && body.workflow_secret;
+    if (!isAuthenticated && providedSecret !== workflowSecret) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
 
     // Only the lead record id is accepted from the request — never the
     // recipient address. The actual email is read from the stored Lead record
