@@ -15,7 +15,9 @@ import { secrets } from 'base44:runtime';
 
 export default async function(req) {
   try {
-    const body = await req.json().catch(() => ({}));
+    // Clone the request so reading the body here doesn't interfere with any
+    // later body reads the SDK might perform (auth context, etc.).
+    const body = await req.clone().json().catch(() => ({}));
 
     const base44 = createClientFromRequest(req);
 
@@ -30,7 +32,9 @@ export default async function(req) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const leadId = body && (body.lead_id || (body.data && body.data.lead_id));
+    // Accept lead_id from the body, nested data, or URL query params.
+    const url = new URL(req.url);
+    const leadId = (body && (body.lead_id || (body.data && body.data.lead_id))) || url.searchParams.get('lead_id');
     if (!leadId) {
       return Response.json({ error: 'lead_id is required' }, { status: 400 });
     }
