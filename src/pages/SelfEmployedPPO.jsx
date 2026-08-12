@@ -79,16 +79,14 @@ export default function SelfEmployedPPO() {
                 See My Options
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <div className="flex items-center justify-center gap-1.5 pt-1">
+              <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2">
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
                   <ShieldCheck className="w-3 h-3" />
-                  Licensed by the FL Dept of Insurance
+                  FL DOI Licensed
                 </span>
-              </div>
-              <div className="flex items-center justify-center gap-1.5 pt-1">
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
                   <Lock className="w-3 h-3" />
-                  HIPAA Compliant
+                  HIPAA
                 </span>
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
                   <ShieldCheck className="w-3 h-3" />
