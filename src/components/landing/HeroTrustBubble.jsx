@@ -14,7 +14,7 @@ export default function HeroTrustBubble() {
         <div className="text-left">
           <span className="block text-base sm:text-lg font-bold text-[#1A2332] font-heading leading-tight">4.8/5</span>
           <span className="block text-[11px] sm:text-xs text-[#607D8B] leading-snug">
-            average customer satisfaction rating
+            average satisfaction rating
           </span>
         </div>
       </div>
