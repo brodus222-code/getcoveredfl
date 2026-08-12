@@ -86,7 +86,7 @@ export default function SelfEmployedPPO() {
               </div>
               <div className="flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70 pt-2">
                 <Lock className="w-4 h-4 text-accent-deep" />
-                <span>HIPAA Compliant • 256-bit Encryption • Secure & Private</span>
+                <span>HIPAA Compliant • Secure & Private</span>
               </div>
             </div>
           </form>
