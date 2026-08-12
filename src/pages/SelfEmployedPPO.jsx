@@ -91,15 +91,15 @@ export default function SelfEmployedPPO() {
             </div>
           </div>
 
+          {/* Privacy badge */}
+          <div className="mt-3 max-w-md mx-auto flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
+            <Lock className="w-4 h-4 text-accent-deep" />
+            <span>WE NEVER SELL YOUR INFORMATION</span>
+          </div>
+
           {/* Trust bubble */}
           <div className="mt-6 max-w-md mx-auto">
             <HeroTrustBubble />
-          </div>
-
-          {/* Privacy / DOI badge */}
-          <div className="mt-4 max-w-md mx-auto flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
-            <Lock className="w-4 h-4 text-accent-deep" />
-            <span>WE NEVER SELL YOUR INFORMATION — FL DOI APPROVED</span>
           </div>
 
           {/* Carrier logos */}
