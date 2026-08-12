@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Send, Phone, Loader2 } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function StepContact({ data, onChange, onSubmit, onBack, isSubmitting }) {
   const [errors, setErrors] = useState({});
@@ -10,8 +10,11 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
   const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const validatePhone = (phone) => phone.replace(/\D/g, '').length >= 10;
 
+  // Progressive disclosure: phone + SMS opt-in appear once email has 5+ characters
+  const showPhone = (data.email || '').length >= 5;
+
   useEffect(() => {
-    const input = document.getElementById('contact-phone');
+    const input = document.getElementById('contact-email');
     if (input) input.focus();
   }, []);
 
@@ -19,8 +22,8 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
     e.preventDefault();
     const newErrors = {};
 
-    if (!data.phone || !validatePhone(data.phone)) newErrors.phone = 'Please enter a valid phone number';
     if (!data.email || !validateEmail(data.email)) newErrors.email = 'Please enter a valid email address';
+    if (!data.phone || !validatePhone(data.phone)) newErrors.phone = 'Please enter a valid phone number';
 
     setErrors(newErrors);
 
@@ -49,31 +52,14 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
           <Send className="w-8 h-8" />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3 font-heading">
-          Almost done!
+          Where should we send your quote?
         </h2>
-        <p className="text-navy-soft">
-          Where should we send your plan results?
-        </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4 mb-6">
         <div>
           <Input
-            id="contact-phone"
-            type="tel"
-            placeholder="Phone Number"
-            value={data.phone || ''}
-            onChange={(e) => {
-              onChange({ phone: formatPhone(e.target.value) });
-              if (errors.phone) setErrors({ ...errors, phone: null });
-            }}
-            className={`py-5 h-14 text-lg border-2 rounded-2xl ${errors.phone ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
-          />
-          {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone}</p>}
-        </div>
-
-        <div>
-          <Input
+            id="contact-email"
             type="email"
             placeholder="Email Address"
             value={data.email || ''}
@@ -86,16 +72,49 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
           {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
         </div>
 
-        <label className="flex items-start gap-3 cursor-pointer pt-1">
-          <Checkbox
-            checked={!!data.sms_opt_in}
-            onCheckedChange={(checked) => onChange({ sms_opt_in: checked })}
-            className="mt-0.5 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-          />
-          <span className="text-sm text-navy-soft leading-snug">
-            Text me with updates on my quote
-          </span>
-        </label>
+        <AnimatePresence>
+          {showPhone && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="space-y-4 overflow-hidden"
+            >
+              <div>
+                <Input
+                  id="contact-phone"
+                  type="tel"
+                  placeholder="Phone Number"
+                  value={data.phone || ''}
+                  onChange={(e) => {
+                    onChange({ phone: formatPhone(e.target.value) });
+                    if (errors.phone) setErrors({ ...errors, phone: null });
+                  }}
+                  className={`py-5 h-14 text-lg border-2 rounded-2xl ${errors.phone ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
+                />
+                {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone}</p>}
+              </div>
+
+              <label className="flex items-start gap-3 cursor-pointer pt-1">
+                <Checkbox
+                  checked={!!data.sms_opt_in}
+                  onCheckedChange={(checked) => onChange({ sms_opt_in: checked })}
+                  className="mt-0.5 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                />
+                <div>
+                  <span className="text-sm font-medium text-navy">
+                    Text me updates about my insurance options.{' '}
+                    <span className="text-navy-soft font-normal">(Optional)</span>
+                  </span>
+                  <span className="text-xs text-navy-soft leading-snug block mt-1">
+                    By checking this box I consent to SMS messages from getcoveredfl.com about my inquiry into insurance. Msg &amp; data rates may apply. Reply STOP to opt out
+                  </span>
+                </div>
+              </label>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <div className="flex gap-3 pt-2">
           <button
@@ -124,7 +143,7 @@ export default function StepContact({ data, onChange, onSubmit, onBack, isSubmit
       </form>
 
       <p className="text-xs text-navy-soft/70 text-center leading-relaxed mt-4">
-        By clicking "See My Plans & Prices," you agree to be contacted by HealthLink Insurance Agency LLC and our trusted insurance partners about health insurance options via phone, email, and SMS — even if your number is on a Do-Not-Call list. You consent to the sharing of your information with these partners so they may provide you with quotes and plan options. No purchase is required. Standard messaging rates may apply. You may opt out at any time.
+        By submitting this form, you confirm you are at least 18 years old and give your express written consent for HealthLink Insurance Agency LLC and its licensed agents to contact you at the phone number and email you provided. This may include calls, texts, or prerecorded messages using automated technology. Message and data rates may apply. Your consent is not required to make a purchase. See our Privacy Policy and Terms for details.
       </p>
 
       <div className="text-center mb-6 mt-4">

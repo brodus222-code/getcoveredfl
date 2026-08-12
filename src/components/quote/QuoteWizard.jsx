@@ -16,6 +16,7 @@ import StepReason from '@/components/quote/StepReason';
 import StepContact from '@/components/quote/StepContact';
 import StepConfirmation from '@/components/quote/StepConfirmation';
 import SkipFormBanner from '@/components/quote/SkipFormBanner';
+import WizardTrustBadges from '@/components/quote/WizardTrustBadges';
 import CarrierLogos from '@/components/landing/CarrierLogos';
 
 const TOTAL_STEPS = 9;
@@ -121,8 +122,8 @@ export default function QuoteWizard() {
       case 4: return <StepAges data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
       case 5: return <StepStartCoverage data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
       case 6: return <StepIncome data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 7: return <StepName data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
-      case 8: return <StepReason data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 7: return <StepReason data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
+      case 8: return <StepName data={formData} onChange={updateFormData} onNext={nextStep} onBack={prevStep} />;
       case 9: return <StepContact data={formData} onChange={updateFormData} onSubmit={handleSubmit} onBack={prevStep} isSubmitting={isSubmitting} />;
       case 10: return <StepConfirmation data={formData} />;
       default: return null;
@@ -164,6 +165,11 @@ export default function QuoteWizard() {
               <SkipFormBanner />
             </div>
           </>
+        )}
+        {currentStep <= TOTAL_STEPS && (
+          <div className="mt-8">
+            <WizardTrustBadges />
+          </div>
         )}
       </main>
     </>
