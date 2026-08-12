@@ -12,6 +12,16 @@ export default async function(req) {
 
     const base44 = createClientFromRequest(req);
 
+    // Trust-boundary check: only allow authenticated app users or the
+    // platform workflow runner (pre-shared WORKFLOW_SECRET) to invoke this
+    // function. Rejects unauthenticated external callers.
+    const isAuthenticated = await base44.auth.isAuthenticated().catch(() => false);
+    const workflowSecret = secrets.get('WORKFLOW_SECRET');
+    const providedSecret = body && body.workflow_secret;
+    if (!isAuthenticated && providedSecret !== workflowSecret) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     // Only the lead record id is accepted; the lead is read from this app's DB
     // (service role), so callers cannot inject arbitrary CRM payload data.
     const leadId = body && (body.lead_id || (body.data && body.data.lead_id));
