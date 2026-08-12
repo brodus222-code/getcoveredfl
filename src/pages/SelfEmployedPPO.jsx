@@ -83,9 +83,12 @@ export default function SelfEmployedPPO() {
           </form>
 
           {/* Trust badge under button */}
-          <div className="mt-4 max-w-md mx-auto flex items-center justify-center gap-2 text-sm font-semibold text-[#1A2432]">
-            <ShieldCheck className="w-5 h-5 text-primary" />
-            <span>Approved by the Florida Department of Insurance</span>
+          <div className="mt-4 max-w-md mx-auto flex items-center justify-center gap-2.5 bg-[#1A2432] rounded-xl px-5 py-3">
+            <ShieldCheck className="w-6 h-6 text-white flex-shrink-0" />
+            <div className="text-left leading-tight">
+              <span className="block text-sm font-bold text-white">Fully Licensed & Approved</span>
+              <span className="block text-xs text-white/70">by Florida Dept. of Insurance</span>
+            </div>
           </div>
 
           {/* Trust bubble */}
