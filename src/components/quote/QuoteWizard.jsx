@@ -88,8 +88,35 @@ export default function QuoteWizard() {
     };
   }, []);
 
+  const formDataRef = useRef(formData);
+
   const updateFormData = (updates) => {
-    setFormData((prev) => ({ ...prev, ...updates }));
+    const prev = formDataRef.current;
+    // Track the first time each field receives a value — measures per-field
+    // interaction rate against the step_view events already being recorded.
+    Object.entries(updates).forEach(([key, value]) => {
+      const wasEmpty =
+        prev[key] == null ||
+        prev[key] === '' ||
+        (Array.isArray(prev[key]) && prev[key].length === 0);
+      const hasValue =
+        value != null &&
+        value !== '' &&
+        !(Array.isArray(value) && value.length === 0);
+      if (wasEmpty && hasValue) {
+        base44.analytics.track({
+          eventName: 'quote_field_interaction',
+          properties: {
+            field: key,
+            step: currentStep,
+            step_name: STEP_NAMES[currentStep],
+          },
+        });
+      }
+    });
+    const next = { ...prev, ...updates };
+    formDataRef.current = next;
+    setFormData(next);
   };
 
   const nextStep = () => {
