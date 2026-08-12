@@ -13,13 +13,12 @@ import MobileCallBar from '@/components/shared/MobileCallBar';
 import CallbackModal from '@/components/quote/CallbackModal';
 
 const benefits = [
-  'ACA subsidies that can lower your premium based on net income',
-  'Private PPO plans with broad nationwide doctor & hospital networks',
-  'Self-employment income qualifies for premium tax credits',
-  'Write off qualified medical and premium expenses on Schedule C',
-  'PPO options that let you see specialists without a referral',
+  'Open-access PPO plans with broad nationwide doctor & hospital networks',
+  'See specialists directly — no referrals, no gatekeepers',
+  'Enroll year-round — no waiting for open enrollment',
+  'Write off qualified medical and premium expenses',
   'Dental, vision & HSA-compatible plan options',
-  'Special Enrollment Periods when your income changes mid-year',
+  'Keep your own doctors, in Florida and out of state',
   'Coverage that travels with you — not tied to an employer',
 ];
 
@@ -112,9 +111,9 @@ export default function SelfEmployed() {
             Built for 1099 life
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading text-balance">
-            Health coverage that flexes with your income
+            Coverage that travels with you — not tied to an employer
           </h2>
-          <p className="text-navy-soft mb-10">The advantages self-employed Floridians get when they shop smart instead of settling.</p>
+          <p className="text-navy-soft mb-10">The advantages self-employed Floridians get with an open-access PPO instead of settling for a narrow network.</p>
           <div className="space-y-3 text-left">
             {benefits.map((b) => (
               <div
