@@ -11,8 +11,8 @@ import { carriers } from '@/components/landing/CarrierLogos';
 const benefits = [
   {
     icon: Network,
-    title: 'Open-access nationwide networks',
-    body: 'See any doctor in the PPO network across Florida and the country — no gatekeepers, no referrals required.',
+    title: 'Keep your Doctors',
+    body: 'See any doctor in Florida and the country — no gatekeepers, no referrals required.',
   },
   {
     icon: UserCheck,
