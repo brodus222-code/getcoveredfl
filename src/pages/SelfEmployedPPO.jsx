@@ -58,9 +58,8 @@ export default function SelfEmployedPPO() {
           </p>
 
           <form onSubmit={handleZipSubmit} className="max-w-md mx-auto">
-            <div className="mb-6 flex items-center justify-center gap-2 text-xs font-semibold text-[#1A2432]/70">
-              <Lock className="w-4 h-4 text-accent-deep" />
-              <span>Enter your ZIP code to see plans from top carriers</span>
+            <div className="mb-6 text-center text-sm font-semibold text-[#1A2432]/70">
+              Start by entering your ZIP code.
             </div>
             <div className="space-y-3">
               <input
