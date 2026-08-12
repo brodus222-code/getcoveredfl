@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
@@ -21,6 +21,19 @@ import CarrierLogos from '@/components/landing/CarrierLogos';
 
 const TOTAL_STEPS = 9;
 
+const STEP_NAMES = {
+  1: 'zip_code',
+  2: 'household',
+  3: 'household_count',
+  4: 'ages',
+  5: 'start_coverage',
+  6: 'income',
+  7: 'reason',
+  8: 'name',
+  9: 'contact',
+  10: 'confirmation',
+};
+
 // Shared quote wizard — owns the step state, lead submission, and on-wizard
 // chrome (progress bar, ZIP chip, step 1 trust extras). Pages wrap it in their
 // own header/footer/background so the same wizard can power multiple landings.
@@ -42,6 +55,38 @@ export default function QuoteWizard() {
     phone: '',
     email: '',
   });
+
+  const completedRef = useRef(false);
+  const stepRef = useRef(currentStep);
+
+  // Track each step view so funnel drop-off can be measured, and fire a
+  // completion event when the user reaches the confirmation screen.
+  useEffect(() => {
+    stepRef.current = currentStep;
+    if (currentStep >= 1 && currentStep <= TOTAL_STEPS) {
+      base44.analytics.track({
+        eventName: 'quote_step_view',
+        properties: { step: currentStep, step_name: STEP_NAMES[currentStep] },
+      });
+    }
+    if (currentStep === TOTAL_STEPS + 1) {
+      completedRef.current = true;
+      base44.analytics.track({ eventName: 'quote_complete' });
+    }
+  }, [currentStep]);
+
+  // On unmount, if the user left without completing, record the step they
+  // abandoned at.
+  useEffect(() => {
+    return () => {
+      if (!completedRef.current && stepRef.current <= TOTAL_STEPS) {
+        base44.analytics.track({
+          eventName: 'quote_funnel_abandon',
+          properties: { step: stepRef.current, step_name: STEP_NAMES[stepRef.current] },
+        });
+      }
+    };
+  }, []);
 
   const updateFormData = (updates) => {
     setFormData((prev) => ({ ...prev, ...updates }));
