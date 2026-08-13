@@ -50,7 +50,7 @@ export default function ACA() {
       <ZipHero
         badgeText="Florida's Trusted Health Insurance Marketplace"
         heading={<>Florida's trusted <span className="text-accent">Health Insurance Marketplace</span></>}
-        subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-white">in minutes.</strong></>}
+        subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-accent-deep">in minutes.</strong></>}
         helperText="Enter your ZIP code below to compare plans."
         zipPlaceholder="Zip Code"
         onAgentClick={() => setModalOpen(true)}
