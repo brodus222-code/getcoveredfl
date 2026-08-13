@@ -8,9 +8,10 @@ import { secrets } from 'base44:runtime';
 // recipient is a fixed internal address (no open-relay risk). No client-
 // supplied headers (Origin/Referer) are trusted for authorization.
 //
-// Auth: this function sends an email on the agency's behalf, so it MUST NOT be
-// callable by app users. Only the platform workflow engine may invoke it,
-// authenticated via the shared WORKFLOW_SECRET.
+// Auth: this function sends an email on the agency's behalf, so only admin
+// users (including the workflow engine, which runs as admin) or callers
+// presenting the shared WORKFLOW_SECRET may invoke it. Non-admin app users
+// (agents) are rejected.
 
 export default async function(req) {
   try {
@@ -20,13 +21,15 @@ export default async function(req) {
 
     const base44 = createClientFromRequest(req);
 
-    // Trust-boundary check: require either an authenticated platform context
-    // (workflow engine) or the shared server-to-server WORKFLOW_SECRET.
+    // Trust-boundary check: admin user (workflow engine runs as admin) or
+    // the shared server-to-server WORKFLOW_SECRET.
+    const user = await base44.auth.me().catch(() => null);
+    const isAdmin = user && user.role === 'admin';
     const workflowSecret = secrets.get("WORKFLOW_SECRET");
     const headerSecret = req.headers.get("x-workflow-secret");
     const bodySecret = body && body.workflow_secret;
     const secretOk = !!workflowSecret && (headerSecret === workflowSecret || bodySecret === workflowSecret);
-    if (!secretOk) {
+    if (!isAdmin && !secretOk) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

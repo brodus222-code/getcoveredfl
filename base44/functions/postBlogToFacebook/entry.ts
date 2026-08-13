@@ -6,8 +6,9 @@ import { secrets } from 'base44:runtime';
 // Uses the shared facebook_pages connector (builder's account).
 //
 // Auth: publishing to the official Facebook Page is a privileged side effect,
-// so this endpoint MUST NOT be callable by app users. Only the platform
-// workflow engine may invoke it, authenticated via the shared WORKFLOW_SECRET.
+// so only admin users (including the workflow engine, which runs as admin) or
+// callers presenting the shared WORKFLOW_SECRET may invoke this endpoint.
+// Non-admin app users (agents) are rejected.
 
 const BASE_URL = 'https://getcoveredfl.com';
 const FB_API = 'https://graph.facebook.com/v25.0';
@@ -18,13 +19,15 @@ export default async function(req) {
 
     const body = await req.json().catch(() => ({}));
 
-    // Trust-boundary check: require either an authenticated platform context
-    // (workflow engine) or the shared server-to-server WORKFLOW_SECRET.
+    // Trust-boundary check: admin user (workflow engine runs as admin) or
+    // the shared server-to-server WORKFLOW_SECRET.
+    const user = await base44.auth.me().catch(() => null);
+    const isAdmin = user && user.role === 'admin';
     const workflowSecret = secrets.get("WORKFLOW_SECRET");
     const headerSecret = req.headers.get("x-workflow-secret");
     const bodySecret = body && body.workflow_secret;
     const secretOk = !!workflowSecret && (headerSecret === workflowSecret || bodySecret === workflowSecret);
-    if (!secretOk) {
+    if (!isAdmin && !secretOk) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

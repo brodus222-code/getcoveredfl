@@ -12,12 +12,14 @@ export default async function(req) {
 
     const base44 = createClientFromRequest(req);
 
-    // Trust-boundary check: only the platform workflow runner may invoke this
-    // function, authenticated via the pre-shared WORKFLOW_SECRET. Any logged-in
-    // app user (including non-admin agents) is rejected.
+    // Trust-boundary check: only admin users (including the workflow engine,
+    // which runs as admin) or callers presenting the pre-shared WORKFLOW_SECRET
+    // may invoke this function. Non-admin app users (agents) are rejected.
+    const user = await base44.auth.me().catch(() => null);
+    const isAdmin = user && user.role === 'admin';
     const workflowSecret = secrets.get('WORKFLOW_SECRET');
     const providedSecret = body && body.workflow_secret;
-    if (providedSecret !== workflowSecret) {
+    if (!isAdmin && providedSecret !== workflowSecret) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
