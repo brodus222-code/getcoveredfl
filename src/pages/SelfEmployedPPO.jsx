@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { ArrowRight, Phone, Network, UserCheck, CalendarClock, Plane } from 'lucide-react';
+import { ArrowRight, Phone, CheckCircle } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
@@ -13,26 +13,9 @@ import MobileCallBar from '@/components/shared/MobileCallBar';
 import CallbackModal from '@/components/quote/CallbackModal';
 
 const benefits = [
-  {
-    icon: Network,
-    title: 'Keep your Doctors',
-    body: 'See any doctor in Florida and the country — no gatekeepers, no referrals required.',
-  },
-  {
-    icon: UserCheck,
-    title: 'Specialists without a referral',
-    body: 'Go straight to the specialist you need. No primary-care gatekeeper standing between you and your care.',
-  },
-  {
-    icon: CalendarClock,
-    title: 'Enroll year-round',
-    body: 'No waiting for open enrollment. Start coverage when it makes sense for you and your business.',
-  },
-  {
-    icon: Plane,
-    title: 'Travels with you',
-    body: 'Your coverage is yours — not tied to an employer. Keep it between gigs, clients, and side hustles.',
-  },
+  'Open-access PPO plans with broad nationwide doctor & hospital networks',
+  'See specialists directly — no referrals, no gatekeepers',
+  'Enroll year-round — no waiting for open enrollment',
 ];
 
 export default function SelfEmployedPPO() {
@@ -65,30 +48,26 @@ export default function SelfEmployedPPO() {
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            Built for 1099 life
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading text-balance">
-            Coverage that travels with you — not tied to an employer
-          </h2>
-          <p className="text-navy-soft mb-10">The advantages self-employed Floridians get with an open-access PPO instead of settling for a narrow network.</p>
-          <div className="grid sm:grid-cols-2 gap-5 text-left">
-            {benefits.map((b) => {
-              const Icon = b.icon;
-              return (
-                <div
-                  key={b.title}
-                  className="bg-sand border border-sand-deep/40 rounded-2xl px-5 py-5"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-primary-soft flex items-center justify-center mb-4">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold text-navy mb-2 font-heading">{b.title}</h3>
-                  <p className="text-sm text-navy-soft leading-relaxed">{b.body}</p>
-                </div>
-              );
-            })}
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+              Built for 1099 life
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading text-balance">
+              Coverage that travels with you — not tied to an employer
+            </h2>
+            <p className="text-navy-soft">The advantages self-employed Floridians get with an open-access PPO instead of settling for a narrow network.</p>
+          </div>
+          <div className="space-y-3 max-w-2xl mx-auto">
+            {benefits.map((text) => (
+              <div
+                key={text}
+                className="bg-[#FBF7F2] rounded-xl px-5 py-4 flex items-center gap-4"
+              >
+                <CheckCircle className="w-6 h-6 text-[#345B7A] flex-shrink-0" />
+                <span className="text-[#1A2B3C] font-medium leading-snug">{text}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
