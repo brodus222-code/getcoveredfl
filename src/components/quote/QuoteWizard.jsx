@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
-import { MapPin } from 'lucide-react';
+import { MapPin, Briefcase } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 
 import ProgressBar from '@/components/quote/ProgressBar';
@@ -35,6 +35,7 @@ export default function QuoteWizard() {
   const [searchParams] = useSearchParams();
   const initialZip = searchParams.get('zip') || '';
   const hasInitialZip = initialZip.length === 5;
+  const source = searchParams.get('source') || '';
 
   const [currentStep, setCurrentStep] = useState(hasInitialZip ? 2 : 1);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -214,6 +215,15 @@ export default function QuoteWizard() {
             <MapPin className="w-4 h-4" />
             ZIP {formData.zip_code} · Change
           </button>
+        </div>
+      )}
+
+      {source === 'selfemployed' && currentStep <= TOTAL_STEPS && (
+        <div className="max-w-3xl mx-auto px-6 pt-6">
+          <div className="inline-flex items-center gap-2 bg-primary-soft text-primary px-4 py-2 rounded-full text-sm font-semibold">
+            <Briefcase className="w-4 h-4" />
+            Self-Employed Health Insurance Quote
+          </div>
         </div>
       )}
 

@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText, source }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,7 +29,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         eventName: 'landing_quote_start',
         properties: { source_page: location.pathname, zip_code: zip },
       });
-      navigate(`/Quote?zip=${zip}`);
+      navigate(`/Quote?zip=${zip}${source ? `&source=${source}` : ''}`);
     }
   };
 

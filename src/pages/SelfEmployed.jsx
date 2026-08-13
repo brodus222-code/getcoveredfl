@@ -91,6 +91,7 @@ export default function SelfEmployed() {
         subheading="Self-employed in Florida? Find affordable health plans that stay with you — not tied to an employer."
         helperText="Enter your ZIP code below to compare plans."
         zipPlaceholder="Zip Code"
+        source="selfemployed"
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/d1ec83eaa_generated_image.png"
         leftAlignForm
@@ -179,7 +180,7 @@ export default function SelfEmployed() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              to={createPageUrl('Quote')}
+              to="/Quote?source=selfemployed"
               className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
             >
               Start With My ZIP Code
