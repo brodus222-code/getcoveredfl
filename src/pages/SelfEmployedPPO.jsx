@@ -13,6 +13,7 @@ import MobileCallBar from '@/components/shared/MobileCallBar';
 import CallbackModal from '@/components/quote/CallbackModal';
 
 const benefits = [
+  'Keep your own doctors, in Florida and out of state',
   'Open-access PPO plans with broad nationwide doctor & hospital networks',
   'See specialists directly — no referrals, no gatekeepers',
   'Enroll year-round — no waiting for open enrollment',
