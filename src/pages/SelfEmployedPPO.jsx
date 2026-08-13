@@ -6,6 +6,7 @@ import TrustBar from '@/components/shared/TrustBar';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import FinalCTA from '@/components/landing/FinalCTA';
+import TopRatedBadge from '@/components/landing/TopRatedBadge';
 import Footer from '@/components/shared/Footer';
 import MobileCallBar from '@/components/shared/MobileCallBar';
 import CallbackModal from '@/components/quote/CallbackModal';
@@ -138,6 +139,7 @@ export default function SelfEmployedPPO() {
         </div>
       </section>
 
+      <TopRatedBadge />
       <FinalCTA />
       <Footer />
       <MobileCallBar />
