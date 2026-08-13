@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
+import { base44 } from '@/api/base44Client';
 
 export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+  const zipStartedRef = useRef(false);
+
+  const handleZipChange = (e) => {
+    const val = e.target.value.replace(/\D/g, '').slice(0, 5);
+    setZipInput(val);
+    if (!zipStartedRef.current && val.length > 0) {
+      zipStartedRef.current = true;
+      base44.analytics.track({
+        eventName: 'landing_zip_enter',
+        properties: { source_page: location.pathname },
+      });
+    }
+  };
 
   const handleZipSubmit = (e) => {
     e.preventDefault();
     const zip = zipInput.replace(/\D/g, '').slice(0, 5);
     if (zip.length === 5) {
+      base44.analytics.track({
+        eventName: 'landing_quote_start',
+        properties: { source_page: location.pathname, zip_code: zip },
+      });
       navigate(`/Quote?zip=${zip}`);
     }
   };
@@ -71,7 +90,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
               type="tel"
               inputMode="numeric"
               value={zipInput}
-              onChange={(e) => setZipInput(e.target.value.replace(/\D/g, '').slice(0, 5))}
+              onChange={handleZipChange}
               placeholder={zipPlaceholder}
               className="w-full px-5 py-4 text-lg rounded-2xl bg-white border border-gray-300 text-[#1A2432] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
               aria-label="ZIP code"

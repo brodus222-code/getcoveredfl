@@ -229,14 +229,14 @@ export default function QuoteWizard() {
           {renderStep()}
         </AnimatePresence>
         {currentStep === 1 && (
-          <>
-            <div className="mt-10">
-              <CarrierLogos />
-            </div>
-            <div className="mt-10">
-              <SkipFormBanner />
-            </div>
-          </>
+          <div className="mt-10">
+            <CarrierLogos />
+          </div>
+        )}
+        {(currentStep === 1 || currentStep === 2) && (
+          <div className="mt-10">
+            <SkipFormBanner />
+          </div>
         )}
         {currentStep <= TOTAL_STEPS && (
           <div className="mt-8">
