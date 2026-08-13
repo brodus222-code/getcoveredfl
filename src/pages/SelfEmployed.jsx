@@ -5,7 +5,7 @@ import { CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, Cal
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
-import TrustBadgesGrid from '@/components/landing/TrustBadgesGrid';
+
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import FinalCTA from '@/components/landing/FinalCTA';
@@ -106,8 +106,6 @@ export default function SelfEmployed() {
       </div>
 
       <TrustBar />
-
-      <TrustBadgesGrid />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
