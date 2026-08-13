@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...' }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'See My Options' }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
@@ -78,7 +78,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
               disabled={zipInput.length !== 5}
               className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
             >
-              See My Options
+              {buttonText}
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
