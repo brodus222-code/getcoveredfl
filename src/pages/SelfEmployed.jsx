@@ -89,6 +89,7 @@ export default function SelfEmployed() {
         badgeText="Health Insurance for the Self-Employed"
         heading={<>Coverage that works <span className="text-accent">as hard</span> as you do</>}
         subheading="Self-employed in Florida? Find affordable health plans that stay with you — not tied to an employer."
+        helperText="Enter your ZIP code below to compare plan options."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/d1ec83eaa_generated_image.png"
         leftAlignForm

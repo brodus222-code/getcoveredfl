@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'See My Options' }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'See My Options', helperText }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
@@ -63,6 +63,9 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
             <div className="w-1/2 bg-accent" />
           </div>
 
+          {helperText && (
+            <p className="text-sm text-[#1A2432]/60 mb-4 leading-relaxed">{helperText}</p>
+          )}
           <div className="space-y-3">
             <input
               type="tel"
