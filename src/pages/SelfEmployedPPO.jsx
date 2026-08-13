@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { ArrowRight, CheckCircle, Phone, Network, UserCheck, CalendarClock, Plane, Lock, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Phone, Network, UserCheck, CalendarClock, Plane } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
 import TrustBar from '@/components/shared/TrustBar';
@@ -35,30 +35,6 @@ const benefits = [
   },
 ];
 
-function PpoTrustBadges() {
-  return (
-    <div className="mt-4 max-w-md mx-auto">
-      <p className="text-center text-sm font-semibold text-[#1A2432]/70 mb-3">
-        Get a free, instant quote on Florida's Top 10 Plans. Start with your ZIP code below.
-      </p>
-      <div className="flex flex-wrap items-center justify-center gap-1.5">
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
-          <ShieldCheck className="w-3 h-3" />
-          Licensed by the FL Dept of Insurance
-        </span>
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
-          <Lock className="w-3 h-3" />
-          HIPAA
-        </span>
-        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
-          <ShieldCheck className="w-3 h-3" />
-          Secure & Private
-        </span>
-      </div>
-    </div>
-  );
-}
-
 export default function SelfEmployedPPO() {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -73,12 +49,7 @@ export default function SelfEmployedPPO() {
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
         leftAlignForm
-        belowButton={
-          <>
-            <PpoTrustBadges />
-            <HeroCarrierLogos />
-          </>
-        }
+        belowButton={<HeroCarrierLogos />}
         belowImage={<HeroTrustBubble />}
       />
 
