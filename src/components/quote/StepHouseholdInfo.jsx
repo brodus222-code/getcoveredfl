@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { User, Heart, Baby, Users, ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -13,7 +13,17 @@ const countOptions = [1, 2, 3, 4, 5];
 
 // Merged step: household type selection + exact count adjustment in one screen.
 // Replaces the old two-step household → household_count flow.
+const ADVANCE_DELAY = 380;
+
 export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
+  const timerRef = useRef(null);
+
+  const handleSelect = (size) => {
+    onChange({ household_size: size });
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => onNext(), ADVANCE_DELAY);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -41,7 +51,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
             <button
               key={option.id}
               type="button"
-              onClick={() => onChange({ household_size: option.size })}
+              onClick={() => handleSelect(option.size)}
               className={`relative flex flex-col items-center gap-3 p-6 rounded-2xl border-2 transition-all duration-200 ${
                 selected
                   ? 'border-primary bg-primary-soft shadow-soft scale-[1.02]'
@@ -76,7 +86,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
             <button
               key={size}
               type="button"
-              onClick={() => onChange({ household_size: size })}
+              onClick={() => handleSelect(size)}
               className={`relative h-14 rounded-2xl font-bold text-lg transition-all duration-200 ${
                 data.household_size === size
                   ? 'bg-gradient-to-br from-primary to-primary-deep text-white shadow-glow-primary scale-105'
