@@ -54,7 +54,7 @@ export default function SelfEmployedPPO() {
       />
 
       {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
-      <div className="lg:hidden px-5 sm:px-6 pb-2">
+      <div className="lg:hidden px-5 sm:px-6 py-6">
         <div className="max-w-md mx-auto">
           <HeroTrustBubble />
         </div>
