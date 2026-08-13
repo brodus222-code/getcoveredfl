@@ -1,12 +1,16 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Lock, ShieldCheck, Network, UserCheck, CalendarClock, Plane } from 'lucide-react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { ArrowRight, CheckCircle, Phone, Network, UserCheck, CalendarClock, Plane, Lock, ShieldCheck } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
-import Footer from '@/components/shared/Footer';
-import MobileCallBar from '@/components/shared/MobileCallBar';
+import ZipHero from '@/components/landing/ZipHero';
+import TrustBar from '@/components/shared/TrustBar';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
-import { carriers } from '@/components/landing/CarrierLogos';
+import FinalCTA from '@/components/landing/FinalCTA';
+import Footer from '@/components/shared/Footer';
+import MobileCallBar from '@/components/shared/MobileCallBar';
+import CallbackModal from '@/components/quote/CallbackModal';
 
 const benefits = [
   {
@@ -31,99 +35,61 @@ const benefits = [
   },
 ];
 
-export default function SelfEmployedPPO() {
-  const [zipInput, setZipInput] = React.useState('');
-  const navigate = useNavigate();
+function PpoTrustBadges() {
+  return (
+    <div className="mt-4 max-w-md mx-auto">
+      <p className="text-center text-sm font-semibold text-[#1A2432]/70 mb-3">
+        Get a free, instant quote on Florida's Top 10 Plans. Start with your ZIP code below.
+      </p>
+      <div className="flex flex-wrap items-center justify-center gap-1.5">
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
+          <ShieldCheck className="w-3 h-3" />
+          Licensed by the FL Dept of Insurance
+        </span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
+          <Lock className="w-3 h-3" />
+          HIPAA
+        </span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
+          <ShieldCheck className="w-3 h-3" />
+          Secure & Private
+        </span>
+      </div>
+    </div>
+  );
+}
 
-  const handleZipSubmit = (e) => {
-    e.preventDefault();
-    const zip = zipInput.replace(/\D/g, '').slice(0, 5);
-    if (zip.length === 5) {
-      navigate(`/Quote?zip=${zip}`);
-    }
-  };
+export default function SelfEmployedPPO() {
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <SiteHeader variant="light" />
 
-      {/* Hero */}
-      <section className="bg-sand">
-        <div className="mx-auto px-5 sm:px-6 pt-10 pb-8 md:pt-16 md:pb-12 max-w-3xl text-center">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] mb-4 tracking-tight font-heading text-[#1A2432] text-balance">
-            Premium Health Coverage, <span className="text-accent">No Employer Required.</span>
-          </h1>
-          <p className="text-base sm:text-lg text-[#1A2432]/60 mb-8 max-w-xl mx-auto leading-relaxed">
-            Stop settling for restrictive networks. Discover the freedom of an open-access PPO built specifically for self-employed Floridians.
-          </p>
+      <ZipHero
+        badgeText="Open-Access PPO for Self-Employed Floridians"
+        heading={<>Premium Health Coverage, <span className="text-accent">No Employer Required.</span></>}
+        subheading={<>Stop settling for restrictive networks. Discover the freedom of an open-access PPO built specifically for self-employed Floridians — <strong className="text-[#1A2432]">in minutes.</strong></>}
+        onAgentClick={() => setModalOpen(true)}
+        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
+        leftAlignForm
+        belowButton={
+          <>
+            <PpoTrustBadges />
+            <HeroCarrierLogos />
+          </>
+        }
+        belowImage={<HeroTrustBubble />}
+      />
 
-          <form onSubmit={handleZipSubmit} className="max-w-md mx-auto">
-            <div className="mb-6 text-center text-sm font-semibold text-[#1A2432]/70">
-              Get a free, instant quote on Florida's Top 10 Plans. Start with your ZIP code below.
-            </div>
-            <div className="space-y-3">
-              <input
-                type="tel"
-                inputMode="numeric"
-                value={zipInput}
-                onChange={(e) => setZipInput(e.target.value.replace(/\D/g, '').slice(0, 5))}
-                placeholder="Enter Your ZIP Code..."
-                className="w-full px-5 py-4 text-lg rounded-2xl bg-white border border-gray-300 text-[#1A2432] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
-                aria-label="ZIP code"
-              />
-              <button
-                type="submit"
-                disabled={zipInput.length !== 5}
-                className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
-              >
-                See My Options
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2">
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
-                  <ShieldCheck className="w-3 h-3" />
-                  Licensed by the FL Dept of Insurance
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
-                  <Lock className="w-3 h-3" />
-                  HIPAA
-                </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent-soft text-accent-deep text-[10px] font-bold uppercase tracking-wide">
-                  <ShieldCheck className="w-3 h-3" />
-                  Secure & Private
-                </span>
-              </div>
-            </div>
-          </form>
-
-          {/* Trust bubble */}
-          <div className="mt-6 max-w-md mx-auto">
-            <HeroTrustBubble />
-          </div>
-
-          {/* Carrier logos */}
-          <div className="mt-8">
-            <p className="text-[11px] uppercase tracking-widest font-semibold text-[#607D8B] mb-3">
-              Compare plans from top carriers
-            </p>
-            <div className="flex items-center justify-center flex-wrap gap-3">
-              {carriers.map((c) => (
-                <div
-                  key={c.name}
-                  className="bg-white rounded-xl border border-sand-deep/60 px-3 py-2 flex items-center justify-center"
-                >
-                  <img
-                    src={c.src}
-                    alt={`${c.name} logo`}
-                    title={c.name}
-                    className={`h-6 w-auto object-contain opacity-80 ${c.offset || ''}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Mobile-only trust bubble (desktop shows it under the hero image) */}
+      <div className="lg:hidden px-5 sm:px-6 pb-2">
+        <div className="max-w-sm mx-auto">
+          <HeroTrustBubble />
         </div>
-      </section>
+      </div>
+
+      <TrustBar />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
@@ -155,8 +121,42 @@ export default function SelfEmployedPPO() {
         </div>
       </section>
 
+      {/* Mid CTA */}
+      <section className="bg-gradient-to-br from-primary to-primary-deep py-12 px-6 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-turquoise/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-balance">
+            Ready to see your PPO options?
+          </h2>
+          <p className="text-white/80 mb-8 text-lg">
+            It takes less than 2 minutes. A licensed agent will review your results and help you enroll.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              to={createPageUrl('Quote')}
+              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
+            >
+              Start With My ZIP Code
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a
+              href="tel:+18556345343"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
+            >
+              <Phone className="w-5 h-5" />
+              (855) 634-5343
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <FinalCTA />
       <Footer />
       <MobileCallBar />
+      <CallbackModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }
