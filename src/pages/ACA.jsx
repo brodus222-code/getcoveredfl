@@ -51,6 +51,8 @@ export default function ACA() {
         badgeText="Florida's Trusted Health Insurance Marketplace"
         heading={<>Florida's trusted <span className="text-accent">Health Insurance Marketplace</span></>}
         subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-white">in minutes.</strong></>}
+        helperText="Enter your ZIP code below to compare plan options."
+        zipPlaceholder="Zip Code"
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
         leftAlignForm

@@ -59,6 +59,7 @@ export default function SelfEmployedPPO() {
         subheading={<>Stop settling for restrictive networks. Discover the freedom of an open-access PPO. Enter your ZIP code to see plans and prices in minutes.</>}
         zipPlaceholder="Zip Code"
         buttonText="Start My Quote"
+        helperText="Enter your ZIP code below to compare plan options."
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
         leftAlignForm
