@@ -59,7 +59,7 @@ export default function SelfEmployedPPO() {
 
           <form onSubmit={handleZipSubmit} className="max-w-md mx-auto">
             <div className="mb-6 text-center text-sm font-semibold text-[#1A2432]/70">
-              Get a free, instant quote. Start with your ZIP code below.
+              Get a free, instant quote on Florida's Top 10 Plans. Start with your ZIP code below.
             </div>
             <div className="space-y-3">
               <input
