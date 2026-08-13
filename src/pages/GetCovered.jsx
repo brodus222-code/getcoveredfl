@@ -43,7 +43,7 @@ export default function GetCovered() {
         badgeText="Florida's Trusted Health Insurance Guide"
         heading="Find Affordable Health Insurance in Florida"
         subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
-        helperText="Enter your ZIP code below to compare plan options."
+        helperText="Enter your ZIP code below to compare plans."
         zipPlaceholder="Zip Code"
         onAgentClick={() => setModalOpen(true)}
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/3d0905bcf_generated_image.png"

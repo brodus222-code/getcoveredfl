@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'See My Options', helperText }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
