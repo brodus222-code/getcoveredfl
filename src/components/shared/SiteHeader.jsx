@@ -17,11 +17,16 @@ export default function SiteHeader({ variant = 'light' }) {
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
         <Link to={createPageUrl('Home')} className="flex items-center gap-2.5 group">
           <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${isTransparent ? 'bg-white/15 backdrop-blur-sm' : 'bg-primary'}`}>
-            <Shield className="w-5 h-5 text-white" />
+            <Shield className="w-5 h-5 text-[#4cb6b8]" strokeWidth={1.75} />
           </div>
-          <span className={`text-lg font-bold font-heading tracking-tight ${isTransparent ? 'text-white' : 'text-navy'}`}>
-            GetCovered<span className="text-accent">FL</span>
-          </span>
+          <div className="flex flex-col leading-none">
+            <span className={`text-lg font-bold font-heading tracking-tight ${isTransparent ? 'text-white' : 'text-navy'}`}>
+              GetCovered<span className="text-accent">FL</span>
+            </span>
+            <span className={`text-[10px] font-medium tracking-wide mt-0.5 ${isTransparent ? 'text-white/80' : 'text-navy-soft'}`}>
+              Powered by <span className="font-bold">HealthLink</span>
+            </span>
+          </div>
         </Link>
 
         <div className="flex items-center gap-3 sm:gap-4">
