@@ -100,6 +100,7 @@ export default function SelfEmployedPPO() {
         </div>
       </section>
 
+      <TopRatedBadge />
       {/* FAQ */}
       <section className="py-12 md:py-20 px-6 bg-sand">
         <div className="max-w-3xl mx-auto">
@@ -139,7 +140,6 @@ export default function SelfEmployedPPO() {
         </div>
       </section>
 
-      <TopRatedBadge />
       <FinalCTA />
       <Footer />
       <MobileCallBar />
