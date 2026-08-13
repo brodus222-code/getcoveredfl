@@ -7,13 +7,12 @@ export default async function(req) {
 
     const base44 = createClientFromRequest(req);
 
-    // Trust-boundary check: only allow authenticated app users or the
-    // platform workflow runner (pre-shared WORKFLOW_SECRET) to invoke this
-    // function. Rejects unauthenticated external callers.
-    const isAuthenticated = await base44.auth.isAuthenticated().catch(() => false);
+    // Trust-boundary check: only the platform workflow runner may invoke this
+    // function, authenticated via the pre-shared WORKFLOW_SECRET. Any logged-in
+    // app user (including non-admin agents) is rejected.
     const workflowSecret = secrets.get('WORKFLOW_SECRET');
     const providedSecret = body && body.workflow_secret;
-    if (!isAuthenticated && providedSecret !== workflowSecret) {
+    if (providedSecret !== workflowSecret) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

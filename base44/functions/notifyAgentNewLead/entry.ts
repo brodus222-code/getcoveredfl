@@ -9,9 +9,8 @@ import { secrets } from 'base44:runtime';
 // supplied headers (Origin/Referer) are trusted for authorization.
 //
 // Auth: this function sends an email on the agency's behalf, so it MUST NOT be
-// callable by unauthenticated external parties. Only the platform workflow
-// engine (authenticated service context) or a caller presenting the shared
-// WORKFLOW_SECRET may proceed.
+// callable by app users. Only the platform workflow engine may invoke it,
+// authenticated via the shared WORKFLOW_SECRET.
 
 export default async function(req) {
   try {
@@ -23,12 +22,11 @@ export default async function(req) {
 
     // Trust-boundary check: require either an authenticated platform context
     // (workflow engine) or the shared server-to-server WORKFLOW_SECRET.
-    const isAuth = await base44.auth.isAuthenticated().catch(() => false);
     const workflowSecret = secrets.get("WORKFLOW_SECRET");
     const headerSecret = req.headers.get("x-workflow-secret");
     const bodySecret = body && body.workflow_secret;
     const secretOk = !!workflowSecret && (headerSecret === workflowSecret || bodySecret === workflowSecret);
-    if (!isAuth && !secretOk) {
+    if (!secretOk) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
