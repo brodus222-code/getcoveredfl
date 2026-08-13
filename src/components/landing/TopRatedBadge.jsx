@@ -15,7 +15,7 @@ export default function TopRatedBadge() {
           <Award className="w-7 h-7 text-white" strokeWidth={1.75} />
         </div>
         <h3 className="text-base font-bold uppercase tracking-wide text-[#1D3557] mb-4 font-heading">
-          Top-Rated Coverage
+          Top-Rated Carriers
         </h3>
         <ul className="space-y-2">
           {items.map((item) => (
