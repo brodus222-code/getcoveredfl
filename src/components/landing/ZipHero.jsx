@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...' }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
 
@@ -69,7 +69,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
               inputMode="numeric"
               value={zipInput}
               onChange={(e) => setZipInput(e.target.value.replace(/\D/g, '').slice(0, 5))}
-              placeholder="Enter Your ZIP Code..."
+              placeholder={zipPlaceholder}
               className="w-full px-5 py-4 text-lg rounded-2xl bg-white border border-gray-300 text-[#1A2432] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
               aria-label="ZIP code"
             />
