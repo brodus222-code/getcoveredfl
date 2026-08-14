@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
 import { MapPin, Briefcase, ShoppingBag, Shield } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
+import { trackUetEvent } from '@/lib/uetTrack';
 
 import ProgressBar from '@/components/quote/ProgressBar';
 import StepZipCode from '@/components/quote/StepZipCode';
@@ -63,6 +64,9 @@ export default function QuoteWizard() {
       base44.analytics.track({
         eventName: 'quote_step_view',
         properties: { step: currentStep, step_name: STEP_NAMES[currentStep] },
+      });
+      trackUetEvent('quote_step_view', {
+        event_label: `step_${currentStep}_${STEP_NAMES[currentStep]}`,
       });
     }
     if (currentStep === TOTAL_STEPS + 1) {

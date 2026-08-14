@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
+import { trackUetEvent } from '@/lib/uetTrack';
 
 export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText, source }) {
   const [zipInput, setZipInput] = useState('');
@@ -18,6 +19,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         eventName: 'landing_zip_enter',
         properties: { source_page: location.pathname },
       });
+      trackUetEvent('landing_zip_enter', { event_label: location.pathname });
     }
   };
 
@@ -29,6 +31,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         eventName: 'landing_quote_start',
         properties: { source_page: location.pathname, zip_code: zip },
       });
+      trackUetEvent('landing_quote_start', { event_label: location.pathname });
       navigate(`/Quote?zip=${zip}${source ? `&source=${source}` : ''}`);
     }
   };
