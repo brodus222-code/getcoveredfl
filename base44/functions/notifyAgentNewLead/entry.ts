@@ -15,9 +15,7 @@ import { secrets } from 'base44:runtime';
 
 export default async function(req) {
   try {
-    // Clone the request so reading the body here doesn't interfere with any
-    // later body reads the SDK might perform (auth context, etc.).
-    const body = await req.clone().json().catch(() => ({}));
+    const body = await req.json().catch(() => ({}));
 
     const base44 = createClientFromRequest(req);
 
@@ -26,16 +24,14 @@ export default async function(req) {
     const user = await base44.auth.me().catch(() => null);
     const isAdmin = user && user.role === 'admin';
     const workflowSecret = secrets.get("WORKFLOW_SECRET");
-    const headerSecret = req.headers.get("x-workflow-secret");
     const bodySecret = body && body.workflow_secret;
-    const secretOk = !!workflowSecret && (headerSecret === workflowSecret || bodySecret === workflowSecret);
+    const secretOk = !!workflowSecret && bodySecret === workflowSecret;
     if (!isAdmin && !secretOk) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    // Accept lead_id from the body, nested data, or URL query params.
-    const url = new URL(req.url);
-    const leadId = (body && (body.lead_id || (body.data && body.data.lead_id))) || url.searchParams.get('lead_id');
+    // Accept lead_id from the body or nested data.
+    const leadId = body && (body.lead_id || (body.data && body.data.lead_id));
     if (!leadId) {
       return Response.json({ error: 'lead_id is required' }, { status: 400 });
     }
