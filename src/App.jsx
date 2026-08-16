@@ -23,6 +23,12 @@ import Blog from './pages/Blog';
 import BlogPostDetail from './pages/BlogPostDetail';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import MiamiHealthInsurance from './pages/MiamiHealthInsurance';
+import OrlandoHealthInsurance from './pages/OrlandoHealthInsurance';
+import TampaHealthInsurance from './pages/TampaHealthInsurance';
+import JacksonvilleHealthInsurance from './pages/JacksonvilleHealthInsurance';
+import FortLauderdaleHealthInsurance from './pages/FortLauderdaleHealthInsurance';
+import StPetersburgHealthInsurance from './pages/StPetersburgHealthInsurance';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -87,6 +93,12 @@ const AuthenticatedApp = () => {
       <Route path="/blog/:slug" element={<BlogPostDetail />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/miami-health-insurance" element={<MiamiHealthInsurance />} />
+      <Route path="/orlando-health-insurance" element={<OrlandoHealthInsurance />} />
+      <Route path="/tampa-health-insurance" element={<TampaHealthInsurance />} />
+      <Route path="/jacksonville-health-insurance" element={<JacksonvilleHealthInsurance />} />
+      <Route path="/fort-lauderdale-health-insurance" element={<FortLauderdaleHealthInsurance />} />
+      <Route path="/st-petersburg-health-insurance" element={<StPetersburgHealthInsurance />} />
       <Route path="/LeadManagement" element={
         <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
           <LeadManagement />

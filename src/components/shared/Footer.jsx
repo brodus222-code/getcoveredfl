@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white/80">
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 md:py-14">
-        <div className="grid md:grid-cols-3 gap-8 md:gap-10 pb-10 border-b border-white/10">
+        <div className="grid md:grid-cols-4 gap-8 md:gap-10 pb-10 border-b border-white/10">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center">
@@ -33,6 +33,18 @@ export default function Footer() {
               <li><Link to="/blog" className="hover:text-accent transition-colors">Insurance News</Link></li>
               <li><Link to="/about" className="hover:text-accent transition-colors">About Us</Link></li>
               <li><Link to="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-wider">Florida Service Areas</h4>
+            <ul className="space-y-2.5 text-sm">
+              <li><Link to="/miami-health-insurance" className="hover:text-accent transition-colors">Miami</Link></li>
+              <li><Link to="/orlando-health-insurance" className="hover:text-accent transition-colors">Orlando</Link></li>
+              <li><Link to="/tampa-health-insurance" className="hover:text-accent transition-colors">Tampa</Link></li>
+              <li><Link to="/jacksonville-health-insurance" className="hover:text-accent transition-colors">Jacksonville</Link></li>
+              <li><Link to="/fort-lauderdale-health-insurance" className="hover:text-accent transition-colors">Fort Lauderdale</Link></li>
+              <li><Link to="/st-petersburg-health-insurance" className="hover:text-accent transition-colors">St. Petersburg</Link></li>
             </ul>
           </div>
 
