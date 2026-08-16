@@ -11,7 +11,7 @@ export const floridaCities = [
     nearby: ['Coral Gables', 'Hialeah', 'Doral', 'Kendall', 'Aventura', 'Cutler Bay'],
     populationNote: 'home to over 2.7 million residents in the greater metro area',
     landmarkNote: 'from Downtown Brickell to South Beach',
-    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/miami-skyline.png',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/75e9aa950_generated_image.png',
     subheading: 'Compare affordable health plans for Miami families and self-employed residents. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
     faqs: [
       {
@@ -44,7 +44,7 @@ export const floridaCities = [
     nearby: ['Winter Park', 'Kissimmee', 'Ocoee', 'Winter Garden', 'Altamonte Springs', 'Sanford'],
     populationNote: 'serving over 2.5 million residents across the metro',
     landmarkNote: 'from Lake Nona to the attractions corridor',
-    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/orlando-skyline.png',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/0cdc062f6_generated_image.png',
     subheading: 'Compare affordable health plans for Orlando families, hospitality workers, and self-employed residents. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
     faqs: [
       {
@@ -77,7 +77,7 @@ export const floridaCities = [
     nearby: ['St. Petersburg', 'Clearwater', 'Brandon', 'Riverview', 'Town \'n\' Country', 'Carrollwood'],
     populationNote: 'serving over 3.1 million residents across the Tampa Bay metro',
     landmarkNote: 'from Downtown Tampa to the Gulf beaches',
-    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/tampa-skyline.png',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/fe0480c14_generated_image.png',
     subheading: 'Compare affordable health plans for Tampa families and self-employed residents across the Bay area. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
     faqs: [
       {
@@ -110,7 +110,7 @@ export const floridaCities = [
     nearby: ['Jacksonville Beach', 'Orange Park', 'Fleming Island', 'Nocatee', 'St. Augustine', 'Middleburg'],
     populationNote: 'Florida\'s largest city by area, with over 1.5 million residents in the metro',
     landmarkNote: 'from the Southbank to the beaches',
-    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/jacksonville-skyline.png',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/3a0e6a5e2_generated_image.png',
     subheading: 'Compare affordable health plans for Jacksonville families and self-employed residents across Duval County. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
     faqs: [
       {
@@ -143,7 +143,7 @@ export const floridaCities = [
     nearby: ['Hollywood', 'Pompano Beach', 'Coral Springs', 'Davie', 'Plantation', 'Sunrise'],
     populationNote: 'serving nearly 2 million residents across Broward County',
     landmarkNote: 'from Las Olas to the beachfront',
-    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/fort-lauderdale-skyline.png',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/a47734e89_generated_image.png',
     subheading: 'Compare affordable health plans for Fort Lauderdale families and self-employed residents across Broward County. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
     faqs: [
       {
@@ -176,7 +176,7 @@ export const floridaCities = [
     nearby: ['Clearwater', 'Largo', 'Seminole', 'Pinellas Park', 'Gulfport', 'Tarpon Springs'],
     populationNote: 'serving over 1 million residents across Pinellas County',
     landmarkNote: 'from Downtown St. Pete to the Gulf beaches',
-    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/st-pete-skyline.png',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/301265b18_generated_image.png',
     subheading: 'Compare affordable health plans for St. Petersburg families and self-employed residents across Pinellas County. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
     faqs: [
       {
