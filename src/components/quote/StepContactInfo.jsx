@@ -3,6 +3,7 @@ import { Input } from '@/components/ui/input';
 import { Send, Phone, Loader2 } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { motion, AnimatePresence } from 'framer-motion';
+import FloridaTrustBadges from '@/components/shared/FloridaTrustBadges';
 
 // Merged step: name + email + phone + SMS opt-in on one screen.
 // Replaces the old two-step name → contact flow. This is the final step
@@ -137,6 +138,8 @@ export default function StepContactInfo({ data, onChange, onSubmit, onBack, isSu
             </motion.div>
           )}
         </AnimatePresence>
+
+        <FloridaTrustBadges className="pt-2" />
 
         <div className="flex gap-3 pt-2">
           <button

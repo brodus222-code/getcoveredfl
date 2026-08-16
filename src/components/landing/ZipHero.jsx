@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Calendar, Phone, ArrowRight } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { trackUetEvent } from '@/lib/uetTrack';
+import FloridaTrustBadges from '@/components/shared/FloridaTrustBadges';
 
 export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText, source }) {
   const [zipInput, setZipInput] = useState('');
@@ -107,6 +108,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
+          <FloridaTrustBadges className="mt-5" />
         </form>
         {belowButton}
         </div>
