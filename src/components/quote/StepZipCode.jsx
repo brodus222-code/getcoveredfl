@@ -30,7 +30,8 @@ export default function StepZipCode({ data, onChange, onNext }) {
           Licensed Florida Agents
         </div>
         <p className="text-navy-soft leading-relaxed">
-          Enter your ZIP code to view plans, pricing, and enrollment options available in your area.
+          Answer a few quick questions — a licensed agent for your state matches your plans. Free,
+          no obligation.
         </p>
       </div>
 
