@@ -20,7 +20,7 @@ export const carriers = [
   },
 ];
 
-export default function CarrierLogos() {
+export default function CarrierLogos({ compact = false }) {
   return (
     <section className="w-full bg-sand">
       <div className="max-w-6xl mx-auto px-5 sm:px-6 pt-4 pb-8 sm:py-8">
@@ -34,7 +34,7 @@ export default function CarrierLogos() {
               src={c.src}
               alt={`${c.name} logo`}
               title={c.name}
-              className={`h-10 sm:h-12 w-auto max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity ${c.offset || ''}`}
+              className={`${compact ? 'h-7 sm:h-8 max-w-[100px]' : 'h-10 sm:h-12 max-w-[140px]'} w-auto object-contain opacity-70 hover:opacity-100 transition-opacity ${c.offset || ''}`}
             />
           ))}
         </div>

@@ -235,7 +235,7 @@ export default function QuoteWizard() {
         </AnimatePresence>
         {currentStep === 1 && (
           <div className="mt-10">
-            <CarrierLogos />
+            <CarrierLogos compact />
           </div>
         )}
         {(currentStep === 1 || currentStep === 2) && (
