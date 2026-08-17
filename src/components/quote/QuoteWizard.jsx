@@ -169,14 +169,11 @@ export default function QuoteWizard() {
         event_value: 0,
       });
 
-      // Fire Facebook Pixel Contact conversion event
+      // Fire Facebook Pixel Contact conversion event.
+      // Sent with no parameters — the pixel is under Meta "Core Setup"
+      // restrictions, which discard custom parameters anyway.
       if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Contact', {
-          content_name: 'Quote Request',
-          content_category: 'Contact Form',
-          value: 0,
-          currency: 'USD',
-        });
+        window.fbq('track', 'Contact');
       }
     }
 
