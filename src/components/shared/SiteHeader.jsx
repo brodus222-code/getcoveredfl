@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { Shield, Phone } from 'lucide-react';
 import { createPageUrl } from '@/utils';
 
-export default function SiteHeader({ variant = 'light' }) {
+export default function SiteHeader({ variant = 'light', staticLogo = false }) {
   const isTransparent = variant === 'transparent';
+  const LogoTag = staticLogo ? 'div' : Link;
+  const logoProps = staticLogo ? {} : { to: createPageUrl('Home') };
 
   return (
     <header
@@ -15,7 +17,7 @@ export default function SiteHeader({ variant = 'light' }) {
       }
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
-        <Link to={createPageUrl('Home')} className="flex items-center gap-2.5 group">
+        <LogoTag {...logoProps} className="flex items-center gap-2.5 group">
           <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${isTransparent ? 'bg-white/15 backdrop-blur-sm' : 'bg-primary'}`}>
             <Shield className="w-5 h-5 text-[#4cb6b8]" strokeWidth={1.75} />
           </div>
@@ -27,7 +29,7 @@ export default function SiteHeader({ variant = 'light' }) {
               Powered by <span className="font-bold">HealthLink</span>
             </span>
           </div>
-        </Link>
+        </LogoTag>
 
         <div className="flex items-center gap-3 sm:gap-4">
           <a

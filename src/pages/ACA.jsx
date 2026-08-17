@@ -8,7 +8,7 @@ import HowItWorks from '@/components/landing/HowItWorks';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import FinalCTA from '@/components/landing/FinalCTA';
-import Footer from '@/components/shared/Footer';
+import LandingFooter from '@/components/shared/LandingFooter';
 import MobileCallBar from '@/components/shared/MobileCallBar';
 import CallbackModal from '@/components/quote/CallbackModal';
 
@@ -45,7 +45,7 @@ export default function ACA() {
 
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
-      <SiteHeader variant="light" />
+      <SiteHeader variant="light" staticLogo />
 
       <ZipHero
         badgeText="Florida's Trusted Health Insurance Marketplace"
@@ -168,7 +168,7 @@ export default function ACA() {
       </section>
 
       <FinalCTA />
-      <Footer />
+      <LandingFooter />
       <MobileCallBar />
       <CallbackModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
