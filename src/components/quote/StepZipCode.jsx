@@ -30,8 +30,7 @@ export default function StepZipCode({ data, onChange, onNext }) {
           Licensed Florida Agents
         </div>
         <p className="text-navy-soft leading-relaxed">
-          Enter your ZIP below to see the ACA Marketplace and private plans available in your
-          area — free help from a local licensed agent.
+          Enter your ZIP code to view plans, pricing, and enrollment options available in your area.
         </p>
       </div>
 
