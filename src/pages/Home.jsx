@@ -1,7 +1,6 @@
 import React from 'react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
-import TrustBar from '@/components/shared/TrustBar';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import HowItWorks from '@/components/landing/HowItWorks';
@@ -34,7 +33,6 @@ export default function Home() {
         </div>
       </div>
 
-      <TrustBar />
       <HowItWorks />
       <CoverageTiles />
       <AboutSection />
