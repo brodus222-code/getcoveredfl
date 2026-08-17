@@ -5,7 +5,6 @@ import { MapPin, Briefcase, ShoppingBag, Shield } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { trackUetEvent } from '@/lib/uetTrack';
 
-import ProgressBar from '@/components/quote/ProgressBar';
 import StepZipCode from '@/components/quote/StepZipCode';
 import StepHouseholdInfo from '@/components/quote/StepHouseholdInfo';
 import StepAges from '@/components/quote/StepAges';
@@ -200,10 +199,8 @@ export default function QuoteWizard() {
   return (
     <>
       {currentStep <= TOTAL_STEPS && (
-        <div className="bg-white/90 backdrop-blur-md border-b border-sand-deep/40 sticky top-[72px] z-30">
-          <div className="max-w-3xl mx-auto px-6 py-4">
-            <ProgressBar currentStep={currentStep} totalSteps={TOTAL_STEPS} />
-          </div>
+        <div className="max-w-3xl mx-auto px-6 pt-6 text-center text-sm text-navy-soft">
+          Step {currentStep} of {TOTAL_STEPS}
         </div>
       )}
 
@@ -242,11 +239,12 @@ export default function QuoteWizard() {
           </div>
         )}
         {(currentStep === 1 || currentStep === 2) && (
+
           <div className="mt-10">
             <SkipFormBanner />
           </div>
         )}
-        {currentStep <= TOTAL_STEPS && (
+        {currentStep > 1 && currentStep <= TOTAL_STEPS && (
           <div className="mt-8">
             <WizardTrustBadges />
           </div>
