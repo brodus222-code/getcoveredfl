@@ -4,6 +4,7 @@ import { createPageUrl } from '@/utils';
 import { CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, CalendarClock, Network } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
+import HowItWorks from '@/components/landing/HowItWorks';
 
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
@@ -104,6 +105,8 @@ export default function SelfEmployed() {
           <HeroTrustBubble />
         </div>
       </div>
+
+      <HowItWorks />
 
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">

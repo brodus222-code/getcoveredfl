@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CheckCircle, Plus, Minus, MapPin } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
-import TrustBar from '@/components/shared/TrustBar';
+import HowItWorks from '@/components/landing/HowItWorks';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import FinalCTA from '@/components/landing/FinalCTA';
@@ -53,7 +53,7 @@ export default function CityLanding({ city }) {
         </div>
       </div>
 
-      <TrustBar />
+      <HowItWorks />
 
       {/* Local intro + nearby areas */}
       <section className="py-12 md:py-16 px-6 bg-white">

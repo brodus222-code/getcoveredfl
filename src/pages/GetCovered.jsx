@@ -4,7 +4,7 @@ import { createPageUrl } from '@/utils';
 import { Phone, ArrowRight, Wrench, ShieldCheck, Clock } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
-import TrustBar from '@/components/shared/TrustBar';
+import HowItWorks from '@/components/landing/HowItWorks';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
 import EligibilityBanner from '@/components/landing/EligibilityBanner';
@@ -59,7 +59,7 @@ export default function GetCovered() {
         </div>
       </div>
 
-      <TrustBar />
+      <HowItWorks />
 
       {/* Eligibility banner with image */}
       <EligibilityBanner />
