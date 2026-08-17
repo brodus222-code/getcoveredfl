@@ -3,21 +3,20 @@ import React from 'react';
 // Carrier logos uploaded by the agency — displayed under the hero for trust.
 export const carriers = [
   {
-    name: 'Blue Cross Blue Shield',
-    src: 'https://media.base44.com/images/public/696f51421917c989be527824/63996acff_bcbs_logo_transparent.png',
-    offset: 'mt-[10px]',
+    name: 'Anthem Blue Cross',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/067c219b4_Anthem_Blue_Cross_Final_Verified_v51.png',
   },
   {
     name: 'UnitedHealthcare',
-    src: 'https://media.base44.com/images/public/696f51421917c989be527824/bd726061f_uhc_logo.png',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/1117aef4f_uhc_logo_final.svg',
   },
   {
     name: 'Aetna',
-    src: 'https://media.base44.com/images/public/696f51421917c989be527824/404e068e7_aetna_logo.png',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/85bd65646_aetna_logo1.png',
   },
   {
-    name: 'Cigna',
-    src: 'https://media.base44.com/images/public/696f51421917c989be527824/c22bad847_cigna_logo.svg',
+    name: 'Health First',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/f40d4bd45_health_first_logo_tight1.png',
   },
 ];
 
