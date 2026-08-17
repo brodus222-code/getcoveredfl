@@ -4,7 +4,6 @@ import { createPageUrl } from '@/utils';
 import { CheckCircle, Phone, ArrowRight, Plus, Minus, Briefcase, Calculator, CalendarClock, Network } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
-import TrustBar from '@/components/shared/TrustBar';
 
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
@@ -106,14 +105,9 @@ export default function SelfEmployed() {
         </div>
       </div>
 
-      <TrustBar />
-
       {/* Benefits */}
       <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
-            Built for 1099 life
-          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading text-balance">
             Coverage that travels with you — not tied to an employer
           </h2>
