@@ -107,6 +107,29 @@
       "type": "boolean",
       "default": false,
       "description": "Whether the branded confirmation email has been sent to this lead"
+    },
+    "lead_source": {
+      "type": "string",
+      "enum": [
+        "website",
+        "meta_instant_form",
+        "other"
+      ],
+      "default": "website",
+      "description": "Where the lead came from"
+    },
+    "birth_year": {
+      "type": "number",
+      "description": "Birth year reported on the lead form, used for age qualification"
+    },
+    "qualified": {
+      "type": "boolean",
+      "default": true,
+      "description": "False when the lead fails age qualification (Medicare-age) and should not be routed to an agent"
+    },
+    "disqualified_reason": {
+      "type": "string",
+      "description": "Why the lead was marked unqualified"
     }
   },
   "required": [
