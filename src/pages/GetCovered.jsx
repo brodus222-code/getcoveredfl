@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Phone, ArrowRight, Wrench, ShieldCheck, Clock } from 'lucide-react';
+import { Phone, ArrowRight, ShieldCheck, Clock } from 'lucide-react';
 import SiteHeader from '@/components/shared/SiteHeader';
 import ZipHero from '@/components/landing/ZipHero';
-import HowItWorks from '@/components/landing/HowItWorks';
+import WrongPlanProblems from '@/components/landing/WrongPlanProblems';
+import HowWeFixIt from '@/components/landing/HowWeFixIt';
 import HeroCarrierLogos from '@/components/landing/HeroCarrierLogos';
 import HeroTrustBubble from '@/components/landing/HeroTrustBubble';
-import EligibilityBanner from '@/components/landing/EligibilityBanner';
 import FinalCTA from '@/components/landing/FinalCTA';
 import LandingFooter from '@/components/shared/LandingFooter';
 import MobileCallBar from '@/components/shared/MobileCallBar';
@@ -16,36 +16,18 @@ import CallbackModal from '@/components/quote/CallbackModal';
 export default function GetCovered() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const CallbackCta = ({ mobile = false }) => (
-    mobile ? (
-      <a
-        href="tel:+18556345343"
-        className="md:hidden inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent"
-      >
-        <Phone className="w-4 h-4" />
-        Have an Agent Call Me
-      </a>
-    ) : (
-      <button
-        onClick={() => setModalOpen(true)}
-        className="hidden md:inline-flex items-center gap-2 bg-accent hover:bg-accent-deep text-white font-semibold px-6 py-3 rounded-2xl transition-colors text-sm shadow-glow-accent"
-      >
-        <Phone className="w-4 h-4" />
-        Have an Agent Call Me
-      </button>
-    )
-  );
-
   return (
     <div className="min-h-screen bg-white pb-20 md:pb-0">
       <SiteHeader variant="light" staticLogo />
       <ZipHero
-        badgeText="Florida's Trusted Health Insurance Guide"
-        heading="Find Affordable Health Insurance in Florida"
-        subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
+        badgeText="Free Marketplace Plan Review"
+        heading={<>Picked the wrong Marketplace plan? <span className="text-accent">We'll fix it — free.</span></>}
+        subheading="Wrong doctors, costly prescriptions, or a deductible you can't afford? A licensed Florida agent will review your enrollment and correct it at no cost to you."
         helperText="Enter your ZIP code below to compare plans."
         zipPlaceholder="Zip Code"
+        source="fix-account"
         onAgentClick={() => setModalOpen(true)}
+        showCallCta
         heroImage="https://media.base44.com/images/public/696f51421917c989be527824/3d0905bcf_generated_image.png"
         leftAlignForm
         belowButton={<HeroCarrierLogos />}
@@ -59,42 +41,38 @@ export default function GetCovered() {
         </div>
       </div>
 
-      <HowItWorks />
+      <WrongPlanProblems />
 
-      {/* Eligibility banner with image */}
-      <EligibilityBanner />
+      <HowWeFixIt />
 
-      {/* Fix Marketplace Account */}
-      <section className="py-12 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl overflow-hidden shadow-soft border border-sand-deep/40">
-            <div className="flex flex-col sm:flex-row items-center gap-6 p-8">
-              <div className="flex-shrink-0 w-20 h-20 rounded-3xl bg-primary-soft flex items-center justify-center">
-                <Wrench className="w-10 h-10 text-primary" />
-              </div>
-              <div className="flex-1 text-center sm:text-left">
-                <h3 className="text-xl font-bold text-navy mb-2 font-heading">
-                  Is your Marketplace account wrong?
-                </h3>
-                <p className="text-navy-soft mb-4">
-                  We can fix it for free. Wrong income, wrong household size, or wrong plan — our agents handle corrections every day.
-                </p>
-                <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
-                  <Link
-                    to={createPageUrl('Quote')}
-                    className="inline-flex items-center gap-2 bg-primary hover:bg-primary-deep text-white font-semibold px-6 py-3 rounded-2xl text-sm transition-colors"
-                  >
-                    Get Help Fixing My Account
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <CallbackCta />
-                  <CallbackCta mobile />
-                </div>
-              </div>
-            </div>
-            <div className="bg-sand/60 border-t border-sand-deep/40 px-6 py-2 text-center text-xs text-navy-soft/70">
-              We never share or sell your information.
-            </div>
+      {/* Mid CTA */}
+      <section className="bg-gradient-to-br from-primary to-primary-deep py-12 px-6 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-turquoise/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
+        </div>
+        <div className="relative max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-balance">
+            Let's get you into the right plan
+          </h2>
+          <p className="text-white/80 mb-8 text-lg">
+            There's no fee for our help, and no obligation to switch. A licensed Florida agent reviews your plan with you.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              to={createPageUrl('Quote')}
+              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
+            >
+              Review My Plan
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <a
+              href="tel:+18556345343"
+              className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium hover:bg-white/20 transition-all"
+            >
+              <Phone className="w-5 h-5" />
+              (855) 634-5343
+            </a>
           </div>
         </div>
       </section>
@@ -124,7 +102,11 @@ export default function GetCovered() {
       <FinalCTA />
       <LandingFooter />
       <MobileCallBar />
-      <CallbackModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <CallbackModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        notes="Fix Marketplace account request — picked the wrong plan (/GetCovered)"
+      />
     </div>
   );
 }

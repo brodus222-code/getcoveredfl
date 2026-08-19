@@ -5,7 +5,7 @@ import { base44 } from '@/api/base44Client';
 import { trackUetEvent } from '@/lib/uetTrack';
 import FloridaTrustBadges from '@/components/shared/FloridaTrustBadges';
 
-export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText, source }) {
+export default function ZipHero({ badgeText, heading, subheading, onAgentClick, heroImage, belowButton, belowImage, leftAlignForm, zipPlaceholder = 'Enter Your ZIP Code...', buttonText = 'Start My Quote', helperText, source, showCallCta }) {
   const [zipInput, setZipInput] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
@@ -99,14 +99,37 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
               className="w-full px-5 py-4 text-lg rounded-2xl bg-white border border-gray-300 text-[#1A2432] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent font-medium"
               aria-label="ZIP code"
             />
-            <button
-              type="submit"
-              disabled={zipInput.length !== 5}
-              className="w-full inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
-            >
-              {buttonText}
-              <ArrowRight className="w-5 h-5" />
-            </button>
+            <div className={showCallCta ? 'flex flex-col sm:flex-row gap-3' : ''}>
+              <button
+                type="submit"
+                disabled={zipInput.length !== 5}
+                className={`inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-4 rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5 ${showCallCta ? 'flex-1' : 'w-full'}`}
+              >
+                {buttonText}
+                <ArrowRight className="w-5 h-5" />
+              </button>
+              {showCallCta && (
+                onAgentClick ? (
+                  <button
+                    type="button"
+                    onClick={onAgentClick}
+                    className="hidden sm:inline-flex flex-1 items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white font-bold px-6 py-4 rounded-2xl transition-all hover:-translate-y-0.5"
+                  >
+                    <Phone className="w-5 h-5" />
+                    Have an Agent Call Me
+                  </button>
+                ) : null
+              )}
+              {showCallCta && (
+                <a
+                  href="tel:+18556345343"
+                  className="sm:hidden inline-flex flex-1 items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white font-bold px-6 py-4 rounded-2xl transition-all"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call (855) 634-5343
+                </a>
+              )}
+            </div>
           </div>
           <FloridaTrustBadges className="mt-5" />
         </form>

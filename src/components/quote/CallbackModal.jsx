@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Phone, CheckCircle2, Loader2 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 
-export default function CallbackModal({ open, onClose }) {
+export default function CallbackModal({ open, onClose, notes }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -33,6 +33,7 @@ export default function CallbackModal({ open, onClose }) {
       zip_code: 'N/A',
       coverage_type: 'callback_request',
       confirmation_email_sent: true,
+      ...(notes ? { notes } : {}),
     });
     setLoading(false);
     setSubmitted(true);
