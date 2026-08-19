@@ -230,7 +230,7 @@ export default function LeadManagement() {
                       <CardDescription className="flex items-center gap-4 text-sm">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
-                          {moment(lead.created_date).format('MMM D, YYYY h:mm A')}
+                          {moment.utc(lead.created_date).format('MMM D, YYYY h:mm A')}
                         </span>
                         <span className="flex items-center gap-1">
                           <Phone className="w-4 h-4" />
