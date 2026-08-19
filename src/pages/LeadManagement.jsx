@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
-import moment from 'moment';
+import { formatEst } from '@/lib/estTime';
 import WelcomeEmailBadge from '@/components/leads/WelcomeEmailBadge';
 
 export default function LeadManagement() {
@@ -230,7 +230,7 @@ export default function LeadManagement() {
                       <CardDescription className="flex items-center gap-4 text-sm">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
-                          {moment.utc(lead.created_date).format('MMM D, YYYY h:mm A')}
+                          {formatEst(lead.created_date)}
                         </span>
                         <span className="flex items-center gap-1">
                           <Phone className="w-4 h-4" />

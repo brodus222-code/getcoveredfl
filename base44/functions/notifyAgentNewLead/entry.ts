@@ -68,11 +68,16 @@ export default async function(req) {
     const coverage = escapeHtml((lead.coverage_type || 'N/A').replace(/_/g, ' '));
     const income = lead.estimated_income ? `$${Number(lead.estimated_income).toLocaleString()}` : 'N/A';
     const household = escapeHtml(lead.household_size || 'N/A');
+    // Show the received time in Eastern so email times match the dashboard
+    const receivedEt = lead.created_date
+      ? new Date(lead.created_date).toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'medium', timeStyle: 'short' }) + ' ET'
+      : 'N/A';
 
     const subject = `New Lead: ${sanitizeHeader(lead.full_name || 'Unknown')} — ${sanitizeHeader(lead.zip_code || 'N/A')}`;
     const htmlBody = `
       <h2>New Lead Submitted</h2>
       <table style="border-collapse:collapse;width:100%;max-width:500px">
+        <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Received</td><td style="padding:8px;border:1px solid #ddd">${receivedEt}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Name</td><td style="padding:8px;border:1px solid #ddd">${name}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Phone</td><td style="padding:8px;border:1px solid #ddd">${phone}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Email</td><td style="padding:8px;border:1px solid #ddd">${email}</td></tr>
