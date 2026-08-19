@@ -13,7 +13,8 @@
           "with": {
             "function_name": "notifyAgentNewLead",
             "args": {
-              "lead_id": "${ .trigger.entity_id }"
+              "lead_id": "${ .trigger.entity_id }",
+              "entity_id": "${ .trigger.entity_id }"
             }
           },
           "then": "end",
@@ -36,5 +37,5 @@
     }
   },
   "name": "Notify Agent on New Lead",
-  "description": ""
+  "description": "Emails new qualified lead details to the agency inbox."
 }

@@ -15,7 +15,15 @@ import { secrets } from 'base44:runtime';
 
 export default async function(req) {
   try {
-    const body = await req.json().catch(() => ({}));
+    // Parse the body defensively: read raw text once, then JSON.parse. Some
+    // invocation paths deliver an empty/streamed body to req.json(), which
+    // silently produced a "lead_id is required" 400 for workflow-triggered calls.
+    const rawBody = await req.text().catch(() => '');
+    let body = {};
+    if (rawBody) {
+      try { body = JSON.parse(rawBody); } catch (_e) { body = {}; }
+    }
+    const url = new URL(req.url);
 
     const base44 = createClientFromRequest(req);
 
@@ -31,8 +39,10 @@ export default async function(req) {
     }
 
     // Accept lead_id from the body or nested data.
-    const leadId = body && (body.lead_id || (body.data && body.data.lead_id));
+    const leadId = (body && (body.lead_id || body.entity_id || (body.data && (body.data.lead_id || body.data.id))))
+      || url.searchParams.get('lead_id');
     if (!leadId) {
+      console.log('notifyAgentNewLead: missing lead_id. raw body:', rawBody);
       return Response.json({ error: 'lead_id is required' }, { status: 400 });
     }
 
