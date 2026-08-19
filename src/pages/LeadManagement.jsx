@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import moment from 'moment';
+import WelcomeEmailBadge from '@/components/leads/WelcomeEmailBadge';
 
 export default function LeadManagement() {
   const { user } = useAuth();
@@ -224,6 +225,7 @@ export default function LeadManagement() {
                         <Badge className={statusColors[lead.status]}>
                           {lead.status}
                         </Badge>
+                        <WelcomeEmailBadge sent={lead.confirmation_email_sent} />
                       </div>
                       <CardDescription className="flex items-center gap-4 text-sm">
                         <span className="flex items-center gap-1">
