@@ -201,6 +201,39 @@ export const floridaCities = [
       },
     ],
   },
+  {
+    slug: 'space-coast',
+    name: 'Space Coast',
+    county: 'Brevard County',
+    region: 'Central Florida',
+    nearby: ['Melbourne', 'Palm Bay', 'Cocoa Beach', 'Titusville', 'Merritt Island', 'Viera'],
+    populationNote: 'serving over 600,000 residents across Brevard County',
+    landmarkNote: 'from Titusville and Cape Canaveral down to Melbourne and Palm Bay',
+    heroImage: 'https://media.base44.com/images/public/696f51421917c989be527824/2bb401b17_generated_image.png',
+    subheading: 'Compare affordable health plans for Space Coast families, contractors, and self-employed residents. Enter your ZIP code to see Florida\'s top plans and prices in minutes.',
+    faqs: [
+      {
+        q: 'How do I find affordable health insurance on the Space Coast?',
+        a: 'Licensed Florida agents compare plans from the ACA Marketplace and private PPO carriers side by side, so Brevard County residents can find the most affordable option for their household size and income. Start with your ZIP code to compare plans instantly.',
+      },
+      {
+        q: 'Can I keep my Brevard County doctor when I switch plans?',
+        a: 'Most Space Coast doctors and hospitals — including Health First, Rockledge Regional, and Parrish Medical Center — participate in the major Florida networks we offer. Your agent will confirm your providers are in-network before you enroll.',
+      },
+      {
+        q: 'Do Space Coast residents qualify for ACA subsidies?',
+        a: 'Many Brevard County households qualify for premium tax credits through the ACA Marketplace, which can significantly lower monthly premiums. Subsidy eligibility is based on household income and size — our agents can check your eligibility in minutes.',
+      },
+      {
+        q: 'What is the best health insurance for self-employed people on the Space Coast?',
+        a: 'Self-employed Space Coast residents — including aerospace contractors and 1099 workers — often benefit from open-access PPO plans with nationwide coverage and no referral requirements. We compare both Marketplace and private PPO options.',
+      },
+      {
+        q: 'How fast can I get covered on the Space Coast?',
+        a: 'Coverage can start as soon as the first of next month in most cases. A licensed agent can walk you through Brevard County enrollment in one short call.',
+      },
+    ],
+  },
 ];
 
 export const getCityBySlug = (slug) => floridaCities.find((c) => c.slug === slug);

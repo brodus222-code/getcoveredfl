@@ -29,6 +29,7 @@ import TampaHealthInsurance from './pages/TampaHealthInsurance';
 import JacksonvilleHealthInsurance from './pages/JacksonvilleHealthInsurance';
 import FortLauderdaleHealthInsurance from './pages/FortLauderdaleHealthInsurance';
 import StPetersburgHealthInsurance from './pages/StPetersburgHealthInsurance';
+import SpaceCoastHealthInsurance from './pages/SpaceCoastHealthInsurance';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -99,6 +100,7 @@ const AuthenticatedApp = () => {
       <Route path="/jacksonville-health-insurance" element={<JacksonvilleHealthInsurance />} />
       <Route path="/fort-lauderdale-health-insurance" element={<FortLauderdaleHealthInsurance />} />
       <Route path="/st-petersburg-health-insurance" element={<StPetersburgHealthInsurance />} />
+      <Route path="/space-coast-health-insurance" element={<SpaceCoastHealthInsurance />} />
       <Route path="/LeadManagement" element={
         <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
           <LeadManagement />
