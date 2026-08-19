@@ -48,7 +48,7 @@ export default function ACA() {
       <SiteHeader variant="light" staticLogo />
 
       <ZipHero
-        badgeText="Licensed Florida Agents · Enrolling Now"
+        badgeText="Special Enrollment Period Now Open"
         heading={<>Florida's trusted <span className="text-accent">Health Insurance Marketplace</span></>}
         subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-accent-deep">in minutes.</strong></>}
         helperText="Enter your ZIP code below to compare plans."
