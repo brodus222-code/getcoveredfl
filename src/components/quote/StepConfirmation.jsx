@@ -32,7 +32,7 @@ export default function StepConfirmation({ data }) {
             <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
               <Phone className="w-4 h-4 text-primary" />
             </div>
-            <span className="text-sm text-navy-soft">A licensed agent calls you within minutes</span>
+            <span className="text-sm text-navy-soft">A licensed agent calls you within the hour</span>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
