@@ -41,15 +41,31 @@ export default async function(req) {
       return Response.json({ error: 'CRM_WEBHOOK_URL not configured' }, { status: 500 });
     }
 
-    // Key fields only — the CRM stores its own lead schema.
+    // Field names chosen to auto-map in GoHighLevel's inbound webhook trigger.
+    const nameParts = String(lead.full_name || '').trim().split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ');
+
     const payload = {
-      source_lead_id: lead.id,
-      full_name: lead.full_name,
-      phone: lead.phone,
-      email: lead.email,
-      coverage_type: lead.coverage_type,
-      zip_code: lead.zip_code,
+      first_name: firstName,
+      last_name: lastName,
+      full_name: lead.full_name || '',
+      phone: lead.phone || '',
+      email: lead.email || '',
+      postal_code: lead.zip_code || '',
+      state: 'FL',
+      country: 'US',
+      source: lead.lead_source || 'website',
+      coverage_type: lead.coverage_type || '',
+      household_size: lead.household_size ?? '',
+      estimated_income: lead.estimated_income ?? '',
+      start_coverage: lead.start_coverage || '',
+      lead_reason: lead.lead_reason || '',
+      birth_year: lead.birth_year ?? '',
+      qualified: lead.qualified !== false,
+      sms_opt_in: !!lead.sms_opt_in,
       status: lead.status || 'new',
+      source_lead_id: lead.id,
       created_date: lead.created_date,
     };
 
