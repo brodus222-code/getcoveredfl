@@ -62,6 +62,10 @@ export default async function(req) {
       start_coverage: lead.start_coverage || '',
       lead_reason: lead.lead_reason || '',
       birth_year: lead.birth_year ?? '',
+      age: Array.isArray(lead.ages) && lead.ages.length
+        ? lead.ages[0]
+        : (lead.birth_year ? new Date().getFullYear() - Number(lead.birth_year) : ''),
+      ages: Array.isArray(lead.ages) ? lead.ages.join(', ') : '',
       qualified: lead.qualified !== false,
       sms_opt_in: !!lead.sms_opt_in,
       status: lead.status || 'new',
