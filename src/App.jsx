@@ -4,8 +4,7 @@ import { queryClientInstance } from '@/lib/query-client'
 import NavigationTracker from '@/lib/NavigationTracker'
 import PhoneCallTracker from '@/components/PhoneCallTracker'
 import { pagesConfig } from './pages.config'
-import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -41,16 +40,7 @@ const LayoutWrapper = ({ children, currentPageName }) => Layout ?
   : <>{children}</>;
 
 const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin, user } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  // Agents (non-admin users) land on Lead Management instead of the marketing home page
-  useEffect(() => {
-    if (user && user.role !== 'admin' && location.pathname === '/') {
-      navigate('/LeadManagement', { replace: true });
-    }
-  }, [user, location.pathname, navigate]);
+  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
 
   // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
@@ -112,7 +102,7 @@ const AuthenticatedApp = () => {
       <Route path="/st-petersburg-health-insurance" element={<StPetersburgHealthInsurance />} />
       <Route path="/space-coast-health-insurance" element={<SpaceCoastHealthInsurance />} />
       <Route path="/LeadManagement" element={
-        <ProtectedRoute unauthenticatedElement={<Navigate to="/" replace />}>
+        <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
           <LeadManagement />
         </ProtectedRoute>
       } />

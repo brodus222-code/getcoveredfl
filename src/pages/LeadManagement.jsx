@@ -132,54 +132,52 @@ export default function LeadManagement() {
               <Badge variant="outline" className="text-teal-600">
                 {filteredLeads.length} {filteredLeads.length === 1 ? 'Lead' : 'Leads'}
               </Badge>
-              {user?.role === 'admin' && (
-                <Dialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen}>
-                  <DialogTrigger asChild>
-                    <Button variant="outline" size="sm">
-                      <UserPlus className="w-4 h-4 mr-2" />
-                      Invite Agent
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Invite Agent</DialogTitle>
-                      <DialogDescription>
-                        Send an invitation to add a new agent to your team
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="space-y-4">
-                      <div>
-                        <Label>Email Address</Label>
-                        <Input
-                          type="email"
-                          placeholder="agent@example.com"
-                          value={inviteEmail}
-                          onChange={(e) => setInviteEmail(e.target.value)}
-                        />
-                      </div>
-                      <div>
-                        <Label>Role</Label>
-                        <Select value={inviteRole} onValueChange={setInviteRole}>
-                          <SelectTrigger>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="user">Agent (User)</SelectItem>
-                            <SelectItem value="admin">Admin</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <Button 
-                        onClick={handleInviteAgent} 
-                        disabled={isInviting}
-                        className="w-full"
-                      >
-                        {isInviting ? 'Sending...' : 'Send Invitation'}
-                      </Button>
+              <Dialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <UserPlus className="w-4 h-4 mr-2" />
+                    Invite Agent
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Invite Agent</DialogTitle>
+                    <DialogDescription>
+                      Send an invitation to add a new agent to your team
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div>
+                      <Label>Email Address</Label>
+                      <Input
+                        type="email"
+                        placeholder="agent@example.com"
+                        value={inviteEmail}
+                        onChange={(e) => setInviteEmail(e.target.value)}
+                      />
                     </div>
-                  </DialogContent>
-                </Dialog>
-              )}
+                    <div>
+                      <Label>Role</Label>
+                      <Select value={inviteRole} onValueChange={setInviteRole}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="user">Agent (User)</SelectItem>
+                          <SelectItem value="admin">Admin</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <Button 
+                      onClick={handleInviteAgent} 
+                      disabled={isInviting}
+                      className="w-full"
+                    >
+                      {isInviting ? 'Sending...' : 'Send Invitation'}
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
@@ -290,24 +288,18 @@ export default function LeadManagement() {
                     <div className="space-y-4">
                       <div>
                         <Label className="text-sm font-semibold text-gray-700 mb-2 block">
-                          Assign Agent
+                          Where did the lead go? (agent / destination)
                         </Label>
-                        <Select 
-                          value={lead.assigned_agent_email || ''} 
-                          onValueChange={(value) => handleAssignAgent(lead.id, value)}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select agent..." />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value={null}>Unassigned</SelectItem>
-                            {agents.map((agent) => (
-                              <SelectItem key={agent.id} value={agent.email}>
-                                {agent.full_name} ({agent.email})
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <Input
+                          key={lead.id}
+                          defaultValue={lead.assigned_agent_email || ''}
+                          onBlur={(e) => {
+                            if (e.target.value !== (lead.assigned_agent_email || '')) {
+                              handleAssignAgent(lead.id, e.target.value);
+                            }
+                          }}
+                          placeholder="e.g. Nick, John, HealthLink agent..."
+                        />
                       </div>
 
                       <div>
