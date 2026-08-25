@@ -19,7 +19,8 @@ export default async function(req) {
     const isAdmin = user && user.role === 'admin';
     const workflowSecret = secrets.get('WORKFLOW_SECRET');
     const providedSecret = body && body.workflow_secret;
-    if (!isAdmin && providedSecret !== workflowSecret) {
+    const secretOk = !!workflowSecret && providedSecret === workflowSecret;
+    if (!isAdmin && !secretOk) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
