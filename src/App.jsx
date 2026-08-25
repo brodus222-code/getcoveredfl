@@ -102,7 +102,7 @@ const AuthenticatedApp = () => {
       <Route path="/st-petersburg-health-insurance" element={<StPetersburgHealthInsurance />} />
       <Route path="/space-coast-health-insurance" element={<SpaceCoastHealthInsurance />} />
       <Route path="/LeadManagement" element={
-        <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
+        <ProtectedRoute unauthenticatedElement={<Navigate to="/" replace />}>
           <LeadManagement />
         </ProtectedRoute>
       } />

@@ -132,52 +132,54 @@ export default function LeadManagement() {
               <Badge variant="outline" className="text-teal-600">
                 {filteredLeads.length} {filteredLeads.length === 1 ? 'Lead' : 'Leads'}
               </Badge>
-              <Dialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline" size="sm">
-                    <UserPlus className="w-4 h-4 mr-2" />
-                    Invite Agent
-                  </Button>
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>Invite Agent</DialogTitle>
-                    <DialogDescription>
-                      Send an invitation to add a new agent to your team
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="space-y-4">
-                    <div>
-                      <Label>Email Address</Label>
-                      <Input
-                        type="email"
-                        placeholder="agent@example.com"
-                        value={inviteEmail}
-                        onChange={(e) => setInviteEmail(e.target.value)}
-                      />
-                    </div>
-                    <div>
-                      <Label>Role</Label>
-                      <Select value={inviteRole} onValueChange={setInviteRole}>
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="user">Agent (User)</SelectItem>
-                          <SelectItem value="admin">Admin</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <Button 
-                      onClick={handleInviteAgent} 
-                      disabled={isInviting}
-                      className="w-full"
-                    >
-                      {isInviting ? 'Sending...' : 'Send Invitation'}
+              {user?.role === 'admin' && (
+                <Dialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      <UserPlus className="w-4 h-4 mr-2" />
+                      Invite Agent
                     </Button>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Invite Agent</DialogTitle>
+                      <DialogDescription>
+                        Send an invitation to add a new agent to your team
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="space-y-4">
+                      <div>
+                        <Label>Email Address</Label>
+                        <Input
+                          type="email"
+                          placeholder="agent@example.com"
+                          value={inviteEmail}
+                          onChange={(e) => setInviteEmail(e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <Label>Role</Label>
+                        <Select value={inviteRole} onValueChange={setInviteRole}>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="user">Agent (User)</SelectItem>
+                            <SelectItem value="admin">Admin</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <Button 
+                        onClick={handleInviteAgent} 
+                        disabled={isInviting}
+                        className="w-full"
+                      >
+                        {isInviting ? 'Sending...' : 'Send Invitation'}
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              )}
             </div>
           </div>
         </div>
