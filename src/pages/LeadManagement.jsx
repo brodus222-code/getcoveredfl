@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useAuth } from '@/lib/AuthContext';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Shield, UserPlus, Filter, Phone, Mail, DollarSign, Users, Calendar, CheckCircle2, Clock, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Shield, UserPlus, Filter, Phone, Mail, DollarSign, Users, Calendar, CheckCircle2, Clock, FileText, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -132,6 +133,12 @@ export default function LeadManagement() {
               <Badge variant="outline" className="text-teal-600">
                 {filteredLeads.length} {filteredLeads.length === 1 ? 'Lead' : 'Leads'}
               </Badge>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/Analytics">
+                  <BarChart3 className="w-4 h-4 mr-2" />
+                  Analytics
+                </Link>
+              </Button>
               <Dialog open={inviteDialogOpen} onOpenChange={setInviteDialogOpen}>
                 <DialogTrigger asChild>
                   <Button variant="outline" size="sm">

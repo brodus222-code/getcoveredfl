@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import LeadManagement from './pages/LeadManagement';
+import Analytics from './pages/Analytics';
 import PrivatePPO from './pages/PrivatePPO';
 import SelfEmployed from './pages/SelfEmployed';
 import SelfEmployedPPO from './pages/SelfEmployedPPO';
@@ -101,6 +102,11 @@ const AuthenticatedApp = () => {
       <Route path="/fort-lauderdale-health-insurance" element={<FortLauderdaleHealthInsurance />} />
       <Route path="/st-petersburg-health-insurance" element={<StPetersburgHealthInsurance />} />
       <Route path="/space-coast-health-insurance" element={<SpaceCoastHealthInsurance />} />
+      <Route path="/Analytics" element={
+        <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
+          <Analytics />
+        </ProtectedRoute>
+      } />
       <Route path="/LeadManagement" element={
         <ProtectedRoute requiredRole="admin" unauthenticatedElement={<Navigate to="/" replace />}>
           <LeadManagement />
