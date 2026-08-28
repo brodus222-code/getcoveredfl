@@ -28,7 +28,7 @@ export default function GetCovered() {
         source="fix-account"
         onAgentClick={() => setModalOpen(true)}
         showCallCta
-        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/3d0905bcf_generated_image.png"
+        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/1aea98534_getcoveredfl_family_hero.jpg"
         leftAlignForm
         belowButton={<HeroCarrierLogos />}
         belowImage={<HeroTrustBubble />}

@@ -20,7 +20,7 @@ export default function Home() {
         subheading="Compare plans, unlock subsidies, and find coverage that fits your budget — in under 2 minutes. Plans from $0/month available."
         helperText="Enter your ZIP code below to compare plans."
         zipPlaceholder="Zip Code"
-        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/3d0905bcf_generated_image.png"
+        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/1aea98534_getcoveredfl_family_hero.jpg"
         leftAlignForm
         belowButton={<HeroCarrierLogos />}
         belowImage={<HeroTrustBubble />}
