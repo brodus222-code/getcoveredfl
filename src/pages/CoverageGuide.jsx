@@ -126,13 +126,10 @@ export default function CoverageGuide() {
       <SiteHeader variant="light" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-deep to-navy text-white">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-turquoise/25 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
-        </div>
+      <section className="relative overflow-hidden bg-navy text-white border-b border-accent/50">
+        <div className="absolute top-0 inset-x-0 h-px bg-accent/60" />
         <div className="relative max-w-5xl mx-auto px-6 pt-12 pb-16 md:pt-24 md:pb-28 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
+          <div className="inline-flex items-center gap-2 border-l-2 border-accent pl-3 mb-6">
             <Shield className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-white/90">Plain-English Insurance Guide</span>
           </div>
@@ -144,7 +141,7 @@ export default function CoverageGuide() {
           </p>
           <Link
             to={createPageUrl('Quote')}
-            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-4 text-lg rounded-xl shadow-glow-accent transition-colors"
           >
             Find My Plan
             <ArrowRight className="w-5 h-5" />
@@ -160,7 +157,7 @@ export default function CoverageGuide() {
       <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+            <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-3">
               Key Terminology
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading text-balance">
@@ -179,11 +176,11 @@ export default function CoverageGuide() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: (i % 2) * 0.1 }}
-                className="bg-sand border border-sand-deep/40 rounded-2xl p-6"
+                className="bg-sand border-t-2 border-accent p-6"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary-soft flex items-center justify-center">
-                    <t.icon className="w-6 h-6 text-primary" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-navy flex items-center justify-center">
+                    <t.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-navy font-heading mb-1">{t.term}</h3>
@@ -203,7 +200,7 @@ export default function CoverageGuide() {
       <section className="py-12 md:py-20 px-6 bg-sand">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+            <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-3">
               How It Works
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading">
@@ -223,7 +220,7 @@ export default function CoverageGuide() {
                     <div className="w-px h-16 bg-primary/30 mt-1" />
                   )}
                 </div>
-                <div className="bg-white rounded-2xl border border-sand-deep/40 px-5 py-4 flex-1 mb-3 shadow-soft">
+                <div className="bg-white border-l-2 border-accent px-5 py-4 flex-1 mb-3">
                   <span className="font-bold text-navy font-heading">{item.label}</span>
                   <p className="text-sm text-navy-soft mt-1">{item.detail}</p>
                 </div>
@@ -237,7 +234,7 @@ export default function CoverageGuide() {
       <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+            <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-3">
               ACA Plan Categories
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 font-heading">
@@ -250,7 +247,7 @@ export default function CoverageGuide() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {metalTiers.map((tier) => (
-              <div key={tier.tier} className={`bg-white rounded-2xl border ${tier.accent} border-y border-r border-sand-deep/40 p-6 shadow-soft`}>
+              <div key={tier.tier} className={`bg-white border ${tier.accent} border-y border-r border-sand-deep p-6`}>
                 <div className="flex items-center gap-2 mb-4">
                   <span className={`w-3 h-3 rounded-full ${tier.dot}`} />
                   <h3 className="text-lg font-bold text-navy font-heading">{tier.tier}</h3>
@@ -277,7 +274,7 @@ export default function CoverageGuide() {
       {/* FAQ */}
       <section className="py-12 md:py-20 px-6 bg-sand">
         <div className="max-w-3xl mx-auto">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3 text-center w-full">
+          <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-3 text-center w-full">
             FAQ
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-10 font-heading">
@@ -287,7 +284,7 @@ export default function CoverageGuide() {
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl border border-sand-deep/40 overflow-hidden shadow-soft"
+                className="bg-white border border-sand-deep overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -316,7 +313,7 @@ export default function CoverageGuide() {
       {/* Tips */}
       <section className="py-12 md:py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-gradient-to-br from-primary-soft to-turquoise-soft rounded-3xl p-8 md:p-12">
+          <div className="bg-sand border-t-4 border-accent p-8 md:p-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-2xl bg-accent flex items-center justify-center">
                 <Lightbulb className="w-6 h-6 text-white" />
@@ -327,7 +324,7 @@ export default function CoverageGuide() {
             </div>
             <ul className="space-y-3">
               {tips.map((tip) => (
-                <li key={tip} className="flex items-start gap-3 bg-white rounded-2xl px-5 py-4 shadow-soft">
+                <li key={tip} className="flex items-start gap-3 bg-white border-l-2 border-primary px-5 py-4">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
                     <ArrowRight className="w-3.5 h-3.5 text-white" />
                   </div>

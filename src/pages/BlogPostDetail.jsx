@@ -19,7 +19,7 @@ const markdownComponents = {
   ol: ({ children }) => <ol className="list-decimal list-inside text-navy-soft mb-4 space-y-1.5">{children}</ol>,
   strong: ({ children }) => <strong className="font-semibold text-navy">{children}</strong>,
   a: (props) => <a className="text-primary underline hover:text-primary-deep" {...props} />,
-  blockquote: ({ children }) => <blockquote className="border-l-4 border-primary pl-4 italic text-navy-soft my-5">{children}</blockquote>,
+  blockquote: ({ children }) => <blockquote className="border-l-4 border-accent bg-sand pl-5 pr-4 py-4 italic text-navy-soft my-5">{children}</blockquote>,
   hr: () => <hr className="border-sand-deep my-6" />,
 };
 
@@ -136,7 +136,7 @@ export default function BlogPostDetail() {
   const CatIcon = cat?.icon;
 
   return (
-    <div className="min-h-screen bg-white pb-20 md:pb-0">
+    <div className="min-h-screen bg-sand pb-20 md:pb-0">
       <SiteHeader variant="light" />
 
       {loading ? (
@@ -154,16 +154,14 @@ export default function BlogPostDetail() {
         </div>
       ) : (
         <>
-          <section className={`relative overflow-hidden bg-gradient-to-br ${cat.gradient} text-white`}>
-            <div className="absolute inset-0 pointer-events-none">
-              <div className="absolute -top-40 -right-40 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl" />
-            </div>
+          <section className="relative overflow-hidden bg-navy text-white border-b border-accent/50">
+            <div className="absolute top-0 inset-x-0 h-px bg-accent/60" />
             <div className="relative max-w-3xl mx-auto px-5 sm:px-6 pt-10 pb-14 md:pt-16 md:pb-20">
               <Link to="/blog" className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium mb-6 transition-colors">
                 <ArrowLeft className="w-4 h-4" /> All Posts
               </Link>
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold">
+                <span className="inline-flex items-center gap-1.5 border-l-2 border-accent pl-3 py-1 text-xs font-bold uppercase tracking-wider">
                   {CatIcon && <CatIcon className="w-3.5 h-3.5" />} {cat.label}
                 </span>
                 <span className="flex items-center gap-1.5 text-white/70 text-sm">
@@ -178,7 +176,7 @@ export default function BlogPostDetail() {
 
           <CarrierLogos />
 
-          <article className="max-w-3xl mx-auto px-5 sm:px-6 py-10 md:py-16">
+          <article className="max-w-3xl mx-auto my-10 md:my-16 px-7 sm:px-10 py-10 md:py-14 bg-white border-t-4 border-accent">
             <ReactMarkdown components={markdownComponents}>
               {post.content}
             </ReactMarkdown>
@@ -195,14 +193,14 @@ export default function BlogPostDetail() {
             )}
 
             <div className="mt-10 pt-8 border-t border-sand-deep/40">
-              <div className="rounded-2xl bg-primary-soft p-6 text-center">
-                <h3 className="text-lg font-bold text-navy font-heading mb-2">Ready to find your plan?</h3>
-                <p className="text-navy-soft text-sm mb-4">Get free quotes from licensed Florida agents in minutes.</p>
+              <div className="bg-navy border-t-2 border-accent p-6 text-center">
+                <h3 className="text-lg font-bold text-white font-heading mb-2">Ready to find your plan?</h3>
+                <p className="text-white/70 text-sm mb-4">Get free quotes from licensed Florida agents in minutes.</p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Link to="/GetCovered" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-3 rounded-2xl transition-colors">
+                  <Link to="/GetCovered" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-6 py-3 rounded-xl transition-colors">
                     Get Free Quotes
                   </Link>
-                  <a href="tel:+18556345343" className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white font-bold px-6 py-3 rounded-2xl transition-colors">
+                  <a href="tel:+18556345343" className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white font-bold px-6 py-3 rounded-xl transition-colors">
                     <Phone className="w-4 h-4" /> (855) 634-5343
                   </a>
                 </div>

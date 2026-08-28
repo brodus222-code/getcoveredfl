@@ -9,7 +9,7 @@ export default function Privacy() {
       lastUpdated="July 2026"
     >
       <div className="space-y-6">
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">1. Information We Collect</h2>
           <p className="text-sm text-navy-soft leading-relaxed mb-3">
             When you use our Website or request a quote, we may collect the following types of information:
@@ -22,7 +22,7 @@ export default function Privacy() {
           </ul>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">2. How We Use Your Information</h2>
           <p className="text-sm text-navy-soft leading-relaxed mb-3">
             We use the information we collect to:
@@ -36,7 +36,7 @@ export default function Privacy() {
           </ul>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">3. How We Share Your Information</h2>
           <p className="text-sm text-navy-soft leading-relaxed mb-3">
             We do not sell your personal information. We may share your information in the following circumstances:
@@ -49,21 +49,21 @@ export default function Privacy() {
           </ul>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">4. Cookies & Tracking Technologies</h2>
           <p className="text-sm text-navy-soft leading-relaxed">
             Our Website uses cookies and similar tracking technologies to enhance user experience, analyze traffic, and track marketing conversions. You can control cookies through your browser settings, but disabling them may affect Website functionality. We may also use third-party analytics and advertising tags (e.g., Microsoft UET) to measure campaign performance.
           </p>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">5. Data Security</h2>
           <p className="text-sm text-navy-soft leading-relaxed">
             We implement reasonable technical, administrative, and physical safeguards to protect your personal information from unauthorized access, use, or disclosure. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
           </p>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">6. Your Rights</h2>
           <p className="text-sm text-navy-soft leading-relaxed mb-3">
             Depending on your state of residence, you may have the right to:
@@ -80,28 +80,28 @@ export default function Privacy() {
           </p>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">7. Children's Privacy</h2>
           <p className="text-sm text-navy-soft leading-relaxed">
             Our Website is not directed to individuals under 18 years of age, and we do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us so we can take appropriate action.
           </p>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">8. Do Not Call / Opt-Out</h2>
           <p className="text-sm text-navy-soft leading-relaxed">
             You may opt out of marketing communications at any time by replying "STOP" to text messages, clicking "unsubscribe" in emails, or contacting us directly. We respect all applicable federal and state telemarketing laws, including the Telephone Consumer Protection Act (TCPA) and the National Do Not Call Registry.
           </p>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">9. Changes to This Policy</h2>
           <p className="text-sm text-navy-soft leading-relaxed">
             We may update this Privacy Policy from time to time. Changes will be posted on this page with a revised "Last updated" date. We encourage you to review this policy periodically.
           </p>
         </section>
 
-        <section>
+        <section className="border-l-2 border-accent pl-5">
           <h2 className="text-xl font-bold font-heading text-navy mb-3">10. Contact Us</h2>
           <p className="text-sm text-navy-soft leading-relaxed">
             If you have questions about this Privacy Policy or our data practices, please contact us at:

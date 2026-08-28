@@ -31,13 +31,10 @@ export default function Blog() {
       <SiteHeader variant="light" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-deep to-navy text-white">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-turquoise/25 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-accent/15 rounded-full blur-3xl" />
-        </div>
+      <section className="relative overflow-hidden bg-navy text-white border-b border-accent/50">
+        <div className="absolute top-0 inset-x-0 h-px bg-accent/60" />
         <div className="relative max-w-5xl mx-auto px-5 sm:px-6 pt-12 pb-16 md:pt-20 md:pb-20 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/20">
+          <div className="inline-flex items-center gap-2 border-l-2 border-accent pl-3 mb-6">
             <Newspaper className="w-4 h-4 text-accent" />
             <span className="text-sm font-medium text-white/90">Insurance News & Updates</span>
           </div>
@@ -59,10 +56,10 @@ export default function Blog() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+              className={`px-4 py-2 border-l-2 text-sm font-medium whitespace-nowrap transition-colors ${
                 activeCategory === cat
-                  ? 'bg-primary text-white'
-                  : 'bg-sand text-navy-soft hover:bg-sand-deep/60'
+                  ? 'bg-navy border-accent text-white'
+                  : 'bg-sand border-sand-deep text-navy-soft hover:bg-accent-soft'
               }`}
             >
               {cat === 'all' ? 'All Posts' : categoryConfig[cat]?.label}
@@ -97,8 +94,8 @@ export default function Blog() {
                     transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
                   >
                     <Link to={`/blog/${post.slug}`} className="block h-full">
-                      <div className="bg-white rounded-2xl border border-sand-deep/40 overflow-hidden hover:shadow-soft transition-all duration-300 hover:-translate-y-1 h-full flex flex-col">
-                        <div className={`h-40 bg-gradient-to-br ${cat.gradient} flex items-center justify-center`}>
+                      <div className="bg-white border border-sand-deep border-t-2 border-t-accent overflow-hidden hover:bg-sand transition-colors h-full flex flex-col">
+                        <div className="h-40 bg-navy border-b-4 border-accent flex items-center justify-center">
                           <CatIcon className="w-12 h-12 text-white/80" />
                         </div>
                         <div className="p-5 flex flex-col flex-1">

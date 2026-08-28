@@ -11,9 +11,9 @@ export default function Licensing() {
     >
       <div className="space-y-6">
         {/* Agency Overview */}
-        <div className="bg-primary-soft rounded-xl p-6 border border-primary/20">
+        <div className="bg-sand border-t-4 border-accent p-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-navy flex items-center justify-center flex-shrink-0">
               <Building2 className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -22,11 +22,11 @@ export default function Licensing() {
                 An Illinois corporation operating as an independent, licensed insurance agency serving Florida residents.
               </p>
               <div className="flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 text-xs font-semibold text-navy border border-sand-deep">
+                <span className="inline-flex items-center gap-1.5 bg-white border-l-2 border-accent px-3 py-1.5 text-xs font-semibold text-navy">
                   <BadgeCheck className="w-3.5 h-3.5 text-primary" />
                   FL License #: L131967
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 text-xs font-semibold text-navy border border-sand-deep">
+                <span className="inline-flex items-center gap-1.5 bg-white border-l-2 border-accent px-3 py-1.5 text-xs font-semibold text-navy">
                   <Shield className="w-3.5 h-3.5 text-primary" />
                   NPN #: 21554495
                 </span>
@@ -36,20 +36,20 @@ export default function Licensing() {
         </div>
 
         {/* Agent of Record */}
-        <div className="border border-sand-deep rounded-xl p-6">
+        <div className="border-t-2 border-accent bg-white p-6">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-xl bg-accent-soft flex items-center justify-center flex-shrink-0">
-              <User className="w-6 h-6 text-accent" />
+            <div className="w-12 h-12 bg-accent flex items-center justify-center flex-shrink-0">
+              <User className="w-6 h-6 text-white" />
             </div>
             <div className="flex-1">
               <h3 className="text-base font-bold font-heading text-navy mb-1">Agent of Record</h3>
               <p className="text-lg font-semibold text-navy mb-3">Nick Loucks</p>
               <div className="grid sm:grid-cols-2 gap-3">
-                <div className="bg-sand rounded-lg px-4 py-3">
+                <div className="bg-sand border-l-2 border-primary px-4 py-3">
                   <p className="text-xs text-navy-soft uppercase tracking-wider mb-1">Florida License #</p>
                   <p className="text-sm font-semibold text-navy">G233885</p>
                 </div>
-                <div className="bg-sand rounded-lg px-4 py-3">
+                <div className="bg-sand border-l-2 border-primary px-4 py-3">
                   <p className="text-xs text-navy-soft uppercase tracking-wider mb-1">National Producer # (NPN)</p>
                   <p className="text-sm font-semibold text-navy">21137267</p>
                 </div>
@@ -60,7 +60,7 @@ export default function Licensing() {
 
         {/* Office Locations */}
         <div className="grid md:grid-cols-2 gap-4">
-          <div className="border border-sand-deep rounded-xl p-6">
+          <div className="border-t-2 border-accent bg-white p-6">
             <div className="flex items-center gap-2.5 mb-3">
               <MapPin className="w-5 h-5 text-primary" />
               <h3 className="text-base font-bold font-heading text-navy">Main Office</h3>
@@ -71,7 +71,7 @@ export default function Licensing() {
             </p>
           </div>
 
-          <div className="border border-sand-deep rounded-xl p-6">
+          <div className="border-t-2 border-accent bg-white p-6">
             <div className="flex items-center gap-2.5 mb-3">
               <MapPin className="w-5 h-5 text-accent" />
               <h3 className="text-base font-bold font-heading text-navy">Florida Office</h3>
@@ -84,7 +84,7 @@ export default function Licensing() {
         </div>
 
         {/* Contact */}
-        <div className="bg-navy rounded-xl p-6 text-white">
+        <div className="bg-navy border-t-2 border-accent p-6 text-white">
           <h3 className="text-base font-bold font-heading mb-4">Contact</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             <a href="mailto:contact@getcoveredfl.com" className="flex items-center gap-3 hover:text-accent transition-colors">
@@ -109,7 +109,7 @@ export default function Licensing() {
         </div>
 
         {/* Compliance Statements */}
-        <div className="bg-sand rounded-xl p-6">
+        <div className="bg-sand border-t-2 border-accent p-6">
           <div className="flex items-center gap-2.5 mb-4">
             <FileText className="w-5 h-5 text-primary" />
             <h3 className="text-base font-bold font-heading text-navy">Compliance Disclosures</h3>
