@@ -25,6 +25,7 @@ import CoverageGuide from './pages/CoverageGuide';
 import Blog from './pages/Blog';
 import BlogPostDetail from './pages/BlogPostDetail';
 import About from './pages/About';
+import Affordable from './pages/Affordable';
 import Contact from './pages/Contact';
 import MiamiHealthInsurance from './pages/MiamiHealthInsurance';
 import OrlandoHealthInsurance from './pages/OrlandoHealthInsurance';
@@ -98,6 +99,7 @@ const AuthenticatedApp = () => {
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPostDetail />} />
       <Route path="/about" element={<About />} />
+      <Route path="/affordable" element={<Affordable />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/miami-health-insurance" element={<MiamiHealthInsurance />} />
       <Route path="/orlando-health-insurance" element={<OrlandoHealthInsurance />} />

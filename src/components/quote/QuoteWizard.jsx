@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { useSearchParams } from 'react-router-dom';
-import { MapPin, Briefcase, ShoppingBag, Shield } from 'lucide-react';
+import { MapPin, Briefcase, ShoppingBag, Shield, BadgeDollarSign } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { trackUetEvent } from '@/lib/uetTrack';
 
@@ -232,9 +232,11 @@ export default function QuoteWizard() {
             {source === 'selfemployed' && <Briefcase className="w-4 h-4" />}
             {source === 'marketplace' && <ShoppingBag className="w-4 h-4" />}
             {source === 'ppo' && <Shield className="w-4 h-4" />}
+            {source === 'affordable' && <BadgeDollarSign className="w-4 h-4" />}
             {source === 'selfemployed' && 'Self-Employed Health Insurance Quote'}
             {source === 'marketplace' && 'ACA Marketplace Quote'}
             {source === 'ppo' && 'Private PPO Quote'}
+            {source === 'affordable' && 'Affordable Florida Health Insurance Quote'}
           </div>
         </div>
       )}
