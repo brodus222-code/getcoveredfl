@@ -30,7 +30,7 @@ export default function PpoRates() {
         source="ppo-rates"
         onAgentClick={() => setModalOpen(true)}
         showCallCta
-        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/1aea98534_getcoveredfl_family_hero.jpg"
+        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/05e996407_getcoveredfl_family_sunset_hero.jpg"
         leftAlignForm
         belowButton={<HeroCarrierLogos />}
         belowImage={<HeroTrustBubble />}
