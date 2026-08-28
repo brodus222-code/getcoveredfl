@@ -15,6 +15,7 @@ import StepConfirmation from '@/components/quote/StepConfirmation';
 import SkipFormBanner from '@/components/quote/SkipFormBanner';
 import WizardTrustBadges from '@/components/quote/WizardTrustBadges';
 import CarrierLogos from '@/components/landing/CarrierLogos';
+import RatesPriceStrip from '@/components/quote/RatesPriceStrip';
 
 const TOTAL_STEPS = 6;
 
@@ -216,7 +217,9 @@ export default function QuoteWizard() {
         </div>
       )}
 
-      {source && currentStep <= TOTAL_STEPS && (
+      {source === 'rates' && currentStep <= TOTAL_STEPS && <RatesPriceStrip />}
+
+      {source && source !== 'rates' && currentStep <= TOTAL_STEPS && (
         <div className="max-w-3xl mx-auto px-6 pt-6">
           <div className="inline-flex items-center gap-2 bg-primary-soft text-primary px-4 py-2 rounded-full text-sm font-semibold">
             {source === 'selfemployed' && <Briefcase className="w-4 h-4" />}

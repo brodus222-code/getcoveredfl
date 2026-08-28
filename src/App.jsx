@@ -16,6 +16,7 @@ import SelfEmployed from './pages/SelfEmployed';
 import SelfEmployedPPO from './pages/SelfEmployedPPO';
 import ACA from './pages/ACA';
 import GetCovered from './pages/GetCovered';
+import Rates from './pages/Rates';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Licensing from './pages/Licensing';
@@ -84,6 +85,7 @@ const AuthenticatedApp = () => {
       ))}
       <Route path="/Marketplace" element={<ACA />} />
       <Route path="/GetCovered" element={<GetCovered />} />
+      <Route path="/rates" element={<Rates />} />
       <Route path="/ppo" element={<PrivatePPO />} />
       <Route path="/self-employed" element={<SelfEmployed />} />
       <Route path="/selfemployed" element={<SelfEmployedPPO />} />
