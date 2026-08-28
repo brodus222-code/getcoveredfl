@@ -50,12 +50,12 @@ export default function ACA() {
       <ZipHero
         badgeText="Special Enrollment Period Now Open"
         heading={<>Florida's trusted <span className="text-accent">Health Insurance Marketplace</span></>}
-        subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-accent-deep">in minutes.</strong></>}
+        subheading={<>Shop official ACA Marketplace plans, unlock subsidies that can dramatically lower your monthly premium, and find affordable coverage built around your budget — <strong className="text-accent">in minutes.</strong></>}
         helperText="Enter your ZIP code below to compare plans."
         zipPlaceholder="Zip Code"
         source="marketplace"
         onAgentClick={() => setModalOpen(true)}
-        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
+        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/05e996407_getcoveredfl_family_sunset_hero.jpg"
         leftAlignForm
         belowButton={<HeroCarrierLogos />}
         belowImage={<HeroTrustBubble />}
@@ -84,7 +84,7 @@ export default function ACA() {
             {benefits.map((b) => (
               <div
                 key={b}
-                className="flex items-start gap-3 bg-sand border border-sand-deep/40 rounded-2xl px-5 py-4"
+                className="flex items-start gap-3 bg-sand border-l-2 border-accent px-5 py-4"
               >
                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary flex items-center justify-center mt-0.5">
                   <CheckCircle className="w-4 h-4 text-white" />
@@ -97,11 +97,8 @@ export default function ACA() {
       </section>
 
       {/* Mid CTA */}
-      <section className="bg-gradient-to-br from-primary to-primary-deep py-12 px-6 text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-turquoise/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
-        </div>
+      <section className="bg-navy border-y border-accent/40 py-12 px-6 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-accent/60" />
         <div className="relative max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-balance">
             Ready to see what you qualify for?
@@ -141,7 +138,7 @@ export default function ACA() {
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl border border-sand-deep/40 overflow-hidden shadow-soft"
+                className="bg-white border border-sand-deep overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}

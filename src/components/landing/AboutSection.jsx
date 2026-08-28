@@ -19,7 +19,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-4">
+            <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-4">
               About GetCoveredFL
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight font-heading text-balance">
@@ -61,7 +61,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="absolute -inset-4 bg-gradient-to-r from-primary-soft to-turquoise-soft rounded-3xl blur-2xl opacity-50" />
+            <div className="absolute -inset-4 border border-accent/20" />
 
             <div className="relative grid gap-4">
               {features.map((feature, index) => (
@@ -71,10 +71,10 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15, duration: 0.5 }}
-                  className="bg-white rounded-2xl p-6 shadow-soft border border-sand-deep/40"
+                  className="bg-sand border-t-2 border-accent p-6"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primary-deep flex items-center justify-center text-white shadow-glow-primary">
+                    <div className="flex-shrink-0 w-12 h-12 bg-navy flex items-center justify-center text-white">
                       <feature.icon className="w-6 h-6" />
                     </div>
                     <div>

@@ -25,10 +25,10 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-14 md:py-28 bg-white">
+    <section className="py-16 md:py-20 bg-sand">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10 md:mb-16">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+          <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-3">
             Simple Process
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 font-heading text-balance">
@@ -47,19 +47,19 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.5 }}
-              className="relative group"
+              className="relative border-t-2 border-accent pt-6"
             >
               {index < steps.length - 1 && (
                 <div className="hidden md:block absolute top-16 left-[60%] w-[80%] h-[2px] bg-gradient-to-r from-primary/30 to-transparent" />
               )}
 
-              <div className="relative bg-gradient-to-br from-sand to-white rounded-3xl p-6 md:p-8 border border-sand-deep/50 hover:border-primary/30 transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
-                <div className="absolute -top-4 -left-4 text-6xl font-bold text-primary/10 select-none font-heading">
+              <div className="relative">
+                <div className="absolute -top-5 right-0 text-5xl font-bold text-primary/10 select-none font-heading">
                   {step.number}
                 </div>
 
                 <div className="relative">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary-deep text-white mb-6 shadow-glow-primary">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-navy text-white mb-6">
                     <step.icon className="w-7 h-7" />
                   </div>
 

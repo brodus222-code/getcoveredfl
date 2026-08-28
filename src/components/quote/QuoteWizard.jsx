@@ -200,7 +200,7 @@ export default function QuoteWizard() {
   return (
     <>
       {currentStep <= TOTAL_STEPS && (
-        <div className="max-w-3xl mx-auto px-6 pt-6 text-center text-sm text-navy-soft">
+        <div className="max-w-3xl mx-auto px-6 pt-6 text-center text-sm font-bold uppercase tracking-widest text-accent-deep">
           Step {currentStep} of {TOTAL_STEPS}
         </div>
       )}
@@ -209,7 +209,7 @@ export default function QuoteWizard() {
         <div className="max-w-3xl mx-auto px-6 pt-6 flex justify-center">
           <button
             onClick={() => setCurrentStep(1)}
-            className="inline-flex items-center gap-2 bg-primary-soft text-primary px-4 py-2 rounded-full text-sm font-semibold hover:bg-primary-soft/70 transition-colors"
+            className="inline-flex items-center gap-2 border-l-2 border-accent bg-white text-navy px-4 py-2 text-sm font-semibold hover:bg-sand transition-colors"
           >
             <MapPin className="w-4 h-4" />
             ZIP {formData.zip_code} · Change
@@ -228,20 +228,23 @@ export default function QuoteWizard() {
 
       {source && source !== 'rates' && source !== 'ppo-rates' && currentStep <= TOTAL_STEPS && (
         <div className="max-w-3xl mx-auto px-6 pt-6">
-          <div className="inline-flex items-center gap-2 bg-primary-soft text-primary px-4 py-2 rounded-full text-sm font-semibold">
+          <div className="inline-flex items-center gap-2 border-l-2 border-accent bg-white text-navy px-4 py-2 text-sm font-semibold">
             {source === 'selfemployed' && <Briefcase className="w-4 h-4" />}
             {source === 'marketplace' && <ShoppingBag className="w-4 h-4" />}
             {source === 'ppo' && <Shield className="w-4 h-4" />}
             {source === 'affordable' && <BadgeDollarSign className="w-4 h-4" />}
+            {(source === 'fix-account' || source.endsWith('-city')) && <MapPin className="w-4 h-4" />}
             {source === 'selfemployed' && 'Self-Employed Health Insurance Quote'}
             {source === 'marketplace' && 'ACA Marketplace Quote'}
             {source === 'ppo' && 'Private PPO Quote'}
             {source === 'affordable' && 'Affordable Florida Health Insurance Quote'}
+            {source === 'fix-account' && 'Florida Marketplace Plan Review'}
+            {source.endsWith('-city') && 'Local Florida Health Insurance Quote'}
           </div>
         </div>
       )}
 
-      <main className="max-w-3xl mx-auto px-6 py-8 md:py-12">
+      <main className="max-w-3xl mx-auto px-6 py-8 md:py-12"><div className="bg-white border-t-4 border-accent p-5 sm:p-8 md:p-10 shadow-soft">
         <AnimatePresence mode="wait">
           {renderStep()}
         </AnimatePresence>
@@ -261,6 +264,7 @@ export default function QuoteWizard() {
             <WizardTrustBadges />
           </div>
         )}
+        </div>
       </main>
     </>
   );

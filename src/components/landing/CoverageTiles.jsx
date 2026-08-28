@@ -15,10 +15,10 @@ const coverageOptions = [
 
 export default function CoverageTiles() {
   return (
-    <section className="py-14 md:py-28 bg-sand">
+    <section className="py-16 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10 md:mb-16">
-          <span className="inline-block text-sm font-semibold text-primary uppercase tracking-wider mb-3">
+          <span className="inline-block text-sm font-bold text-accent-deep uppercase tracking-[0.18em] mb-3">
             Coverage Options
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 font-heading text-balance">
@@ -39,8 +39,8 @@ export default function CoverageTiles() {
               transition={{ delay: index * 0.08, duration: 0.4 }}
             >
               <Link to={createPageUrl('Quote')} className="block h-full">
-                <div className="group relative bg-white rounded-3xl p-5 md:p-7 h-full border border-sand-deep/40 hover:border-primary/30 transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary-soft text-primary mb-5 transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:scale-110">
+                <div className="group relative bg-sand p-5 md:p-7 h-full border-t-2 border-accent transition-colors duration-200 hover:bg-accent-soft">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-navy text-white mb-5">
                     <option.icon className="w-6 h-6" />
                   </div>
 
@@ -52,7 +52,7 @@ export default function CoverageTiles() {
                     {option.description}
                   </p>
 
-                  <div className="flex items-center text-sm font-semibold text-primary opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="flex items-center text-sm font-semibold text-primary">
                     <span>Get started</span>
                     <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>

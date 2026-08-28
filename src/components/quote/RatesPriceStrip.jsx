@@ -10,7 +10,7 @@ export default function RatesPriceStrip({
 }) {
   return (
     <div className="max-w-3xl mx-auto px-6 pt-6">
-      <div className="flex items-center gap-3 bg-accent-soft border border-accent/30 rounded-2xl px-4 py-3">
+      <div className="flex items-center gap-3 bg-accent-soft border-l-2 border-accent px-4 py-3">
         <BadgeDollarSign className="w-5 h-5 text-accent-deep shrink-0" />
         <p className="text-sm text-navy leading-snug">
           <span className="font-bold">{headline}</span> {body}

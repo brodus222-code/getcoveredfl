@@ -10,8 +10,8 @@ const items = [
 export default function TopRatedBadge() {
   return (
     <section className="py-10 md:py-14 px-6 bg-white">
-      <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-soft border border-sand-deep/40 px-6 py-8 flex flex-col items-center text-center">
-        <div className="w-14 h-14 rounded-xl bg-[#F4B41A] flex items-center justify-center mb-5">
+      <div className="max-w-3xl mx-auto bg-sand border-t-2 border-accent px-6 py-8 flex flex-col items-center text-center">
+        <div className="w-14 h-14 bg-accent flex items-center justify-center mb-5">
           <Award className="w-7 h-7 text-white" strokeWidth={1.75} />
         </div>
         <h3 className="text-base font-bold uppercase tracking-wide text-[#1D3557] mb-4 font-heading">

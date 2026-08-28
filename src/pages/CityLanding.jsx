@@ -100,7 +100,7 @@ export default function CityLanding({ city }) {
             {benefits.map((text) => (
               <div
                 key={text}
-                className="bg-white rounded-xl px-5 py-4 flex items-center gap-4 shadow-soft"
+                className="bg-white border-l-2 border-accent px-5 py-4 flex items-center gap-4"
               >
                 <CheckCircle className="w-6 h-6 text-primary flex-shrink-0" />
                 <span className="text-navy font-medium leading-snug">{text}</span>
@@ -125,7 +125,7 @@ export default function CityLanding({ city }) {
             {city.faqs.map((faq, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl border border-sand-deep/40 overflow-hidden shadow-soft"
+                className="bg-white border border-sand-deep overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}

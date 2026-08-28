@@ -62,7 +62,7 @@ export default function SelfEmployedPPO() {
         helperText="Enter your ZIP code below to compare plans."
         source="selfemployed"
         onAgentClick={() => setModalOpen(true)}
-        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/ac7ec09f5_generated_image.png"
+        heroImage="https://media.base44.com/images/public/696f51421917c989be527824/05e996407_getcoveredfl_family_sunset_hero.jpg"
         leftAlignForm
         belowButton={<HeroCarrierLogos />}
         belowImage={<HeroTrustBubble />}
@@ -93,7 +93,7 @@ export default function SelfEmployedPPO() {
             {benefits.map((text) => (
               <div
                 key={text}
-                className="bg-[#FBF7F2] rounded-xl px-5 py-4 flex items-center gap-4"
+                className="bg-sand border-l-2 border-accent px-5 py-4 flex items-center gap-4"
               >
                 <CheckCircle className="w-6 h-6 text-[#345B7A] flex-shrink-0" />
                 <span className="text-[#1A2B3C] font-medium leading-snug">{text}</span>
@@ -117,7 +117,7 @@ export default function SelfEmployedPPO() {
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="bg-white rounded-2xl border border-sand-deep/40 overflow-hidden shadow-soft"
+                className="bg-white border border-sand-deep overflow-hidden"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}

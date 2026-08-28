@@ -6,7 +6,7 @@ import QuoteWizard from '@/components/quote/QuoteWizard';
 
 export default function Quote() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sand to-white pb-20 md:pb-0">
+    <div className="min-h-screen bg-sand pb-20 md:pb-0">
       <SiteHeader variant="light" staticLogo />
       <QuoteWizard />
       <LandingFooter />

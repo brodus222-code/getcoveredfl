@@ -49,9 +49,9 @@ export default function WrongPlanProblems() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="flex items-start gap-4 bg-sand border border-sand-deep/40 rounded-2xl p-6"
+              className="flex items-start gap-4 bg-sand border-t-2 border-accent p-6"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white border border-sand-deep/40 flex items-center justify-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-navy text-white flex items-center justify-center">
                 <Icon className="w-6 h-6 text-primary" />
               </div>
               <div>

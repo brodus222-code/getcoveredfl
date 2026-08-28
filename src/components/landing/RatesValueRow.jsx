@@ -10,11 +10,11 @@ const items = [
 
 export default function RatesValueRow() {
   return (
-    <section className="py-10 md:py-14 bg-white">
+    <section className="py-12 md:py-16 bg-white border-y border-sand-deep">
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         {items.map(({ icon: Icon, title, desc }) => (
-          <div key={title} className="text-center">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary-soft text-primary mb-3">
+          <div key={title} className="text-center border-t-2 border-accent pt-5">
+            <div className="inline-flex items-center justify-center w-12 h-12 bg-navy text-white mb-3">
               <Icon className="w-6 h-6" />
             </div>
             <p className="font-semibold text-navy font-heading">{title}</p>

@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 export default function HeroTrustBubble() {
   return (
     <div className="mt-6">
-      <div className="bg-white rounded-2xl border border-sand-deep/60 px-3 py-2 sm:px-5 sm:py-4 flex items-center gap-3 sm:gap-4 shadow-sm w-full">
+      <div className="bg-white border-l-4 border-accent px-3 py-2 sm:px-5 sm:py-4 flex items-center gap-3 sm:gap-4 w-full">
         <div className="flex items-center gap-0.5 flex-shrink-0">
           {[0, 1, 2, 3, 4].map((i) => (
             <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFC107] fill-[#FFC107]" />

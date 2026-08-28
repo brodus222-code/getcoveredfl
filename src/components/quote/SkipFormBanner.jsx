@@ -7,7 +7,7 @@ export default function SkipFormBanner() {
 
   return (
     <>
-      <div className="w-full max-w-md mx-auto rounded-3xl bg-turquoise-soft/50 border border-turquoise-soft px-6 py-7 text-center">
+      <div className="w-full max-w-md mx-auto bg-sand border-t-2 border-accent px-6 py-7 text-center">
         <h3 className="text-xl font-bold text-navy mb-1 font-heading">
           Don't want to fill this out?
         </h3>
@@ -20,14 +20,14 @@ export default function SkipFormBanner() {
 
         <a
           href="tel:+18556345343"
-          className="md:hidden inline-flex items-center gap-2 bg-primary-deep hover:bg-primary text-white font-semibold px-6 py-3.5 rounded-2xl transition-colors text-sm"
+          className="md:hidden inline-flex items-center gap-2 bg-primary-deep hover:bg-primary text-white font-semibold px-6 py-3.5 rounded-xl transition-colors text-sm"
         >
           <Phone className="w-4 h-4" />
           Have an Agent Call Me
         </a>
         <button
           onClick={() => setModalOpen(true)}
-          className="hidden md:inline-flex items-center gap-2 bg-primary-deep hover:bg-primary text-white font-semibold px-6 py-3.5 rounded-2xl transition-colors text-sm"
+          className="hidden md:inline-flex items-center gap-2 bg-primary-deep hover:bg-primary text-white font-semibold px-6 py-3.5 rounded-xl transition-colors text-sm"
         >
           <Phone className="w-4 h-4" />
           Have an Agent Call Me

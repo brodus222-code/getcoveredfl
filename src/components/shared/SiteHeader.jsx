@@ -13,19 +13,19 @@ export default function SiteHeader({ variant = 'light', staticLogo = false }) {
       className={
         isTransparent
           ? 'absolute top-0 left-0 right-0 z-50'
-          : 'sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-sand-deep/60'
+          : 'sticky top-0 z-40 bg-navy border-b border-white/10'
       }
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
         <LogoTag {...logoProps} className="flex items-center gap-2.5 group">
-          <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${isTransparent ? 'bg-white/15 backdrop-blur-sm' : 'bg-primary'}`}>
+          <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${isTransparent ? 'bg-white/15 backdrop-blur-sm' : 'bg-white/10'}`}>
             <Shield className="w-5 h-5 text-[#4cb6b8]" strokeWidth={1.75} />
           </div>
           <div className="flex flex-col leading-none">
-            <span className={`text-lg font-bold font-heading tracking-tight ${isTransparent ? 'text-white' : 'text-navy'}`}>
+            <span className={`text-lg font-bold font-heading tracking-tight ${isTransparent ? 'text-white' : 'text-white'}`}>
               GetCovered<span className="text-accent">FL</span>
             </span>
-            <span className={`text-[10px] font-medium tracking-wide mt-0.5 ${isTransparent ? 'text-white/80' : 'text-navy-soft'}`}>
+            <span className={`text-[10px] font-medium tracking-wide mt-0.5 ${isTransparent ? 'text-white/80' : 'text-white/60'}`}>
               Powered by <span className="font-bold">HealthLink</span>
             </span>
           </div>
@@ -34,9 +34,9 @@ export default function SiteHeader({ variant = 'light', staticLogo = false }) {
         <div className="flex items-center gap-3 sm:gap-4">
           <a
             href="tel:+18556345343"
-            className={`flex items-center gap-2 font-semibold transition-colors ${isTransparent ? 'text-white hover:text-accent' : 'text-navy hover:text-primary'}`}
+            className={`flex items-center gap-2 font-semibold transition-colors ${isTransparent ? 'text-white hover:text-accent' : 'text-white hover:text-accent'}`}
           >
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center animate-call-pulse ${isTransparent ? 'bg-white/15' : 'bg-accent-soft'}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center animate-call-pulse ${isTransparent ? 'bg-white/15' : 'bg-white/10'}`}>
               <Phone className={`w-4 h-4 ${isTransparent ? 'text-white' : 'text-accent'}`} />
             </div>
             <span className="hidden sm:inline text-sm">(855) 634-5343</span>

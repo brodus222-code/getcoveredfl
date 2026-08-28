@@ -14,11 +14,10 @@ export default function FinalCTA() {
 
   return (
     <section className="relative py-14 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-deep to-navy" />
+      <div className="absolute inset-0 bg-navy" />
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-turquoise/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
+        <div className="absolute top-0 inset-x-0 h-px bg-accent/60" />
       </div>
 
       <div className="relative max-w-3xl mx-auto px-6 text-center">
@@ -58,12 +57,12 @@ export default function FinalCTA() {
             placeholder="Enter your ZIP code"
             value={zip}
             onChange={(e) => setZip(e.target.value.replace(/\D/g, '').slice(0, 5))}
-            className="flex-1 px-5 py-5 text-lg font-medium text-navy bg-white rounded-2xl shadow-lg placeholder:text-navy-soft/50 outline-none ring-2 ring-transparent focus:ring-accent"
+            className="flex-1 px-5 py-5 text-lg font-medium text-navy bg-white rounded-xl shadow-lg placeholder:text-navy-soft/50 outline-none ring-2 ring-transparent focus:ring-accent"
           />
           <button
             type="submit"
             disabled={zip.length !== 5}
-            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-5 text-lg rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white font-bold px-8 py-5 text-lg rounded-xl shadow-glow-accent transition-all hover:-translate-y-0.5"
           >
             Start My Quote
             <ArrowRight className="w-5 h-5" />

@@ -35,12 +35,12 @@ export default function PpoRatesFaq() {
         <h2 className="text-3xl md:text-4xl font-bold text-navy mb-8 font-heading text-center text-balance">
           Questions about the $89 rate
         </h2>
-        <Accordion type="single" collapsible className="space-y-3">
+        <Accordion type="single" collapsible className="border-t border-sand-deep">
           {faqs.map((f, i) => (
             <AccordionItem
               key={f.q}
               value={`item-${i}`}
-              className="bg-white rounded-2xl border border-sand-deep/50 px-5"
+              className="bg-white border-b border-x border-sand-deep px-5"
             >
               <AccordionTrigger className="text-left font-semibold text-navy hover:no-underline">
                 {f.q}

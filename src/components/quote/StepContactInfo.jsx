@@ -53,7 +53,7 @@ export default function StepContactInfo({ data, onChange, onSubmit, onBack, isSu
       className="w-full max-w-md mx-auto"
     >
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent-soft text-accent mb-6">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-accent-soft text-accent mb-6">
           <Send className="w-8 h-8" />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3 font-heading">
@@ -75,7 +75,7 @@ export default function StepContactInfo({ data, onChange, onSubmit, onBack, isSu
               onChange({ full_name: e.target.value });
               if (errors.full_name) setErrors({ ...errors, full_name: null });
             }}
-            className={`w-full text-lg py-5 h-14 font-medium border-2 rounded-2xl ${errors.full_name ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
+            className={`w-full text-lg py-5 h-14 font-medium border-2 rounded-xl ${errors.full_name ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
           />
           {errors.full_name && <p className="text-sm text-destructive mt-1">{errors.full_name}</p>}
         </div>
@@ -90,7 +90,7 @@ export default function StepContactInfo({ data, onChange, onSubmit, onBack, isSu
               onChange({ email: e.target.value });
               if (errors.email) setErrors({ ...errors, email: null });
             }}
-            className={`w-full py-5 h-14 text-lg border-2 rounded-2xl ${errors.email ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
+            className={`w-full py-5 h-14 text-lg border-2 rounded-xl ${errors.email ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
           />
           {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
         </div>
@@ -114,7 +114,7 @@ export default function StepContactInfo({ data, onChange, onSubmit, onBack, isSu
                     onChange({ phone: formatPhone(e.target.value) });
                     if (errors.phone) setErrors({ ...errors, phone: null });
                   }}
-                  className={`w-full py-5 h-14 text-lg border-2 rounded-2xl ${errors.phone ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
+                  className={`w-full py-5 h-14 text-lg border-2 rounded-xl ${errors.phone ? 'border-destructive focus:border-destructive' : 'border-sand-deep focus:border-primary'}`}
                 />
                 {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone}</p>}
               </div>
@@ -146,14 +146,14 @@ export default function StepContactInfo({ data, onChange, onSubmit, onBack, isSu
             type="button"
             onClick={onBack}
             disabled={isSubmitting}
-            className="flex-1 inline-flex items-center justify-center gap-1 py-5 text-lg font-medium rounded-2xl border-2 border-sand-deep text-navy-soft hover:bg-sand transition-colors"
+            className="flex-1 inline-flex items-center justify-center gap-1 py-5 text-lg font-medium rounded-xl border-2 border-sand-deep text-navy-soft hover:bg-sand transition-colors"
           >
             ← Back
           </button>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-accent transition-all hover:-translate-y-0.5"
+            className="flex-1 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-deep text-white py-5 text-lg font-bold rounded-xl shadow-glow-accent transition-all hover:-translate-y-0.5"
           >
             {isSubmitting ? (
               <>

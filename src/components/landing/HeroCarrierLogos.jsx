@@ -9,7 +9,7 @@ export default function HeroCarrierLogos() {
         {carriers.map((c) => (
           <div
             key={c.name}
-            className="bg-white rounded-xl border border-sand-deep/60 px-3 py-4 flex items-center justify-center"
+            className="bg-white/95 border-l-2 border-accent px-3 py-4 flex items-center justify-center"
           >
             <img
               src={c.src}

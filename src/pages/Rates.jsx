@@ -49,11 +49,8 @@ export default function Rates() {
       <RatesValueRow />
 
       {/* Mid CTA */}
-      <section className="bg-gradient-to-br from-primary to-primary-deep py-12 px-6 text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-turquoise/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
-        </div>
+      <section className="bg-navy border-y border-accent/40 py-12 px-6 text-white text-center relative overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-px bg-accent/60" />
         <div className="relative max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading text-balance">
             Find out what your rate actually is

@@ -51,13 +51,13 @@ export default function StepZipCode({ data, onChange, onNext }) {
           placeholder="Zip Code"
           value={data.zip_code || ''}
           onChange={(e) => onChange({ zip_code: e.target.value.replace(/\D/g, '').slice(0, 5) })}
-          className="text-center text-2xl py-6 h-16 font-semibold tracking-widest bg-white border-2 border-sand-deep focus:border-primary focus:ring-primary rounded-2xl"
+          className="text-center text-2xl py-6 h-16 font-semibold tracking-widest bg-white border-2 border-sand-deep focus:border-primary focus:ring-primary rounded-xl"
         />
 
         <button
           type="submit"
           disabled={!data.zip_code || data.zip_code.length !== 5}
-          className="w-full bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-primary transition-colors"
+          className="w-full bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-xl shadow-glow-primary transition-colors"
         >
           Continue
         </button>
@@ -71,7 +71,7 @@ export default function StepZipCode({ data, onChange, onNext }) {
 
       <a
         href="tel:+18556345343"
-        className="mt-5 w-full inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold py-4 rounded-2xl hover:bg-primary-soft transition-colors"
+        className="mt-5 w-full inline-flex items-center justify-center gap-2 border-2 border-primary text-primary font-bold py-4 rounded-xl hover:bg-primary-soft transition-colors"
       >
         <Phone className="w-4 h-4" />
         Call Now: (855) 634-5343

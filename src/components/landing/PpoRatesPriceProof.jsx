@@ -50,8 +50,8 @@ export default function PpoRatesPriceProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.45 }}
-              className={`rounded-3xl p-6 md:p-7 border shadow-soft bg-white ${
-                ex.featured ? 'border-accent ring-2 ring-accent/30' : 'border-sand-deep/50'
+              className={`p-6 md:p-7 border-t-2 bg-white ${
+                ex.featured ? 'border-accent bg-accent-soft' : 'border-primary'
               }`}
             >
               {ex.featured && (

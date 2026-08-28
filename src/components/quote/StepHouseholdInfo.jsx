@@ -33,7 +33,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
       className="w-full max-w-lg mx-auto"
     >
       <div className="text-center mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-soft text-primary mb-6">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary-soft text-primary mb-6">
           <Users className="w-8 h-8" />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3 font-heading">
@@ -52,7 +52,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
               key={option.id}
               type="button"
               onClick={() => handleSelect(option.size)}
-              className={`relative flex flex-col items-center gap-3 p-6 rounded-2xl border-2 transition-all duration-200 ${
+              className={`relative flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all duration-200 ${
                 selected
                   ? 'border-primary bg-primary-soft shadow-soft scale-[1.02]'
                   : 'border-sand-deep/60 bg-white hover:border-primary/40 hover:bg-sand/50'
@@ -87,9 +87,9 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
               key={size}
               type="button"
               onClick={() => handleSelect(size)}
-              className={`relative h-14 rounded-2xl font-bold text-lg transition-all duration-200 ${
+              className={`relative h-14 rounded-xl font-bold text-lg transition-all duration-200 ${
                 data.household_size === size
-                  ? 'bg-gradient-to-br from-primary to-primary-deep text-white shadow-glow-primary scale-105'
+                  ? 'bg-navy text-white border-t-2 border-accent scale-105'
                   : 'bg-sand text-navy hover:bg-sand-deep/60 border border-sand-deep/50'
               }`}
             >
@@ -103,7 +103,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
         <button
           type="button"
           onClick={onBack}
-          className="flex-1 inline-flex items-center justify-center gap-1 py-5 text-lg font-medium rounded-2xl border-2 border-sand-deep text-navy-soft hover:bg-sand transition-colors"
+          className="flex-1 inline-flex items-center justify-center gap-1 py-5 text-lg font-medium rounded-xl border-2 border-sand-deep text-navy-soft hover:bg-sand transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -112,7 +112,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
           type="button"
           onClick={onNext}
           disabled={!data.household_size}
-          className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-2xl shadow-glow-primary transition-all hover:-translate-y-0.5"
+          className="flex-1 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-deep text-white py-5 text-lg font-bold rounded-xl shadow-glow-primary transition-all hover:-translate-y-0.5"
         >
           Continue
           <ArrowRight className="w-5 h-5" />

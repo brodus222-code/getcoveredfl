@@ -44,9 +44,9 @@ export default function HowWeFixIt() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-white rounded-3xl p-7 border border-sand-deep/40 shadow-soft"
+              className="bg-white border-t-2 border-accent p-7"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary text-white mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-navy text-white mb-4">
                 <Icon className="w-6 h-6" />
               </div>
               <div className="text-xs font-semibold text-accent-deep uppercase tracking-wider mb-1">{label}</div>
