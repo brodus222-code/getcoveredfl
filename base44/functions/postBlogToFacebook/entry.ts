@@ -13,7 +13,7 @@ import { secrets } from 'base44:runtime';
 const BASE_URL = 'https://getcoveredfl.com';
 const FB_API = 'https://graph.facebook.com/v25.0';
 const TARGET_PAGE_ID = '1208779105662876';
-const SOCIAL_IMAGE_URL = 'https://media.base44.com/images/public/696f51421917c989be527824/6cf98ad11_generated_image.png';
+const SOCIAL_IMAGE_URL = 'https://media.base44.com/images/public/696f51421917c989be527824/42ec496a2_gcfnicelogo.png';
 
 export default async function(req) {
   try {
