@@ -12,6 +12,7 @@ import { secrets } from 'base44:runtime';
 
 const BASE_URL = 'https://getcoveredfl.com';
 const FB_API = 'https://graph.facebook.com/v25.0';
+const TARGET_PAGE_ID = '1208779105662876';
 
 export default async function(req) {
   try {
@@ -50,16 +51,16 @@ export default async function(req) {
     // Get the Facebook user access token from the shared connector
     const { accessToken } = await base44.asServiceRole.connectors.getConnection('facebook_pages');
 
-    // List managed Pages and grab the first one's Page access token
+    // List managed Pages and select the official Get Covered Florida Page.
     const pagesRes = await fetch(`${FB_API}/me/accounts?fields=id,name,access_token`, {
       headers: { 'Authorization': `Bearer ${accessToken}` },
     });
     const pagesData = await pagesRes.json();
-    if (!pagesData.data || pagesData.data.length === 0) {
-      return Response.json({ error: 'No Facebook Pages found for this account' }, { status: 400 });
+    const page = pagesData.data?.find(({ id }) => id === TARGET_PAGE_ID);
+    if (!page) {
+      return Response.json({ error: 'Get Covered Florida Facebook Page is not available to the connected account' }, { status: 400 });
     }
 
-    const page = pagesData.data[0];
     const pageToken = page.access_token;
     const pageId = page.id;
 
