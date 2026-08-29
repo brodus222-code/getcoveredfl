@@ -220,14 +220,14 @@ export default function QuoteWizard() {
 
       {source === 'rates' && currentStep <= TOTAL_STEPS && <RatesPriceStrip />}
 
-      {source === 'ppo-rates' && currentStep <= TOTAL_STEPS && (
+      {(source === 'ppo-rates' || source === 'selfemployed-rates') && currentStep <= TOTAL_STEPS && (
         <RatesPriceStrip
-          headline="Private PPO plans begin at $89/month."
+          headline={source === 'selfemployed-rates' ? 'Self-employed health plans begin at $89/month.' : 'Private PPO plans begin at $89/month.'}
           body="These questions let a licensed Florida agent match you to a plan that includes your doctors."
         />
       )}
 
-      {source && source !== 'rates' && source !== 'ppo-rates' && currentStep <= TOTAL_STEPS && (
+      {source && source !== 'rates' && source !== 'ppo-rates' && source !== 'selfemployed-rates' && currentStep <= TOTAL_STEPS && (
         <div className="max-w-3xl mx-auto px-6 pt-6">
           <div className="inline-flex items-center gap-2 border-l-2 border-accent bg-white text-navy px-4 py-2 text-sm font-semibold">
             {source === 'selfemployed' && <Briefcase className="w-4 h-4" />}
