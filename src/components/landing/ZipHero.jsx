@@ -62,7 +62,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
       {/* Hero content */}
       <div className={`mx-auto px-5 sm:px-6 pt-12 pb-10 md:pt-16 md:pb-14 text-center ${heroImage ? 'max-w-6xl lg:text-left' : 'max-w-3xl'}`}>
         <div className={heroImage ? 'lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-14' : ''}>
-        <div className={heroImage ? 'lg:flex-1' : ''}>
+        <div className={heroImage ? 'lg:flex lg:flex-1 lg:flex-col' : ''}>
         {/* Badge */}
         <div className="inline-flex items-center gap-2 border-l-2 border-accent pl-3 mb-6">
           <Calendar className="w-4 h-4 text-accent" />
@@ -80,7 +80,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         </p>
 
         {/* Form */}
-        <form onSubmit={handleZipSubmit} className={`max-w-md mx-auto ${leftAlignForm ? 'lg:mx-0' : ''}`}>
+        <form onSubmit={handleZipSubmit} className={`max-w-md mx-auto ${leftAlignForm ? 'lg:mx-0' : ''} ${heroImage ? 'lg:mt-auto' : ''}`}>
           {/* Progress line */}
           <div className="flex h-1 overflow-hidden mb-6 bg-white/15">
             <div className="w-1/2 bg-accent" />
@@ -135,13 +135,13 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         </form>
         </div>
         {heroImage && (
-          <div className="hidden lg:block lg:flex-1 lg:pt-12">
+          <div className="hidden lg:flex lg:flex-1 lg:flex-col lg:pt-12">
             <img
               src={heroImage}
               alt="Florida health insurance"
               className="w-full h-[500px] object-cover object-center"
             />
-            {belowImage}
+            {belowImage && <div className="lg:mt-auto">{belowImage}</div>}
           </div>
         )}
         </div>
