@@ -13,6 +13,7 @@ import { secrets } from 'base44:runtime';
 const BASE_URL = 'https://getcoveredfl.com';
 const FB_API = 'https://graph.facebook.com/v25.0';
 const TARGET_PAGE_ID = '1208779105662876';
+const SOCIAL_IMAGE_URL = 'https://media.base44.com/images/public/696f51421917c989be527824/6cf98ad11_generated_image.png';
 
 export default async function(req) {
   try {
@@ -68,13 +69,13 @@ export default async function(req) {
     const blogUrl = `${BASE_URL}/blog/${post.slug}`;
     const message = `${post.title}\n\n${post.excerpt}\n\nRead the full article: ${blogUrl}`;
 
-    // Publish to the Page feed
-    const publishRes = await fetch(`${FB_API}/${pageId}/feed`, {
+    // Upload the social image directly so Facebook cannot reuse a cached link thumbnail.
+    const publishRes = await fetch(`${FB_API}/${pageId}/photos`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message,
-        link: blogUrl,
+        url: SOCIAL_IMAGE_URL,
+        caption: message,
         access_token: pageToken,
       }),
     });
