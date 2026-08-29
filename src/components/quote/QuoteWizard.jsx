@@ -16,6 +16,7 @@ import SkipFormBanner from '@/components/quote/SkipFormBanner';
 import WizardTrustBadges from '@/components/quote/WizardTrustBadges';
 import CarrierLogos from '@/components/landing/CarrierLogos';
 import RatesPriceStrip from '@/components/quote/RatesPriceStrip';
+import QuoteConfidencePanel from '@/components/quote/QuoteConfidencePanel';
 
 const TOTAL_STEPS = 6;
 
@@ -254,11 +255,11 @@ export default function QuoteWizard() {
           </div>
         )}
         {(currentStep === 1 || currentStep === 2) && (
-
           <div className="mt-10">
             <SkipFormBanner />
           </div>
         )}
+        {currentStep === TOTAL_STEPS && <QuoteConfidencePanel />}
         {currentStep > 1 && currentStep <= TOTAL_STEPS && (
           <div className="mt-8">
             <WizardTrustBadges />

@@ -2,8 +2,8 @@ import React from 'react';
 import { Award, MapPin, BadgeCheck } from 'lucide-react';
 
 const BADGES = [
-  { icon: Award, label: 'A+ Rating' },
-  { icon: MapPin, label: 'Local Agents' },
+  { icon: Award, label: 'FL Licensed' },
+  { icon: MapPin, label: 'Florida Agents' },
   { icon: BadgeCheck, label: '100% Free' },
 ];
 
@@ -15,7 +15,7 @@ export default function FloridaTrustBadges({ className = '' }) {
       {BADGES.map(({ icon: Icon, label }) => (
         <span
           key={label}
-          className="inline-flex items-center gap-1 sm:gap-1.5 bg-accent-soft text-accent-deep rounded-full px-2.5 sm:px-3.5 py-1.5 text-[11px] sm:text-sm font-semibold whitespace-nowrap"
+          className="inline-flex items-center gap-1 sm:gap-1.5 bg-accent-soft border-l-2 border-accent text-accent-deep px-2.5 sm:px-3.5 py-1.5 text-[11px] sm:text-sm font-semibold whitespace-nowrap"
         >
           <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
           {label}
