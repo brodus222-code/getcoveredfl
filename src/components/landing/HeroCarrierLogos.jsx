@@ -1,11 +1,11 @@
 import React from 'react';
 import { carriers } from '@/components/landing/CarrierLogos';
 
-// Carrier logos in bordered boxes — sits under the hero button (left column).
+// Carrier logos in bordered boxes — spans the bottom of the hero.
 export default function HeroCarrierLogos() {
   return (
-    <div className="mt-6 max-w-md mx-auto lg:mx-0">
-      <div className="grid grid-cols-2 gap-3">
+    <div className="mt-8 w-full">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {carriers.map((c) => (
           <div
             key={c.name}

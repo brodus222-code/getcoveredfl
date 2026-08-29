@@ -18,6 +18,14 @@ export const carriers = [
     name: 'Health First',
     src: 'https://media.base44.com/images/public/696f51421917c989be527824/f40d4bd45_health_first_logo_tight1.png',
   },
+  {
+    name: 'First Health',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/01516299e_FirstHealthlogo.png',
+  },
+  {
+    name: 'Cigna',
+    src: 'https://media.base44.com/images/public/696f51421917c989be527824/c05bd3014_cigna_logo.png',
+  },
 ];
 
 export default function CarrierLogos({ compact = false }) {

@@ -133,7 +133,6 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
           </div>
           <FloridaTrustBadges className="mt-5" />
         </form>
-        {belowButton}
         </div>
         {heroImage && (
           <div className="hidden lg:block lg:flex-1 lg:pt-12">
@@ -146,6 +145,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
           </div>
         )}
         </div>
+        {belowButton}
       </div>
 
     </section>
