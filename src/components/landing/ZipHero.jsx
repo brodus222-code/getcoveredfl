@@ -136,7 +136,7 @@ export default function ZipHero({ badgeText, heading, subheading, onAgentClick, 
         {belowButton}
         </div>
         {heroImage && (
-          <div className="hidden lg:block lg:flex-1">
+          <div className="hidden lg:block lg:flex-1 lg:pt-12">
             <img
               src={heroImage}
               alt="Florida health insurance"
