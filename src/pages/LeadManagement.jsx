@@ -107,6 +107,13 @@ export default function LeadManagement() {
     closed: 'bg-gray-100 text-gray-800'
   };
 
+  const coverageMemberLabels = {
+    just_me: 'Just Me',
+    me_spouse: 'Me + Spouse',
+    me_kids: 'Me + Kids',
+    whole_family: 'Whole Family'
+  };
+
   const coverageLabels = {
     aca_marketplace: 'ACA Marketplace',
     cobra_alternatives: 'COBRA Alternative',
@@ -268,6 +275,10 @@ export default function LeadManagement() {
                           <span className="text-gray-400">
                             (Ages: {lead.ages?.join(', ')})
                           </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-gray-500">Who Needs Coverage:</span>
+                          <span className="font-medium">{coverageMemberLabels[lead.coverage_members] || 'Not captured'}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <DollarSign className="w-4 h-4 text-gray-400" />

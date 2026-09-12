@@ -68,6 +68,13 @@ export default async function(req) {
     const coverage = escapeHtml((lead.coverage_type || 'N/A').replace(/_/g, ' '));
     const income = lead.estimated_income ? `$${Number(lead.estimated_income).toLocaleString()}` : 'N/A';
     const household = escapeHtml(lead.household_size || 'N/A');
+    const coverageMemberLabels = {
+      just_me: 'Just Me',
+      me_spouse: 'Me + Spouse',
+      me_kids: 'Me + Kids',
+      whole_family: 'Whole Family',
+    };
+    const coverageMembers = escapeHtml(coverageMemberLabels[lead.coverage_members] || 'N/A');
     // Show the received time in Eastern so email times match the dashboard
     const receivedEt = lead.created_date
       ? new Date(lead.created_date).toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'medium', timeStyle: 'short' }) + ' ET'
@@ -84,6 +91,7 @@ export default async function(req) {
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">ZIP Code</td><td style="padding:8px;border:1px solid #ddd">${zip}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Coverage Type</td><td style="padding:8px;border:1px solid #ddd">${coverage}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Household Size</td><td style="padding:8px;border:1px solid #ddd">${household}</td></tr>
+        <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Who Needs Coverage</td><td style="padding:8px;border:1px solid #ddd">${coverageMembers}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Est. Income</td><td style="padding:8px;border:1px solid #ddd">${income}</td></tr>
       </table>
     `;

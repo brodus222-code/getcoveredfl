@@ -10,6 +10,16 @@
       "type": "number",
       "description": "Number of people in household"
     },
+    "coverage_members": {
+      "type": "string",
+      "enum": [
+        "just_me",
+        "me_spouse",
+        "me_kids",
+        "whole_family"
+      ],
+      "description": "Who in the household needs coverage"
+    },
     "ages": {
       "type": "array",
       "items": {

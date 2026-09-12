@@ -18,7 +18,13 @@ const ADVANCE_DELAY = 380;
 export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
   const timerRef = useRef(null);
 
-  const handleSelect = (size) => {
+  const handleHouseholdSelect = (option) => {
+    onChange({ coverage_members: option.id, household_size: option.size });
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => onNext(), ADVANCE_DELAY);
+  };
+
+  const handleCountSelect = (size) => {
     onChange({ household_size: size });
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(() => onNext(), ADVANCE_DELAY);
@@ -46,12 +52,12 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
 
       <div className="grid grid-cols-2 gap-3 mb-6">
         {householdOptions.map((option) => {
-          const selected = data.household_size === option.size;
+          const selected = data.coverage_members === option.id;
           return (
             <button
               key={option.id}
               type="button"
-              onClick={() => handleSelect(option.size)}
+              onClick={() => handleHouseholdSelect(option)}
               className={`relative flex flex-col items-center gap-3 p-6 rounded-xl border-2 transition-all duration-200 ${
                 selected
                   ? 'border-primary bg-primary-soft shadow-soft scale-[1.02]'
@@ -86,7 +92,7 @@ export default function StepHouseholdInfo({ data, onChange, onNext, onBack }) {
             <button
               key={size}
               type="button"
-              onClick={() => handleSelect(size)}
+              onClick={() => handleCountSelect(size)}
               className={`relative h-14 rounded-xl font-bold text-lg transition-all duration-200 ${
                 data.household_size === size
                   ? 'bg-navy text-white border-t-2 border-accent scale-105'

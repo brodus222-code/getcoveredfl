@@ -59,6 +59,7 @@ export default async function(req) {
       source: lead.lead_source || 'website',
       coverage_type: lead.coverage_type || '',
       household_size: lead.household_size ?? '',
+      coverage_members: lead.coverage_members || '',
       estimated_income: lead.estimated_income ?? '',
       start_coverage: lead.start_coverage || '',
       lead_reason: lead.lead_reason || '',

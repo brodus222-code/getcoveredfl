@@ -44,6 +44,7 @@ export default function QuoteWizard() {
   const [formData, setFormData] = useState({
     zip_code: initialZip,
     household_size: null,
+    coverage_members: '',
     ages: [],
     estimated_income: null,
     start_coverage: '',
@@ -138,6 +139,7 @@ export default function QuoteWizard() {
     const leadData = {
       zip_code: formData.zip_code,
       household_size: formData.household_size,
+      coverage_members: formData.coverage_members,
       ages: formData.ages,
       estimated_income: formData.estimated_income,
       start_coverage: formData.start_coverage,
