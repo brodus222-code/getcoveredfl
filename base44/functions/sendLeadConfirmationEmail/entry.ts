@@ -53,8 +53,11 @@ export default async function(req) {
 
     const firstName = escapeHtml(String(lead.full_name).split(' ')[0] || lead.full_name);
     const coverageRaw = escapeHtml(String(lead.coverage_type || '').replace(/_/g, ' '));
+    const requestedCall = lead.lead_source === 'ai_advisor' && lead.preferred_call_date && lead.preferred_call_time
+      ? escapeHtml(`${lead.preferred_call_date} at ${lead.preferred_call_time} Eastern Time`)
+      : null;
 
-    const subject = 'We received your quote request — GetCovered FL';
+    const subject = requestedCall ? 'We received your call request — GetCovered FL' : 'We received your quote request — GetCovered FL';
     const htmlBody = `<!DOCTYPE html>
 <html><body style="margin:0;padding:0;background:#f4f7f9;font-family:Inter,Arial,sans-serif;color:#0f2c3a">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f7f9;padding:32px 12px">
@@ -66,7 +69,7 @@ export default async function(req) {
         <tr><td style="padding:36px">
           <h1 style="margin:0 0 16px;font-size:24px;font-family:Poppins,Arial,sans-serif;color:#0f2c3a">Hi ${firstName}, we got your request!</h1>
           <p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#36555f">
-            Thank you for requesting a health insurance quote. One of our licensed Florida agents will review your information and reach out within <strong>1 business day</strong> with personalized plan options and pricing.
+            ${requestedCall ? `Thank you for requesting a call about health coverage. Your preferred time is <strong>${requestedCall}</strong>. This is a request, not a confirmed appointment; a licensed agent will follow up to confirm availability.` : `Thank you for requesting a health insurance quote. One of our licensed Florida agents will review your information and reach out within <strong>1 business day</strong> with personalized plan options and pricing.`}
           </p>
           ${coverageRaw ? `<p style="margin:0 0 16px;font-size:16px;line-height:1.6;color:#36555f">We noted you're interested in <strong style="text-transform:capitalize">${coverageRaw}</strong> coverage — we'll focus our recommendations there.</p>` : ''}
           <table width="100%" cellpadding="0" cellspacing="0" style="margin:24px 0;background:#eef7f7;border-radius:12px">

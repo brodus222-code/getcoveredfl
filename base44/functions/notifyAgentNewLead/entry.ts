@@ -75,6 +75,11 @@ export default async function(req) {
       whole_family: 'Whole Family',
     };
     const coverageMembers = escapeHtml(coverageMemberLabels[lead.coverage_members] || 'N/A');
+    const callRequest = lead.preferred_call_date && lead.preferred_call_time
+      ? escapeHtml(`${lead.preferred_call_date} at ${lead.preferred_call_time} ET — requested, not confirmed`)
+      : 'N/A';
+    const leadSource = escapeHtml(lead.lead_source === 'ai_advisor' ? 'AI advisor' : (lead.lead_source || 'website'));
+    const notes = escapeHtml(lead.notes || 'N/A');
     // Show the received time in Eastern so email times match the dashboard
     const receivedEt = lead.created_date
       ? new Date(lead.created_date).toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'medium', timeStyle: 'short' }) + ' ET'
@@ -93,6 +98,8 @@ export default async function(req) {
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Household Size</td><td style="padding:8px;border:1px solid #ddd">${household}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Who Needs Coverage</td><td style="padding:8px;border:1px solid #ddd">${coverageMembers}</td></tr>
         <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Est. Income</td><td style="padding:8px;border:1px solid #ddd">${income}</td></tr>
+        <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Source</td><td style="padding:8px;border:1px solid #ddd">${leadSource}</td></tr>
+        ${lead.lead_source === 'ai_advisor' ? `<tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Preferred call (ET)</td><td style="padding:8px;border:1px solid #ddd">${callRequest}</td></tr><tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Visitor notes</td><td style="padding:8px;border:1px solid #ddd">${notes}</td></tr>` : ''}
       </table>
     `;
 

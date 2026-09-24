@@ -123,10 +123,20 @@
       "enum": [
         "website",
         "meta_instant_form",
+        "ai_advisor",
         "other"
       ],
       "default": "website",
       "description": "Where the lead came from"
+    },
+    "preferred_call_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested call date in Eastern Time; not a confirmed appointment"
+    },
+    "preferred_call_time": {
+      "type": "string",
+      "description": "Requested call time in Eastern Time (HH:mm); not a confirmed appointment"
     },
     "birth_year": {
       "type": "number",

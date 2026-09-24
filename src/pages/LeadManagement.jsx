@@ -240,6 +240,7 @@ export default function LeadManagement() {
                           {lead.status}
                         </Badge>
                         <WelcomeEmailBadge sent={lead.confirmation_email_sent} />
+                        {lead.lead_source === 'ai_advisor' && <Badge variant="outline">AI Advisor</Badge>}
                       </div>
                       <CardDescription className="flex items-center gap-4 text-sm">
                         <span className="flex items-center gap-1">
@@ -294,6 +295,8 @@ export default function LeadManagement() {
                             {coverageLabels[lead.coverage_type]}
                           </span>
                         </div>
+                        {lead.preferred_call_date && <div className="flex items-center gap-2"><Calendar className="w-4 h-4 text-gray-400" /><span className="text-gray-500">Preferred call (not confirmed):</span><span className="font-medium">{lead.preferred_call_date} at {lead.preferred_call_time} ET</span></div>}
+                        {lead.lead_source === 'ai_advisor' && lead.notes && <div className="text-gray-600">Visitor notes: {lead.notes}</div>}
                         <div className="text-xs text-gray-500 mt-2 space-y-1">
                           <div>Currently Insured: {lead.currently_insured ? 'Yes' : 'No'}</div>
                           <div>Takes Prescriptions: {lead.takes_prescriptions ? 'Yes' : 'No'}</div>

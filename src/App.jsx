@@ -35,6 +35,7 @@ import JacksonvilleHealthInsurance from './pages/JacksonvilleHealthInsurance';
 import FortLauderdaleHealthInsurance from './pages/FortLauderdaleHealthInsurance';
 import StPetersburgHealthInsurance from './pages/StPetersburgHealthInsurance';
 import SpaceCoastHealthInsurance from './pages/SpaceCoastHealthInsurance';
+import Advisor from './pages/Advisor';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -98,6 +99,7 @@ const AuthenticatedApp = () => {
       <Route path="/Privacy" element={<Privacy />} />
       <Route path="/Licensing" element={<Licensing />} />
       <Route path="/coverage-guide" element={<CoverageGuide />} />
+      <Route path="/advisor" element={<Advisor />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPostDetail />} />
       <Route path="/about" element={<About />} />
