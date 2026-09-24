@@ -3,7 +3,9 @@ import { Sparkles } from 'lucide-react';
 
 export default function AdvisorTranscript({ steps, answers, replies, questions, activeIndex, busy }) {
   const endRef = useRef(null);
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), [activeIndex, replies, questions, busy]);
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [activeIndex, replies, questions, busy]);
   return (
     <div className="space-y-5" aria-live="polite">
       <div className="flex gap-3 items-start"><div className="shrink-0 bg-primary-soft p-2 rounded-full text-primary"><Sparkles className="w-4 h-4" /></div><p className="bg-sand border-l-2 border-accent rounded-r-2xl rounded-bl-2xl px-4 py-3 text-navy max-w-xl">Hi, I’m your virtual coverage guide. I’ll learn a little about your needs, then help you request a call with a licensed Florida agent. You can ask me questions along the way.</p></div>
