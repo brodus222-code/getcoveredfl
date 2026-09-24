@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { advisorDate } from './questions';
+import { advisorDate } from '@/components/advisor/questions';
 
-export default function AdvisorAnswer({ step, onAnswer, disabled, error }) {
-  const [value, setValue] = useState('');
+export default function AdvisorAnswer({ step, onAnswer, disabled, error, initialValue = '' }) {
+  const [value, setValue] = useState(String(initialValue));
   if (step.options) return <div className="grid sm:grid-cols-2 gap-3">{step.options.map(([id, label]) => <button type="button" key={id} disabled={disabled} onClick={() => onAnswer(id)} className="text-left bg-card border border-border hover:border-accent focus-visible:ring-2 focus-visible:ring-ring rounded-xl px-5 py-4 text-navy font-semibold disabled:opacity-60">{label}<ArrowRight className="inline float-right w-4 h-4 mt-1 text-accent" /></button>)}</div>;
   return <form key={step.key} onSubmit={(event) => { event.preventDefault(); onAnswer(value.trim(), () => setValue('')); }} className="space-y-3">
     <label className="sr-only" htmlFor="advisor-answer">{step.text}</label>

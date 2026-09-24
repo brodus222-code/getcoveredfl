@@ -2,7 +2,7 @@ export const advisorQuestions = [
   { key: 'coverage_members', text: 'Who are we finding coverage for?', options: [['just_me', 'Just me'], ['me_spouse', 'Me + spouse'], ['me_kids', 'Me + kids'], ['whole_family', 'Whole family']] },
   { key: 'household_size', text: 'How many people need coverage?', type: 'number', placeholder: 'Number of people', min: 1, max: 20, conditional: true },
   { key: 'zip_code', text: 'What Florida ZIP code should we look in?', type: 'text', placeholder: '5-digit ZIP code', inputMode: 'numeric', maxLength: 5 },
-  { key: 'coverage_type', text: 'What kind of coverage interests you most?', options: [['most_affordable', 'Most affordable'], ['aca_marketplace', 'ACA Marketplace'], ['ppo_broad_network', 'Broad-network PPO'], ['cobra_alternatives', 'COBRA alternative'], ['first_time_coverage', 'Not sure yet']] },
+  { key: 'coverage_type', text: 'What kind of coverage interests you most?', options: [['most_affordable', 'Most affordable'], ['aca_marketplace', 'ACA Marketplace'], ['ppo_broad_network', 'Broad-network PPO'], ['cobra_alternatives', 'COBRA alternative'], ['callback_request', 'Not sure yet']] },
   { key: 'start_coverage', text: 'When would you like coverage to start?', options: [['asap', 'As soon as possible'], ['few_weeks', 'In a few weeks'], ['not_sure', 'Not sure yet']] },
   { key: 'ages', text: 'How old is the primary person who needs coverage?', type: 'number', placeholder: 'Age', min: 18, max: 100 },
   { key: 'estimated_income', text: 'About how much is your household’s annual income?', type: 'number', placeholder: 'Estimated amount in dollars', min: 0, max: 10000000, skip: 'I’m not sure' },
