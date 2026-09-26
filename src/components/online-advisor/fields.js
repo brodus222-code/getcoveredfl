@@ -58,7 +58,7 @@ export function buildLead(info, summary, messages) {
     coverage_type: info.coverage_type, start_coverage: info.start_coverage,
     estimated_income: income ? Number(income) : undefined,
     lead_source: 'ai_advisor', status: 'new', sms_opt_in: false,
-    notes: ['Source: Online AI advisor chat (/online-advisor).', summary, visitorLines.length ? `Visitor messages:\n${visitorLines.join('\n')}` : ''].filter(Boolean).join('\n\n'),
+    notes: ['Source: Online AI advisor chat (/advisor).', summary, visitorLines.length ? `Visitor messages:\n${visitorLines.join('\n')}` : ''].filter(Boolean).join('\n\n'),
   };
   Object.keys(lead).forEach((k) => lead[k] === undefined && delete lead[k]);
   return lead;
