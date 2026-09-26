@@ -4,7 +4,7 @@ import { buildLead, cleanInfo, validateInfo } from '@/components/online-advisor/
 
 const GREETING = {
   role: 'assistant',
-  content: "Hi! I'm the GetCoveredFL virtual guide. Ask me anything about Florida health insurance — ACA plans, PPOs, subsidies, COBRA, and more. I'll also gather what a licensed agent needs to prepare your quote. To start, who are you looking to cover?",
+  content: "Hi, I'm Sunny, GetCoveredFL's virtual coverage guide! Ask me anything about Florida health insurance — ACA plans, PPOs, subsidies, COBRA, and more. I'll also gather what a licensed agent needs to prepare your quote. To start, who are you looking to cover?",
 };
 
 export default function useOnlineAdvisor() {
@@ -31,7 +31,7 @@ export default function useOnlineAdvisor() {
       if (data.summary) setSummary(data.summary);
       setMessages((prev) => [...prev, { role: 'assistant', content: data.reply }]);
     } catch (e) {
-      setChatError('The guide is unavailable right now. Please try again or call (855) 634-5343.');
+      setChatError('Sunny is unavailable right now. Please try again or call (855) 634-5343.');
     } finally { sending.current = false; setBusy(false); }
   };
 

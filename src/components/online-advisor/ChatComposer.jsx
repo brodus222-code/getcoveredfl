@@ -23,8 +23,8 @@ export default function ChatComposer({ onSend, busy, error, showStarters }) {
       )}
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
       <form onSubmit={submit} className="flex gap-2">
-        <label htmlFor="online-advisor-input" className="sr-only">Message the guide</label>
-        <input id="online-advisor-input" value={text} onChange={(e) => setText(e.target.value)} maxLength={600} placeholder="Ask a question or answer the guide…" className="flex-1 h-12 rounded-xl border border-input bg-background px-4 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
+        <label htmlFor="online-advisor-input" className="sr-only">Message Sunny</label>
+        <input id="online-advisor-input" value={text} onChange={(e) => setText(e.target.value)} maxLength={600} placeholder="Ask Sunny a question…" className="flex-1 h-12 rounded-xl border border-input bg-background px-4 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" />
         <button type="submit" disabled={busy || !text.trim()} aria-label="Send message" className="h-12 w-12 rounded-xl bg-accent hover:bg-accent-deep text-accent-foreground flex items-center justify-center shrink-0 disabled:cursor-not-allowed">
           <Send className="w-5 h-5" />
         </button>

@@ -44,10 +44,10 @@ export default async function(req) {
 
     const known = body.info && typeof body.info === 'object' ? body.info : {};
     const knownText = FIELDS.map((k) => `${k}: ${String(known[k] ?? '').replace(/[\r\n]/g, ' ').slice(0, 120) || '(unknown)'}`).join('\n');
-    const transcript = messages.map((m) => `${m.role === 'user' ? 'Visitor' : 'Guide'}: ${m.content}`).join('\n');
+    const transcript = messages.map((m) => `${m.role === 'user' ? 'Visitor' : 'Sunny'}: ${m.content}`).join('\n');
 
     const result = await base44.asServiceRole.integrations.Core.InvokeLLM({
-      prompt: `You are the virtual guide on GetCoveredFL.com, the website of HealthLink Insurance Agency LLC, an independent licensed Florida health insurance agency. You chat with website visitors.
+      prompt: `You are Sunny, the friendly virtual coverage guide on GetCoveredFL.com, the website of HealthLink Insurance Agency LLC, an independent licensed Florida health insurance agency. You chat with website visitors.
 
 Goals:
 1. Answer any health insurance question warmly in plain language (2-5 short sentences). General information only.

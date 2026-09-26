@@ -31,7 +31,7 @@ export default function QuoteDetailsPanel({ flow }) {
         </ul>
       )}
       {ready ? <SubmitBox onSubmit={flow.submit} submitting={flow.submitting} error={flow.submitError} /> : (
-        <p className="text-xs text-navy-soft bg-sand p-3 rounded-lg">Chat with the guide to fill these in. Once the required details are in, you can send them to a licensed agent.</p>
+        <p className="text-xs text-navy-soft bg-sand p-3 rounded-lg">Chat with Sunny to fill these in. Once the required details are in, you can send them to a licensed agent.</p>
       )}
     </aside>
   );

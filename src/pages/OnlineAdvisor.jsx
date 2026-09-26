@@ -15,8 +15,8 @@ export default function OnlineAdvisor() {
     <div className="min-h-screen bg-sand pb-24 md:pb-0">
       <SiteHeader staticLogo />
       <header className="bg-navy text-primary-foreground border-b-2 border-accent px-5 py-9 text-center">
-        <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">GetCoveredFL · Online advisor</p>
-        <h1 className="text-2xl sm:text-3xl font-bold">Ask anything about Florida health coverage.</h1>
+        <p className="text-accent text-xs font-bold uppercase tracking-widest mb-3">GetCoveredFL · Meet Sunny</p>
+        <h1 className="text-2xl sm:text-3xl font-bold">Ask Sunny anything about Florida health coverage.</h1>
         <p className="mt-3 text-primary-foreground/80 text-sm sm:text-base">Get plain-English answers now — then a licensed agent prepares your quote.</p>
       </header>
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">

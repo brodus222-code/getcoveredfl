@@ -28,7 +28,7 @@ export default function ChatThread({ messages, busy }) {
             <span className="w-2 h-2 rounded-full bg-navy-soft animate-bounce [animation-delay:150ms]" />
             <span className="w-2 h-2 rounded-full bg-navy-soft animate-bounce [animation-delay:300ms]" />
           </span>
-          Guide is typing…
+          Sunny is typing…
         </div>
       )}
     </div>
