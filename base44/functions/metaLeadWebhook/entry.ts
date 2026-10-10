@@ -41,7 +41,7 @@ function parseBirthYear(raw) {
 export default async function (req: Request): Promise<Response> {
   try {
     const url = new URL(req.url);
-    const provided = url.searchParams.get('secret') || req.headers.get('x-webhook-secret') || '';
+    const provided = req.headers.get('x-webhook-secret') || '';
     if (provided !== secrets.get('META_LEAD_WEBHOOK_SECRET')) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
