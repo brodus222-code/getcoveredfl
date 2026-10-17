@@ -36,6 +36,8 @@ import FortLauderdaleHealthInsurance from './pages/FortLauderdaleHealthInsurance
 import StPetersburgHealthInsurance from './pages/StPetersburgHealthInsurance';
 import SpaceCoastHealthInsurance from './pages/SpaceCoastHealthInsurance';
 import OnlineAdvisor from './pages/OnlineAdvisor';
+import MovingFromNewJersey from './pages/MovingFromNewJersey';
+import MovingFromCalifornia from './pages/MovingFromCalifornia';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -101,6 +103,8 @@ const AuthenticatedApp = () => {
       <Route path="/coverage-guide" element={<CoverageGuide />} />
       <Route path="/advisor" element={<OnlineAdvisor />} />
       <Route path="/online-advisor" element={<Navigate to="/advisor" replace />} />
+      <Route path="/moving-from-new-jersey-to-florida-health-insurance" element={<MovingFromNewJersey />} />
+      <Route path="/moving-from-california-to-florida-covered-california" element={<MovingFromCalifornia />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPostDetail />} />
       <Route path="/about" element={<About />} />

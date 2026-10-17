@@ -17,6 +17,8 @@ const STATIC_ROUTES = [
   { path: '/jacksonville-health-insurance', priority: '0.8', changefreq: 'monthly' },
   { path: '/fort-lauderdale-health-insurance', priority: '0.8', changefreq: 'monthly' },
   { path: '/st-petersburg-health-insurance', priority: '0.8', changefreq: 'monthly' },
+  { path: '/moving-from-new-jersey-to-florida-health-insurance', priority: '0.8', changefreq: 'monthly' },
+  { path: '/moving-from-california-to-florida-covered-california', priority: '0.8', changefreq: 'monthly' },
   { path: '/blog', priority: '0.7', changefreq: 'weekly' },
   { path: '/Terms', priority: '0.3', changefreq: 'yearly' },
   { path: '/Privacy', priority: '0.3', changefreq: 'yearly' },
