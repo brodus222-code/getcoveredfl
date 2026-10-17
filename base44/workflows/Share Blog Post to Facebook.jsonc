@@ -20,6 +20,16 @@
     },
     "do": [
       {
+        "wait_for_indexing": {
+          "wait": "P3D",
+          "then": "post_to_facebook",
+          "x-base44": {
+            "title": "Wait 3 days",
+            "description": "Give Google time to index the post"
+          }
+        }
+      },
+      {
         "post_to_facebook": {
           "call": "invoke_backend_function",
           "with": {
