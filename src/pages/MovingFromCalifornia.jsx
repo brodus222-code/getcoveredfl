@@ -29,7 +29,7 @@ export default function MovingFromCalifornia() {
       <MoveSection title="Frequently Asked Questions" sand><MoveFaq faqs={g.faqs} /></MoveSection>
       <MoveRateForm guide={g} />
       <MoveLinks crossLink={g.crossLink} />
-      <LandingFooter />
+      <LandingFooter disclosure={g.footerDisclosure} />
       <MobileCallBar />
     </div>
   );

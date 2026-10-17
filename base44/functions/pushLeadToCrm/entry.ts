@@ -75,6 +75,10 @@ export default async function(req) {
       qualified: lead.qualified !== false,
       sms_opt_in: !!lead.sms_opt_in,
       status: lead.status || 'new',
+      move_date: lead.move_date || '',
+      origin_zip: lead.origin_zip || '',
+      new_fl_zip: lead.new_fl_zip || '',
+      tags: lead.lead_tag || '',
       source_lead_id: lead.id,
       created_date: lead.created_date,
     };

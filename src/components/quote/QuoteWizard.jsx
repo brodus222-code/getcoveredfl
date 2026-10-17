@@ -150,6 +150,16 @@ export default function QuoteWizard() {
       sms_opt_in: formData.sms_opt_in,
       status: 'new',
     };
+    const moveTag = searchParams.get('tag');
+    if (moveTag) {
+      Object.assign(leadData, {
+        lead_tag: moveTag,
+        move_date: searchParams.get('move_date') || undefined,
+        origin_zip: searchParams.get('origin_zip') || '',
+        new_fl_zip: initialZip,
+        lead_reason: formData.lead_reason || 'moved',
+      });
+    }
 
     await base44.entities.Lead.create(leadData);
 

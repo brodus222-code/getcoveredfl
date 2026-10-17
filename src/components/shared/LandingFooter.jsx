@@ -5,7 +5,7 @@ import { createPageUrl } from '@/utils';
 
 // Trimmed footer for paid-traffic landing pages — required compliance
 // disclosure and compliance page links only, no site navigation.
-export default function LandingFooter() {
+export default function LandingFooter({ disclosure }) {
   return (
     <footer className="bg-navy text-white/80">
       <div className="max-w-4xl mx-auto px-5 sm:px-6 py-8 space-y-4 text-xs text-white/50">
@@ -18,7 +18,7 @@ export default function LandingFooter() {
         </div>
 
         <p className="text-white/70 font-medium">
-          HealthLink Insurance Agency LLC · FL Lic# L131967 · NPN# 21554495
+          {disclosure || 'HealthLink Insurance Agency LLC · FL Lic# L131967 · NPN# 21554495'}
         </p>
 
         <p className="flex items-start gap-2">

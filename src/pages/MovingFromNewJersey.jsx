@@ -33,7 +33,7 @@ export default function MovingFromNewJersey() {
       <MoveSection title="Frequently Asked Questions"><MoveFaq faqs={g.faqs} /></MoveSection>
       <MoveRateForm guide={g} />
       <MoveLinks crossLink={g.crossLink} />
-      <LandingFooter />
+      <LandingFooter disclosure={g.footerDisclosure} />
       <MobileCallBar />
     </div>
   );

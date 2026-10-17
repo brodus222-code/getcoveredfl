@@ -8,7 +8,9 @@ export const proofDocs = [
 
 export const newJersey = {
   slug: 'moving-from-new-jersey-to-florida-health-insurance',
+  footerDisclosure: 'HealthLink Insurance Agency LLC is a licensed insurance agency in Florida L131967, New Jersey 3003628832, and California 6019438. GetCoveredFL is a registered fictitious name of HealthLink Insurance Agency LLC. Plans and pricing vary by zip code, age, income and household.',
   source: 'nj-to-fl',
+  tag: 'moving-nj',
   seoTitle: 'Moving from New Jersey to Florida? Health Insurance Guide (2026 SEP)',
   metaDescription: 'Moving from NJ to FL triggers a 60-day Special Enrollment Period. See how Florida Blue compares to Horizon, what your subsidy will be in Cocoa, and how to keep your doctors.',
   badge: 'NJ → FL Movers · 2026 Special Enrollment',
@@ -43,14 +45,16 @@ export const newJersey = {
     { q: 'Is Florida health insurance cheaper than NJ?', a: 'Often, yes, after subsidies. Florida premiums and subsidy amounts differ by ZIP code, and many NJ movers pay noticeably less for comparable coverage. A licensed agent can quote your exact rate.' },
   ],
   ctaTitle: 'Check Your Florida Rate in 60 Seconds',
-  ctaSub: 'Licensed in NJ & FL',
+  ctaSub: 'LICENSED AGENCY IN NJ #3003628832, FL L131967 & CA #6019438 - NJ TO FL MOVE SPECIALISTS',
   originLabel: 'Current NJ ZIP',
   crossLink: { to: '/moving-from-california-to-florida-covered-california', label: 'Moving from California instead?' },
 };
 
 export const california = {
   slug: 'moving-from-california-to-florida-covered-california',
+  footerDisclosure: 'HealthLink Insurance Agency LLC is a licensed insurance agency in Florida L131967, New Jersey 3003628832, and California 6019438. GetCoveredFL is a registered fictitious name of HealthLink Insurance Agency LLC. Plans and pricing vary by zip code, age, income and household.',
   source: 'ca-to-fl',
+  tag: 'moving-ca',
   seoTitle: 'Leaving Covered California for Florida? What Happens to Your Subsidy',
   metaDescription: 'Moving from California to Florida ends your Covered California plan. You get a 60-day SEP. See how Florida Blue compares to Kaiser, Anthem CA, and how to transfer.',
   badge: 'CA → FL Movers · 60-Day Special Enrollment',
@@ -94,7 +98,7 @@ export const california = {
     { q: 'Can I keep Kaiser in Florida?', a: 'No. Kaiser Permanente does not offer individual plans in Florida. You will need a Florida carrier such as Florida Blue.' },
   ],
   ctaTitle: 'Check Your Florida Rate in 60 Seconds',
-  ctaSub: 'Licensed Florida agents. Free, no obligation.',
+  ctaSub: 'LICENSED AGENCY IN CA #6019438, FL L131967 & NJ #3003628832 - COVERED CALIFORNIA EXIT SPECIALISTS',
   originLabel: 'Current CA ZIP',
   crossLink: { to: '/moving-from-new-jersey-to-florida-health-insurance', label: 'Moving from New Jersey instead?' },
 };

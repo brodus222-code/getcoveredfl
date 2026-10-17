@@ -5,12 +5,13 @@ import { Label } from '@/components/ui/label';
 
 export default function MoveRateForm({ guide }) {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ moveDate: '', originZip: '', flZip: '' });
+  const [form, setForm] = useState({ moveDate: '', originZip: '', flZip: '32926' });
   const set = (k) => (e) => setForm({ ...form, [k]: k === 'moveDate' ? e.target.value : e.target.value.replace(/\D/g, '').slice(0, 5) });
 
   const submit = (e) => {
     e.preventDefault();
-    navigate(`/Quote?zip=${form.flZip}&source=${guide.source}`);
+    const q = new URLSearchParams({ zip: form.flZip, source: guide.source, tag: guide.tag, move_date: form.moveDate, origin_zip: form.originZip });
+    navigate(`/Quote?${q}`);
   };
 
   return (

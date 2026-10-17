@@ -20,6 +20,7 @@ export default function SavingsExample({ savings }) {
           </div>
         </div>
       )}
+      {ex && <p className="text-xs text-muted-foreground mt-2">*Illustrative example based on age 41, zip 32926 vs 07030. Your rate depends on income, household, and plan. Get your exact subsidy below.</p>}
       <p className="text-sm text-muted-foreground mt-3">{savings.note}</p>
     </>
   );

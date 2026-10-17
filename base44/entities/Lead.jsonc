@@ -150,6 +150,23 @@
     "disqualified_reason": {
       "type": "string",
       "description": "Why the lead was marked unqualified"
+    },
+    "move_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Planned moving date (moving landing pages)"
+    },
+    "origin_zip": {
+      "type": "string",
+      "description": "ZIP code in the state the lead is moving from"
+    },
+    "new_fl_zip": {
+      "type": "string",
+      "description": "New Florida ZIP entered on a moving landing page"
+    },
+    "lead_tag": {
+      "type": "string",
+      "description": "Campaign tag, e.g. moving-nj or moving-ca"
     }
   },
   "required": [
