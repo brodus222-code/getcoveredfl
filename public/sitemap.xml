@@ -35,6 +35,17 @@
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
+<url><loc>https://getcoveredfl.com/miami-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/orlando-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/tampa-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/jacksonville-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/fort-lauderdale-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/st-petersburg-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/space-coast-health-insurance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/affordable</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<url><loc>https://getcoveredfl.com/advisor</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://getcoveredfl.com/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
+<url><loc>https://getcoveredfl.com/contact</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
 <url>
 <loc>https://getcoveredfl.com/blog</loc>
 <changefreq>weekly</changefreq>
