@@ -29,7 +29,6 @@ export const newJersey = {
   savings: {
     title: 'How Much Will You Save? Cocoa vs. NJ Pricing',
     example: { profile: 'Age 41, $65k income', from: 'New Jersey', fromPrice: '$425/mo', to: 'Cocoa Beach', toPrice: '$187/mo' },
-    note: 'Illustrative example after subsidy. Your exact rate depends on age, income, household, and ZIP.',
   },
   mistakes: {
     title: '3 Mistakes NJ Transplants Make',
